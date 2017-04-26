@@ -6,8 +6,8 @@ This is the place where the HSF Visualization WG gathers all the relevant docume
 
 Here below the material from the first HSF Visualization Workshop, 28-30 March 2017 ([agenda](https://indico.cern.ch/event/617054/))
 
-* [Live notes](https://github.com/ric-bianchi/Visualization/blob/master/documents/HSFVisualizationWorkshop-LiveNotes-29March2017.pdf) on "Toward a common HEP vision" (29 Mar 2017)
-* [Live notes](https://github.com/ric-bianchi/Visualization/blob/master/documents/HSFVisualizationWorkshop-30March2017.pdf) on "The CWP 'Visualization' Chapter" (30 Mar 2017)
+* [Notes](https://github.com/ric-bianchi/Visualization/blob/master/documents/HSFVisualizationWorkshop-LiveNotes-29March2017.pdf) on "Toward a common HEP vision" (29 Mar 2017)
+* [Notes](https://github.com/ric-bianchi/Visualization/blob/master/documents/HSFVisualizationWorkshop-30March2017.pdf) on "The CWP 'Visualization' Chapter" (30 Mar 2017)
 
 ## From the "HSF Mini-workshop on GUI, graphic libraries, interactive visualization" (2017, CERN)
 
