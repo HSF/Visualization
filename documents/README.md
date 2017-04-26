@@ -1,5 +1,7 @@
 This is the place where the HSF Visualization WG gathers all the relevant documents.
 
+----
+
 ## From the 1st HSF Visualization Workshop (2017, CERN)
 
 Here below the material from the first HSF Visualization Workshop, 28-30 March 2017 ([agenda](https://indico.cern.ch/event/617054/))
