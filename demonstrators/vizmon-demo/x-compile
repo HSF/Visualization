@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+set -x
+
+go build -o vizmon-demo-linux-amd64.exe
+GOARCH=386 go build -o vizmon-demo-linux-386.exe
+GOOS=windows GOARCH=386 go build -o vizmon-demo-windows-386.exe
+GOOS=darwin GOARCH=386 go build -o vizmon-demo-macos-386.exe
+GOOS=darwin GOARCH=amd64 go build -o vizmon-demo-macos-amd64.exe
+GOOS=windows GOARCH=amd64 go build -o vizmon-demo-windows-amd64.exe
+GOARCH=arm GOARM=7 go build -o vizmon-demo-linux-arm.exe
