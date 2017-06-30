@@ -44,6 +44,7 @@ Additionally, one can also retrieve informations from the `"/echo"` end-point:
 
 ```sh
 $> curl localhost:8080/echo
+{"values":[{"name":"vtx-x","value":0.007457764495316657},{"name":"vtx-y","value":9.285480166569435},{"name":"vtx-z","value":-0.0024393582606496394},{"name":"ele-tof","value":22.441684011690615}]}
 ```
 
 ![image](https://github.com/HEP-SF/Visualization/raw/master/demonstrators/vizmon-demo/screenshot.png)
