@@ -15,12 +15,12 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/gonum/plot/plotter"
-	"github.com/gonum/plot/vg"
-	"github.com/gonum/plot/vg/draw"
-	"github.com/gonum/plot/vg/vgsvg"
 	"go-hep.org/x/hep/hbook"
 	"go-hep.org/x/hep/hplot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/vg"
+	"gonum.org/v1/plot/vg/draw"
+	"gonum.org/v1/plot/vg/vgsvg"
 )
 
 type Plots struct {
@@ -81,7 +81,7 @@ func newControlPlots(data []MonData) (ControlPlots, error) {
 
 	ps.update = time.Now().UTC()
 	const pad = 10
-	ps.tile, err = hplot.NewTiledPlot(draw.Tiles{
+	ps.tile = hplot.NewTiledPlot(draw.Tiles{
 		Cols:      2,
 		Rows:      2,
 		PadBottom: pad,
@@ -91,9 +91,6 @@ func newControlPlots(data []MonData) (ControlPlots, error) {
 		PadX:      pad,
 		PadY:      pad,
 	})
-	if err != nil {
-		return ps, err
-	}
 
 	for i, pl := range []*hplot.Plot{
 		ps.tile.Plot(0, 0),
@@ -134,10 +131,7 @@ func setupPlot(pl *hplot.Plot, table []MonData, idx int) error {
 	for _, tbl := range table {
 		h.Fill(tbl.Values[idx].Value, 1)
 	}
-	hh, err := hplot.NewH1D(h)
-	if err != nil {
-		return err
-	}
+	hh := hplot.NewH1D(h)
 	hh.LineStyle.Color = color.NRGBA{255, 0, 0, 128}
 	hh.FillColor = color.NRGBA{255, 0, 0, 128}
 
