@@ -7,7 +7,7 @@ package main
 const indexTmpl = `
 <html>
 	<head>
-		<title>SoLiD sensors monitoring</title>
+		<title>HSF Viz monitoring</title>
 		<script type="text/javascript">
 		var sock = null;
 
