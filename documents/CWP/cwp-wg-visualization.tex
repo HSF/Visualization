@@ -110,7 +110,7 @@ described in the HSF Data Analysis and Interpretation Community White Paper~\cit
 Other types of visualizations are used in HEP to
 visualize non-spatial data, like the graphs used to visually describe the structure of the detector description,
 the representation of all geometrical volumes that compose the sub-detectors and the infrastructure of a HEP experiment.
-More details about the detector geometry can be found in the HSF "Simulation" Community White Paper~\cite{hsf-cwp-simulation}
+More details about the detector geometry can be found in the HSF Simulation Community White Paper~\cite{hsf-cwp-simulation}
 
 Other types of data visualization used in HEP experiments, such as data visualization for slow control
 or dashboards for data analytics, are considered out of scope and they will be not discussed in this chapter.
@@ -157,7 +157,7 @@ The weak point of using this approach, is that full support for the display appl
 on which the framework itself is supported, limiting cross-platform distribution and support; and that affects the usability
 as well, because there is a potential mis-match in platforms between what is used for the final data analysis and what might
 be used for visualization. Some visualization applications get around this problem by distributing a light version of the
-framework along with the application; the CMS Fireworks~\cite{CMSFireworks} is an example of that.
+framework along with the application; CMS Fireworks~\cite{CMSFireworks} is one such example.
 
 One must also support various versions of the data format, along with the underlying framework API, if the experiment
 features multiple data formats. Also, users have to run the whole experiment’s framework, in order to use the integrated event
@@ -217,12 +217,13 @@ One disadvantage of this approach is that personpower has to be assured to maint
 
 Other applications use higher-level interface libraries as graphics engines. This has the advantage of delegating
 a large part of the lower-level development work to external software packages, leaving the developers to concentrate
-on the application development itself. One of the graphics libraries most used in HEP software has been so far Open Inventor
-~\cite{OpenInventor1993}, used by the defunct CMS Iguana~\cite{CMSIguana} application, or its clone implementation Coin (also known as Coin3D)
-~\cite{Coin3D}, which has been used, for example, by applications such the ATLAS VP1~\cite{ATLASVP12010}, the LHCb Panoramix~\cite{LHCbPanoramix}
-or the desktop version of the defunct CMS iSpy~\cite{CMSISpy}. Coin / Open Inventor was chosen because of its integrability in C++ code,
-its performance and its coding style. Moreover, the way Open Inventor handles graphical volumes could be easily matched with
-the way we build geometry volumes for the experiments’ detector description; Open Inventor, in fact, organizes geometry volumes
+on the application development itself. One of the graphics libraries most used in HEP software has been so far
+Open Inventor~\cite{OpenInventor1993}, used by the defunct CMS Iguana~\cite{CMSIguana} application, or its clone implementation
+Coin (also known as Coin3D)~\cite{Coin3D}, which has been used, for example, by applications such the ATLAS VP1~\cite{ATLASVP12010},
+the LHCb Panoramix~\cite{LHCbPanoramix} or the desktop version of the defunct CMS iSpy~\cite{CMSISpy}. Coin / Open Inventor was
+chosen because of its integrability in C++ code, its performance and its coding style. Moreover, the way Open Inventor handles
+graphical volumes could be easily matched with the way we build geometry volumes for the experiments’ detector description;
+Open Inventor, in fact, organizes geometry volumes
 as a series of nodes in a tree-like structure in the same way as some HEP experiments do. ATLAS, for instance, developed their
 geometry library “GeoModel”~\cite{ATLASGeoModel2004} based on the same tree-like structure of nodes used by Open Inventor.
 
@@ -829,27 +830,108 @@ the maintenance and the workload among all the experiments.
 
 \begin{thebibliography}{999}
 
-\bibitem{hsf-cwo-roadmap} "A Roadmap for HEP Software and Computing R\&D for the 2020s", HSF-CWP-2017-001, HSF-CWP-2017-01, FERMILAB-PUB-17-607-CD, arXiv:1712.06982
+\bibitem{hsf-cwp-roadmap} "A Roadmap for HEP Software and Computing R\&D for the 2020s", HSF-CWP-2017-001, arXiv:1712.06982
+
+\bibitem{DataAnalysisCWP2017} HSF Data Analysis and Interpretation Community White Paper (??? link to the final paper)
 
 \bibitem{hsf-cwp-simulation} HSF Simulation CWP
+
+\bibitem{CMSFireworks} L.A.T. Bauerdick et al., "Event display for the visualization of CMS events", J.Phys.Conf.Ser. 331 (2011) 072039
+  {\tt https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookFireworks}
 
 \bibitem{hsf-cwp-data} HSF Data Organization, Management, and Access CWP
 
 \bibitem{hsf-cwp-analysis} HSF Analysis CWP
 
-\bibitem{rootjs} https://root.cern.ch/js
+\bibitem{OpenGL1992} {\tt https://www.opengl.org/about}
+
+\bibitem{ATLASPersint2012} ATL-SOFT-PUB-2012-001 {\tt http://cds.cern.ch/record/1501131},
+{\tt https://twiki.cern.ch/twiki/bin/viewauth/Atlas/PersintWiki}
+
+\bibitem{ROOTEVE2007} {\tt https://root.cern.ch/eve}
 
 \bibitem{alieve} AliEve ref needed
 
-\bibitem{Geant4} Geant4 ref needed
+\bibitem{OpenInventor1993} J. Wernecke, "The  Inventor Mentor: Programming Object-Oriented 3D Graphics with Open Inventor, Release 2", 1993, Addison-Wesley
+
+\bibitem{CMSIguana} ref to Iguana
+
+\bibitem{Coin3D} https://bitbucket.org/Coin3D/coin/wiki/Home
+
+\bibitem{ATLASVP12010} T. Kittelmann, V. Tsulaia, J. Boudreau and E. Moyse, "The Virtual Point 1 event display for the ATLAS experiment", Journal of Physics: Conference Series, 2010, vol. 219 n. 3 ( http://iopscience.iop.org/1742-6596/219/3/032012) -
+{\tt https://atlas-vp1.web.cern.ch/atlas-vp1}
+
+\bibitem{LHCbPanoramix} {\tt http://lhcb-comp.web.cern.ch/lhcb-comp/frameworks/Visualization/}
+
+\bibitem{CMSISpy} G. Alverson et al. "iSpy: A powerful and lightweight event display", J.Phys.Conf.Ser. 396 (2012) 022002
+
+\bibitem{ATLASGeoModel2004} J. Boudreau and V. Tsulaia, "The GeoModel Toolkit for Detector Description", CHEP 2004, {\tt https://cds.cern.ch/record/865601/}
+
+\bibitem{ATLASAtlantis} {\tt http://www.cern.ch/atlantis}
+
+\bibitem{ATLASMinerva} {\tt http://cern.ch/atlas-minerva}
+
+\bibitem{CMSISpyWebGL} T. McCauley "A browser-based event display for the CMS experiment at the LHC using WebGL", J.Phys.Conf.Ser. 898 (2017) no.7, 072030
+  ({\tt http://cern.ch/ispy-webgl})
+
+\bibitem{LHCbOnline2014} {\tt https://lhcb-public.web.cern.ch/lhcb-public/lbevent2/lbevent/}
+
+\bibitem{ATLASTada2016} G. Sabato et al., CHEP 2016, "ATLAS Fast Physics Monitoring: TADA",  {\tt https://cds.cern.ch/record/2244283}
+
+\bibitem{ATLASTracer2015} {\tt https://atlas-tracer.web.cern.ch/}
+
+\bibitem{WebGL2011} {\tt https://www.khronos.org/webgl/}
+
+\bibitem{ThreeJSXXXX} {\tt https://threejs.org/}
+
+\bibitem{LHSee} {\tt https://www2.physics.ox.ac.uk/about-us/outreach/public/lhsee}
+
+\bibitem{CERNCamelia} {\tt http://medialab.web.cern.ch/content/camelia}
+
+\bibitem{CERNTEV} [https://gitlab.cern.ch/CERNMediaLab/TEV] ?
+
+\bibitem{GoogleCardboard} {\tt https://vr.google.com/cardboard/}
+
+\bibitem{ATLASRift} {\tt https://atlasrift.web.cern.ch/}
+
+\bibitem{BelleIIVR} {\tt http://www1.phys.vt.edu/~piilonen/VR/}
+
+\bibitem{CMSSketchUp} T. Sakuma, T. McCauley, "Detector and Event Visualization with SketchUp at the CMS Experiment", J.Phys.Conf.Ser. 513 (2014) 022032
+
+\bibitem{Root1997} R. Brun and F. Rademakers, Nuclear Instruments and Methods A, Volume 389 (1997) 81-86, (http://dx.doi.org/10.1016/S0168-9002(97)00048-X)
+
+\bibitem{Geant4} J Allison et al., "Recent developments in Geant4", Nuclear Instruments and Methods in Physics Research A 835 (2016) 186-22
+  {\tt http://geant4.cern.ch/}
+
+\bibitem{Tufte1986} E. R. Tufte, "The Visual Display of Quantitative Information" (1986) 0-9613921-0-X, Graphics Press, Cheshire, CT, USA.
+
+\bibitem{rootjs} {\tt https://root.cern.ch/js}
+
+\bibitem{VanderPlas2017} {\tt https://speakerdeck.com/jakevdp/pythons-visualization-landscape-pycon-2017}
+
+\bibitem{Hunter2007} J.D. Hunter, "Matplotlib: A 2D graphics environment", Computing In Science \& Engineering, Volume 9, Number 3, 90-95, 2007 (http://dx.doi.org/10.1109/MCSE.2007.55)
 
 \bibitem{seaborn} https://seaborn.pydata.org
 
-\bibitem{phystat05} http://www.physics.ox.ac.uk/phystat05/Talks/PhyStat05-paterno.pdf
+\bibitem{Wickham2009} H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2009
 
-\bibitem{continuum} https://www.continuum.io/
+\bibitem{Sarkar2008} D. Sarkar. Lattice: Multivariate Data Visualization with R. Springer, New York. ISBN 978-0-387-75968-5
 
-\bibitem{ATLASAtlantis} http://www.cern.ch/atlantis
+\bibitem{Wilkinson2005} L. Wilkinson. The Grammar of Graphics, Springer, ISBN 978-0387245447
+
+\bibitem{Trellis} http://ect.bell-labs.com/sl/project/trellis/software.writing.html
+ R. A. Becker and W. S. Cleveland. S-PLUS Trellis Graphics User's Manual, MathSoft 1996
+
+\bibitem{phystat05} {\tt http://www.physics.ox.ac.uk/phystat05/Talks/PhyStat05-paterno.pdf}
+
+\bibitem{D32011} M. Bostock et al., "D3: Data-Driven Documents", IEEE Trans. Visualization \& Comp. Graphics (Proc. InfoVis) (2011), (http://vis.stanford.edu/papers/d3)
+
+\bibitem{Bokeh2014} {\tt http://www.bokeh.pydata.org}
+
+\bibitem{continuum} {\tt https://www.continuum.io/}
+
+\bibitem{Plotly2015} {\tt https://plot.ly}
+
 
 \bibitem{ATLASED042016} https://cds.cern.ch/record/2148236
 
@@ -857,92 +939,33 @@ the maintenance and the workload among all the experiments.
 
 \bibitem{ATLASEventDisplays2016} https://indico.cern.ch/event/505613/contributions/2228333/
 
-\bibitem{ATLASGeoModel2004} J. Boudreau and V. Tsulaia, "The GeoModel Toolkit for Detector Description", CHEP 2004, https://cds.cern.ch/record/865601/
 
 \bibitem{ATLASGeoModel2017} R.M. Bianchi and I. Vukotic, ACAT 2017, "A scalable new mechanism to store and serve the ATLAS detector description through a REST web API", https://indico.cern.ch/event/567550/contributions/2628864/
 
-\bibitem{ATLASMinerva} http://cern.ch/atlas-minerva
 
-\bibitem{ATLASPersint2012} http://cds.cern.ch/record/1501131?ln=en,  https://twiki.cern.ch/twiki/bin/viewauth/Atlas/PersintWiki
 
-\bibitem{ATLASRift} https://atlasrift.web.cern.ch/
 
-\bibitem{ATLASTada2016} G. Sabato et al., CHEP 2016, "ATLAS Fast Physics Monitoring: TADA",  https://cds.cern.ch/record/2244283
 
-\bibitem{ATLASTracer2015} https://atlas-tracer.web.cern.ch/
 
-\bibitem{ATLASVP12010} T. Kittelmann, V. Tsulaia, J. Boudreau and E. Moyse, "The Virtual Point 1 event display for the ATLAS experiment", Journal of Physics: Conference Series, 2010, vol. 219 n. 3 ( http://iopscience.iop.org/1742-6596/219/3/032012) - website:  https://atlas-vp1.web.cern.ch/atlas-vp1
 
-\bibitem{BelleIIVR} http://www1.phys.vt.edu/~piilonen/VR/
 
-\bibitem{Bokeh2014} http://www.bokeh.pydata.org
 
-\bibitem{CERNCamelia} http://medialab.web.cern.ch/content/camelia
 
-\bibitem{CERNTEV} [https://gitlab.cern.ch/CERNMediaLab/TEV] ?
 
-\bibitem{CMSIguana} ref to Iguana
 
-\bibitem{CMSISpyWebGL} T. McCauley "A browser-based event display for the CMS experiment at the LHC using WebGL", J.Phys.Conf.Ser. 898 (2017) no.7, 072030 (http://cern.ch/ispy-webgl)
-
-\bibitem{CMSFireworks} L.A.T. Bauerdick et al., "Event display for the visualization of CMS events", J.Phys.Conf.Ser. 331 (2011) 072039 https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookFireworks
-
-\bibitem{CMSISpy} G. Alverson et al. "iSpy: A powerful and lightweight event display", J.Phys.Conf.Ser. 396 (2012) 022002
-
-\bibitem{CMSSketchUp} T. Sakuma, T. McCauley, "Detector and Event Visualization with SketchUp at the CMS Experiment", J.Phys.Conf.Ser. 513 (2014) 022032
-
-\bibitem{Coin3D} https://bitbucket.org/Coin3D/coin/wiki/Home
-
-\bibitem{DataAnalysisCWP2017} HSF Data Analysis and Interpretation Community White Paper (??? link to the final paper)
-
-\bibitem{D32011} M. Bostock et al., "D3: Data-Driven Documents", IEEE Trans. Visualization \& Comp. Graphics (Proc. InfoVis) (2011), (http://vis.stanford.edu/papers/d3)
 
 \bibitem{EpicUnreal} https://www.unrealengine.com
 
-\bibitem{GoogleCardboard} https://vr.google.com/cardboard/
 
 \bibitem{HSFVis2017} "HSF Visualization Workshop" (https://indico.cern.ch/event/617054/)
 
 \bibitem{HSFVizRepo} https://github.com/HEP-SF/Visualization
 
-\bibitem{Hunter2007} J.D. Hunter, "Matplotlib: A 2D graphics environment", Computing In Science \& Engineering, Volume 9, Number 3, 90-95, 2007 (http://dx.doi.org/10.1109/MCSE.2007.55)
 
-\bibitem{Wickham2009} H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2009
-
-\bibitem{Wilkinson2005} L. Wilkinson. The Grammar of Graphics, Springer, ISBN 978-0387245447
-
-\bibitem{Sarkar2008} D. Sarkar. Lattice: Multivariate Data Visualization with R. Springer, New York. ISBN 978-0-387-75968-5
-
-\bibitem{Trellis} http://ect.bell-labs.com/sl/project/trellis/software.writing.html
- R. A. Becker and W. S. Cleveland. S-PLUS Trellis Graphics User's Manual, MathSoft 1996
 
 \bibitem{LHCbEventDisplays2017} B. Couturier, "Event Displays in LHCb" (https://indico.cern.ch/event/617054/contributions/2529736/)
 
-\bibitem{LHCbOnline2014} https://lhcb-public.web.cern.ch/lhcb-public/lbevent2/lbevent/
-
-\bibitem{LHCbPanoramix} http://lhcb-comp.web.cern.ch/lhcb-comp/frameworks/Visualization/
-
-\bibitem{LHSee} https://www2.physics.ox.ac.uk/about-us/outreach/public/lhsee
-
-\bibitem{OpenGL1992} https://www.opengl.org/about/
-
-\bibitem{OpenInventor1993} J. Wernecke, "The  Inventor Mentor: Programming Object-Oriented 3D Graphics with Open Inventor, Release 2", 1993, Addison-Wesley
-
-\bibitem{Plotly2015} https://plot.ly
-
-\bibitem{Root1997} R. Brun and F. Rademakers, Nuclear Instruments and Methods A, Volume 389 (1997) 81-86, (http://dx.doi.org/10.1016/S0168-9002(97)00048-X)
-
-\bibitem{ROOTEVE2007} https://root.cern.ch/eve
-
-\bibitem{ThreeJSXXXX} https://threejs.org/
-
-\bibitem{Tufte1986} E. R. Tufte, "The Visual Display of Quantitative Information" (1986) 0-9613921-0-X, Graphics Press, Cheshire, CT, USA.
-
 \bibitem{Tukey1962} J. W. Tukey, "The Future of Data Analysis", The Annals of Mathematical Statistics Volume 33, Number 1, 1-67 (1962) (http://www.jstor.org/stable/2237638)
-
-\bibitem{VanderPlas2017} https://speakerdeck.com/jakevdp/pythons-visualization-landscape-pycon-2017
-
-\bibitem{WebGL2011} https://www.khronos.org/webgl/
 
 \bibitem{glTF} https://www.khronos.org/gltf/
 
