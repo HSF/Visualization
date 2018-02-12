@@ -88,21 +88,18 @@ Guidelines for visualization for upgraded current and future experiments will be
 \hypertarget{scope}{%
 \section{Scope}\label{scope}}
 
-Three main kinds of data visualization will be described in this paper and briefly described here below:
-interactive visualization of event data (also known as event displays), statistical data visualization for
-data analysis (as histograms and scatter plots), and non-spatial data visualization (as networks and graphs).
+This paper will describe three kinds of data visualization in High-Energy Physics (HEP): interactive visualization
+of event data in applications known commonly as event displays, statistical data visualization such as
+histograms, and non-spatial data visualization such as networks and graphs.
 
-Applications which let the user explore event-based data, in HEP, are usually
-called “event displays”. Event displays are the main tool to explore experimental data at event level,
-and they are used for many tasks. There are two main types of event displays:
-those integrated in the experiments’ frameworks, which are usually able to access and visualize
-all experiment’s data, at the cost of their complexity and portability; and those designed as cross-platform
-  applications, lightweight and fast, delivering only a simplified version or a subset of the event data.
-  They also usually show some sort of experiment’s geometry.
+Event displays are the main tool used to explore experimental data at the event level.
+There are two main types of displays. The first type are those that are integrated in the experiments’ software frameworks,
+which are usually able to access and visualize all experiment’s data at the cost of greater application complexity and lesser portability.
+The second type of displays are those designed as cross-platform applications, lightweight and fast, often
+delivering a simplified version or a subset of the event data. All displays also show some level of detector geometry.
 
-Beyond event displays, HEP also has statistical visualizations,
-such as histograms, which close the loop between data analyst and data, allowing the analyst to quickly
-and with minimal effort characterize the data (a so called exploratory data analysis).
+Beyond event displays, HEP also has statistical visualizations such as histograms, allowing the data analyst to quickly
+and with minimal effort characterize the data.
 Unlike event displays, these visualizations aren’t strongly visually linked to the detector geometry,
 and may aggregate data from multiple events. Data analysis tools and techniques used in HEP are
 described in the HSF Data Analysis and Interpretation Community White Paper~\cite{DataAnalysisCWP2017}.
@@ -121,62 +118,62 @@ or dashboards for data analytics, are considered out of scope and they will be n
 \hypertarget{event-displays}{%
 \subsection{Event displays}\label{event-displays}}
 
-Three key features characterize HEP event displays:
-
-\begin{itemize}
-\item Event-based workflow: Applications access experimental data on an event-by-event basis,
+Three key features characterize HEP event displays. The first is an event-based workflow {\it i.e.} applications access
+experimental data on an event-by-event basis,
 visualizing the data collections belonging to a particular event. Data can be related to the
 actual physics events ({\it e.g.} physics objects, like jets, tracks, and so forth) or to the experimental
 conditions ({\it e.g.} detector description versions, calibrations, and so on)
-\item Geometry visualization: Applications show some sorts of a representation of the detector’s geometry.
-The application can visualize the real geometry of the detector, as retrieved from the experiments’ software
-  frameworks; or a simplified description, usually for the sake of speed, computing efficiency or portability
-\item Interactivity: Applications offer different interfaces and tools to users, in order to interact
-with the visualization itself, select event data and set cuts on objects’ properties.
+
+The second key feature is geometry visualization.
+The level of geometric detail displayed depends on the use-case, how the geometry information is stored and fetched ({\it e.g.}
+from a database as part of a software framework or from an external file), and limitations of the application itself along with
+considerations of speed, efficiency, and portability.
+
+The third feature is interactivity. Applications offer different interfaces and tools to users, in order to interact
+with the visualization itself, select event data and set cuts on object properties.
 In addition to the interactive usage, often applications offer to store different settings to automate user’s actions.
-\end{itemize}
 
-In the following subsections several important key aspects of event displays such as data access, application development and distribution,
-and geometry description and visualization, are discussed in more detail.
-
+In the following subsections several important aspects of data access, application development and distribution, and geometry description
+and visualization as they pertain to the current landscape of event displays are discussed in more detail.
 
 \hypertarget{data-access}{%
 \subsubsection{Data access}\label{data-access}}
 
-All visualization tools need to access the experimental data; access comes either directly or via intermediate data formats.
-Currently direct access to experimental data is only possible within the experimental software framework. Therefore general-purpose
-tools aimed at visualizing all kinds of experimental data must be developed and run within the framework.
+Access to event data comes either natively or via intermediate formats. In the former case direct access of native event formats
+is only possible for an application integrated within the experimental software framework.
 
 There are several advantages to having access to the full framework, such as full access to the experimental data
-in its native format and access to software tools, services, and databases. Having access to the data in its native form,
-one is able to access and visualize virtually all kinds of data; beside collision data, in fact, non-event data can be
-accessed via the framework through online databases and services, such as detector geometry or conditions data. Moreover,
-framework APIs can be accessed directly from the application.
+in its native format and access to software tools, services, and databases. Therefore access to full detector simulation
+geometry, conditions data, and framework APIs in the event display application is possible.
 
-The weak point of using this approach, is that full support for the display application is often limited to those platforms
-on which the framework itself is supported, limiting cross-platform distribution and support; and that affects the usability
-as well, because there is a potential mis-match in platforms between what is used for the final data analysis and what might
-be used for visualization. Some visualization applications get around this problem by distributing a light version of the
-framework along with the application; CMS Fireworks~\cite{CMSFireworks} is one such example.
+One disadvantage of this approach is that full support for the display application is often limited to those platforms
+on which the framework itself is supported, limiting cross-platform distribution and support.
+One way to mitigate is to distribute a light version of the framework along with the application; CMS Fireworks~\cite{CMSFireworks}
+takes this approach. However, issues of platform support for the light framework and for the visualization application can still exist.
 
-One must also support various versions of the data format, along with the underlying framework API, if the experiment
-features multiple data formats. Also, users have to run the whole experiment’s framework, in order to use the integrated event
-displays; and that means, in turn, that users must have some sort of knowledge of the specific software framework in order
-to interactively explore and visualize event-based data. Lastly, often the user-interface to a full-framework application
-is geared towards the expert.
+A further disadvantage to the full-framework (and even light-framework) approach is that one must also support various versions of
+the data format along with the underlying framework API. In addition users have to have knowledge of the framework in order to interactively
+explore and visualize event-based data. Lastly, often the user-interface to a
+full-framework application is geared towards the expert.
 
-On the other hand, visualization applications which are focused on specific tasks, like physics analysis or outreach
-and education, are usually designed to be run outside the specific experiment’s software framework; to achieve that,
-they extract the needed data from the framework through the usage of dedicated exporting software tools and store them
-into intermediate formats to be used by the standalone applications.
+Another approach to data access is via an intermediate format. Often the data needed for visualization is a subset of the
+full information found in the native experimental format. In this case, one can extract what is needed from the framework
+through the usage of dedicated exporting software tools and store them
+into intermediate formats.
 
 With the use of an intermediate data format (such as some application of XML or JSON) the event display application
 is potentially separate from the experimental software framework and therefore is not limited to platforms supported
 by the framework. The format and the application itself can be lightweight and the potential for widest distribution
-of both is possible, even to the general public. But all these advantages come at a price, at least in the current landscape,
-as direct access to the experimental data is not possible. One has to export the required information from the experimental
-data into, for example, JSON, XML, or 3D-targeted file formats, and then render this information. However, in this process,
-one has distilled down from the experimental format and some information is lost or rather cannot be easily accessed.
+of both is possible, even to the general public. As always there are drawbacks to any approach and in this case, with no
+direct access to the experimental data, some information is necessarily not accessible.
+
+Regardless of the approach to data access one must consider the use-case; what is useful or necessary in one use-case may not
+be for another.
+
+%But all these advantages come at a price, at least in the current landscape,
+%as direct access to the experimental data is not possible. One has to export the required information from the experimental
+%data into, for example, JSON, XML, or 3D-targeted file formats, and then render this information. However, in this process,
+%one has distilled down from the experimental format and some information is lost or rather cannot be easily accessed.
 
 %The access to experimental data is a problem in today’s experiments, and it is the most critical blocker when developing
 %visualization tools for HEP. Developers have to choose from the beginning the data access pattern and the target of the
@@ -192,7 +189,7 @@ one has distilled down from the experimental format and some information is lost
 \subsubsection{Application development and distribution}\label{application-development}}
 
 Currently the two most common ways of distributing event display applications are as a desktop application and as a web
-application running in the browser. Each approach has its advantages and disadvantages, further described below.
+application running in the browser. Each approach has its advantages and disadvantages which are further described below.
 
 Mobile applications running on devices such as smart phones and virtual reality applications are less common. However,
 they are a growing feature in the current landscape and in many cases there is significant overlap in the technologies.
@@ -202,14 +199,14 @@ Section~\ref{modern-tech}
 %Desktop applications
 Many experiments have developed integrated event-display applications in C++, which is the main language used for developing
 software frameworks, on top of the OpenGL~\cite{OpenGL1992} application program interface (API).
-The choice of the OpenGL API, compared to other APIs like Direct3D, resides in its cross-platform nature:
-OpenGL is an open standard. The OpenGL consortium defines the API, so that the interface all the implementations have to
+The choice of the OpenGL API, compared to other APIs like Direct3D, resides in its cross-platform nature as
+OpenGL is an open standard. The OpenGL consortium defines the API: the interface all the implementations have to
 comply with. The actual implementation is provided by vendors, usually targeting a specific hardware. Many hardware and
 software companies such as Intel and NVIDIA are part of the OpenGL consortium, which assure
 the support and the lifetime of the OpenGL API.
 
-Some of the HEP visualization applications use OpenGL calls directly, through custom graphics engines. This is the most
-robust approach, because the developers can take full control over the OpenGL interface,
+Some HEP visualization applications use OpenGL calls directly through custom graphics engines. This is the most
+robust approach as the developers can take full control over the OpenGL interface
 and the project can be independent of other software libraries. Three examples of  HEP applications which followed this path are the
 ATLAS Persint application~\cite{ATLASPersint2012} and the ROOT EVE toolkit~\cite{ROOTEVE2007} which is used both by the CMS
 Fireworks application~\cite{CMSFireworks} and the ALICE Event Visualisation Environment (AliEve)~\cite{alieve}.
@@ -219,22 +216,22 @@ Other applications use higher-level interface libraries as graphics engines. Thi
 a large part of the lower-level development work to external software packages, leaving the developers to concentrate
 on the application development itself. One of the graphics libraries most used in HEP software has been so far
 Open Inventor~\cite{OpenInventor1993}, used by the defunct CMS Iguana~\cite{CMSIguana} application, or its clone implementation
-Coin (also known as Coin3D)~\cite{Coin3D}, which has been used, for example, by applications such the ATLAS VP1~\cite{ATLASVP12010},
-the LHCb Panoramix~\cite{LHCbPanoramix} or the desktop version of the defunct CMS iSpy~\cite{CMSISpy}. Coin / Open Inventor was
-chosen because of its integrability in C++ code, its performance and its coding style. Moreover, the way Open Inventor handles
-graphical volumes could be easily matched with the way we build geometry volumes for the experiments’ detector description;
-Open Inventor, in fact, organizes geometry volumes
-as a series of nodes in a tree-like structure in the same way as some HEP experiments do. ATLAS, for instance, developed their
-geometry library “GeoModel”~\cite{ATLASGeoModel2004} based on the same tree-like structure of nodes used by Open Inventor.
+Coin (also known as Coin3D)~\cite{Coin3D}, which has been used by applications such the ATLAS VP1~\cite{ATLASVP12010},
+the LHCb Panoramix~\cite{LHCbPanoramix} and the desktop version of the defunct CMS iSpy~\cite{CMSISpy}. Coin / Open Inventor was
+chosen because of its integrability in C++ code, its performance, and its coding style. Moreover, the way Open Inventor handles
+graphical volumes could be easily matched with the way geometry volumes are built for the experiments’ detector description.
+Open Inventor organizes geometry volumes as a series of nodes in a tree-like structure in the same way as some
+HEP experiments do. ATLAS, for instance, developed their geometry library “GeoModel”~\cite{ATLASGeoModel2004} based on
+the same tree-like structure of nodes used by Open Inventor.
 
-The drawback  of this approach is the dependency on external projects, which could end up with a loss of functionality if
+The drawback of this approach is the dependency on external projects, which could end up with a loss of functionality if
 third-party library development and support are abandoned. Many scientific visualization applications, also in fields other than
-HEP, faced this when the support of the Coin library was dropped by the company which lead its development~\cite{Coin3D}.
-The result is the ageing of the libraries, which after a while show incompatibilities with modern compilers; the time
-spent by HEP developers to repair or to maintain those abandoned libraries results in a waste of time in terms of actual development
-work on the experiments’ software applications.
+HEP, faced this when the support of the Coin library was dropped by the company which lead its development.
+The result is the aging of libraries which after a while show incompatibilities with modern compilers and platforms. The time
+spent by HEP developers to repair or to maintain those abandoned libraries results is time not spent on actual development
+of the software applications themselves.
 
-An alternative approach to display development is to create and distribute an application using Java. The ATLANTIS~\cite{ATLASAtlantis}
+A final approach to display development targeting the desktop is to create and distribute an application using Java. The ATLANTIS~\cite{ATLASAtlantis}
 program and its derivative MINERVA~\cite{ATLASMinerva} which is used as an educational tool, both developed for the ATLAS experiment,
 can be run either on the web or stand-alone on the desktop.
 
@@ -242,7 +239,7 @@ can be run either on the web or stand-alone on the desktop.
 
 Several experiments at the LHC, notably CMS~\cite{CMSISpyWebGL}, LHCb~\cite{LHCbOnline2014}, and ATLAS
 ~\cite{ATLASTada2016, ATLASTracer2015} have created web-based event displays using WebGL (Web Graphics Library)~\cite{WebGL2011}.
-WebGL is a JavaScript API that conforms to OpenGL ES (a subset of the OpenGL API, targeted to embedded systems), conceived for
+WebGL is a JavaScript API that conforms to OpenGL ES (a subset of the OpenGL API for embedded systems) conceived for
 rendering interactive 3D and 2D graphics within any compatible web browser without the need of external plug-ins. With WebGL,
 one can create high-quality graphics that were previously only available via bespoke desktop applications based on OpenGL and
 graphical user interface toolkits such as Qt.
@@ -252,51 +249,28 @@ Browser-based event displays have several distinct advantages: they are easy to 
 There are also several mature and actively developed WebGL frameworks, such as three.js~\cite{ThreeJSXXXX}, that provide straight-forward
 and simplified APIs for ease of development.
 
-Image: the image summarize the current landscape of event display applications in HEP. Many experiments developed
-full-framework desktop applications as well as light, web-based applications. As one can see from the plot, there
-are no examples so far of full-framework applications using web-based visualization graphics. A new approach in that
-direction is what it is suggested in this paper, in section [add ref].
+%Image: the image summarize the current landscape of event display applications in HEP. Many experiments developed
+%full-framework desktop applications as well as light, web-based applications. As one can see from the plot, there
+%are no examples so far of full-framework applications using web-based visualization graphics. A new approach in that
+%direction is what it is suggested in this paper, in section [add ref].
 
 %Mobile and virtual reality applications
 Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
-smartphones to ultra-books. Those devices are used more and more as substitutes of desktop and laptop machines in people's daily life.
+smartphones to ultra-books. Those devices are used more and more as substitutes for desktop and laptop machines.
 
-Even if the hardware embarked by these devices largely evolves with each generation, mobile devices still do not have the computing
-power usually needed for HEP data analysis, where huge amount of experimental data are retrieved and processed. In addition to that,
-they usually run dedicated operating systems, whose self-contained nature makes their integration within the HEP workflow difficult,
-particularly for the statistical-based visualization used in data analysis, described in Section~\ref{statistical-visualization}.
-
-However, portability and simplicity of usage are the strong points of mobile devices. More than as "mobile" devices, smartphones,
-tablets and ultrabooks should be considered, in fact, as "devices close to people". And because of that, the usage of such devices
-should be exploited more in the final steps of the visualization chain, where heavy batch data processing is not needed. For instance,
-their usage should be leveraged for the production and visualization of event displays.
-
-Ideally, a user should be able to easily retrieve interesting events from the experiment and interactively visualize them on all
-kinds of devices. Instead currently event visualization on mobile devices is only possible in experiments which developed web-based tools.
-Only the visualization of events which have been already extracted and reduced from the experiment's framework is possible,
-%as like as with the standalone visualization tools; without the possibility of having real interactive visualizations,
-%de facto reducing the visualization program to a mere "viewer".
-
-That is why we strongly promote the usage of the server-client architecture described and supported in this paper in Section~\ref{client-server}
-and the new data access patterns presented and supported in the "Data Access and Management" paper~\cite{hsf-cwp-data}. This would open
-up new possibilities for interactive visualization on mobile devices: it would let visualization clients running on mobile devices
-connect to server tools running in the experiment's framework to easily and interactively retrieve the desired data.
-
-It is worth noting that in other areas of science, for instance in astronomy, researchers have worked to facilitate data
-access and to migrate to more standard data formats. This allowed for the possibility of having data visualization tools
-on mobile devices, in addition to desktop and laptop machines. In addition, this helped the researchers easily accessing and visualizing
-their data, but it also paid out in making science accessible by the public, having eased the development of programs used in
-Outreach and Education activities and events. It is true that HEP data are usually much more complex than astronomy data, and so it
-will be harder to achieve, but we think that an effort in simplifying the access to experimental data would be worth anyway.
-
-Therefore, the leverage of the usage of mobile devices in HEP adds a strong point to the development and the support of common
-client-server tools and data exchange formats [ref to paper] among HEP experiments in the near future.
+Mobile devices still do not have the computing power usually needed for HEP data analysis, where huge amount of experimental data
+are retrieved and processed. In addition they usually run dedicated operating systems whose self-contained nature
+makes their integration within the HEP workflow difficult, particularly for the statistical-based visualization used in
+data analysis, described in Section~\ref{statistical-visualization}. Currently event visualization on mobile devices is only
+possible in experiments which developed web-based tools. Only the visualization of events which have been already
+extracted and reduced from the experiment's framework is possible.
 
 There are at least a couple of examples of HEP applications developed for mobile platforms or that can be run on them. LHSee~\cite{LHSee}
 was a mobile application which live streamed Atlantis events to a user’s phone and provided contextual information on ATLAS and the
 events being displayed. The CMS iSpy WebGL-based application~\cite{CMSISpyWebGL} runs on mobile devices in the browser and users can interact
 with the visualization with touch events. The Camelia application~\cite{CERNCamelia} and its successor TEV~\cite{CERNTEV} developed by the
 CERN Media Lab using the Unity game engine, can be run on mobile devices as well.
+
 Virtual reality (VR) describes the simulation of the user’s physical presence in a virtual environment. This simulation is typically
 delivered via a HMD (Head Mounted Display) that provide visual and aural experience of the simulated environment. Rotational and
 positional tracking of the user’s head and hand motion (when available) allow for interaction and motion in the virtual environment.
@@ -565,6 +539,30 @@ a trail; or the notion of particle jet, usually visualised as a cone whose lengt
 is linked to the algorithm used for the jet reconstruction. Both those object are currently often handed and visualised
 differently in different experiments, but we think that they could be the target of a common definition within the community.
 If so, experiments could share best practices or snippets of code, if not complete base tools, to handle their visualisation.
+
+START TEXT CUT FROM SECTION 2
+However, portability and simplicity of usage are the strong points of mobile devices. More than as "mobile" devices, smartphones,
+tablets and ultrabooks can be considered, as devices "close to people". As such, the usage of such devices
+should be exploited more in the final steps of the visualization chain, where heavy batch data processing is not needed. For instance,
+their usage should be leveraged for the production and visualization of event displays.
+Ideally, a user should be able to easily retrieve interesting events from the experiment and interactively visualize them on all
+kinds of devices.
+
+That is why we strongly promote the usage of the server-client architecture described and supported in this paper in Section~\ref{client-server}
+and the new data access patterns presented and supported in the "Data Access and Management" paper~\cite{hsf-cwp-data}. This would open
+up new possibilities for interactive visualization on mobile devices: it would let visualization clients running on mobile devices
+connect to server tools running in the experiment's framework to easily and interactively retrieve the desired data.
+
+It is worth noting that in other areas of science, for instance in astronomy, researchers have worked to facilitate data
+access and to migrate to more standard data formats. This allowed for the possibility of having data visualization tools
+on mobile devices, in addition to desktop and laptop machines. In addition, this helped the researchers easily accessing and visualizing
+their data, but it also paid out in making science accessible by the public, having eased the development of programs used in
+Outreach and Education activities and events. It is true that HEP data are usually much more complex than astronomy data, and so it
+will be harder to achieve, but we think that an effort in simplifying the access to experimental data would be worth anyway.
+
+Therefore, the leverage of the usage of mobile devices in HEP adds a strong point to the development and the support of common
+client-server tools and data exchange formats [ref to paper] among HEP experiments in the near future.
+END TEXT CUT FROM SECTION 2
 
 \hypertarget{common-format}{%
 \subsection{A common community-defined format}\label{common-format}}
