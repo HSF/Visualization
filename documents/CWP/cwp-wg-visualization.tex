@@ -196,8 +196,7 @@ they are a growing feature in the current landscape and in many cases there is s
 In this section we describe briefly the current applications released. Further developments will be described further in
 Section~\ref{modern-tech}
 
-%Desktop applications
-Many experiments have developed integrated event-display applications in C++, which is the main language used for developing
+{\bf Desktop applications} Many experiments have developed integrated event-display applications in C++, which is the main language used for developing
 software frameworks, on top of the OpenGL~\cite{OpenGL1992} application program interface (API).
 The choice of the OpenGL API, compared to other APIs like Direct3D, resides in its cross-platform nature as
 OpenGL is an open standard. The OpenGL consortium defines the API: the interface all the implementations have to
@@ -235,9 +234,7 @@ A final approach to display development targeting the desktop is to create and d
 program and its derivative MINERVA~\cite{ATLASMinerva} which is used as an educational tool, both developed for the ATLAS experiment,
 can be run either on the web or stand-alone on the desktop.
 
-%Web-based applications
-
-Several experiments at the LHC, notably CMS~\cite{CMSISpyWebGL}, LHCb~\cite{LHCbOnline2014}, and ATLAS
+{\bf Web-based applications} Several experiments at the LHC, notably CMS~\cite{CMSISpyWebGL}, LHCb~\cite{LHCbOnline2014}, and ATLAS
 ~\cite{ATLASTada2016, ATLASTracer2015} have created web-based event displays using WebGL (Web Graphics Library)~\cite{WebGL2011}.
 WebGL is a JavaScript API that conforms to OpenGL ES (a subset of the OpenGL API for embedded systems) conceived for
 rendering interactive 3D and 2D graphics within any compatible web browser without the need of external plug-ins. With WebGL,
@@ -254,8 +251,7 @@ and simplified APIs for ease of development.
 %are no examples so far of full-framework applications using web-based visualization graphics. A new approach in that
 %direction is what it is suggested in this paper, in section [add ref].
 
-%Mobile and virtual reality applications
-Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
+{\bf Mobile and virtual reality applications} Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
 smartphones to ultra-books. Those devices are used more and more as substitutes for desktop and laptop machines.
 
 Mobile devices still do not have the computing power usually needed for HEP data analysis, where huge amount of experimental data
@@ -293,41 +289,50 @@ visualisation of the camera image of the ALICE detector or its paper model.
 \hypertarget{geometry-description}{%
 \subsubsection{Geometry description and visualization}\label{geometry-description}}
 
-Most of the applications targeting event-data show some sorts of visualization of the detector geometry.
+Geometry visualization provides important visual context for event displays and dedicated geometry displays are useful applications by themselves.
+There are typically three levels of detail found in applications. The most detailed geometry is typically called the simulation geometry
+and can include the sensitive elements of the detector as well as support structure. Less detailed is the so-called reconstruction
+geometry, which describes the senstitive elements of the detector such as calorimeter elements and wire and strip chambers. It is this level of
+detail that is typically found in event displays. The least-detailed geometry descriptions are those that are simplified versions of the
+detector.
 
-CMS created 3D models of the CMS detector in SketchUp~\cite{CMSSketchUp}. Ruby scripts were used to parse the
-description of the CMS detector geometry written in XML and to build 3D models in SketchUp via its Ruby API.
-Figures produced based on these 3D models have been widely used: in many conference presentations, many PhD theses,
-technical design reports, a few notable journal publications, books, magazines, posters, brochures, websites, and other media.
-Further, the 3D models were imported in iSpy WebGL mentioned above.
+In framework-based applications the geometry information can come directly from the experiment's detector description and in
+ many cases the hierarchical structure of the detector description is preserved and accessible. Stand-alone applications
+typically use a geometry file with information exported from the software framework. An example hybrid solution is that of CMS and SketchUp~\cite{CMSSketchUp}.
+The CMS detector description as written in XML is parsed using Ruby scripts and 3D models are built using the SketchUp program via its
+Ruby API. SketchUp can then export to various standard 3D file formats. In this way detailed simulation geometry can be available in a stand-alone
+application.
 
-[ATLASED042016]
 
-[ATLASED072015]
-
-[OPEN-PHO-EXP-2015-013]
-
-[ALICE-EVENTDISPLAY-2017-007]
-%{other images from other experiments ???}
-
-In the case of framework-integrated applications, the geometry shown is usually the actual geometry used in the detector description,
-taken directly from the experiment’s software framework and used for all kinds of tasks related to geometry (see Figure [ATLASED042016]).
-While in the case of  java-based standalone or web-based applications the geometry shown is usually a simplified version of the actual one
-(see figure [ATLASED072015]) or, merely, a fake geometry.
-
-Currently, different geometry formats and libraries are used in HEP. Some experiments use their own custom format,
-while others use the geometry tools provided by the ROOT analysis framework~\cite{Root1997}. More recently, some attempts have been
+Currently, different geometry formats and libraries are used in HEP.
+Some experiments use their own custom format, while others use the geometry tools provided by the ROOT. More recently, some attempts have been
 done in order to build common formats and libraries for detector geometry, like DD4HEP,  adopted in conceptual design studies
-for future high-energy colliders, including the CLICdp and FCC collaborations. In all cases, for visualization purpose, detector
+for future high-energy colliders, including the CLICdp and FCC collaborations. In all cases detector
 volumes are built from simpler geometrical entities: geometrical shapes like Tube, Cone, Box, and more complex variations of these
 are combined in order to build the volumes of the experiment’s geometry. Geometry libraries and formats are described in more details
 in the ??? HSF CWP White Paper.
 
-%The issues we face
-The differences in the geometry formats used by the different experiments, by detector simulation programs like Geant4~\cite{Geant4},
-and by data analysis frameworks (like ROOT), forced the developers of all many visualization applications to write converters
-between the different formats. Also, it is often not easy to use a visualization tool developed for one experiment with another one,
+The differences in geometry formats used by the different experiments, by detector simulation programs like Geant4~\cite{Geant4},
+and by data analysis frameworks (like ROOT), typically require developers of visualization applications to write converters
+between the different formats. In addition it is often not easy to use a visualization tool developed for one experiment with another one as
 because current visualization tools are often tightly bound to the geometry library used by the experiment.
+
+%CMS created 3D models of the CMS detector in SketchUp~\cite{CMSSketchUp}. Ruby scripts were used to parse the
+%description of the CMS detector geometry written in XML and to build 3D models in SketchUp via its Ruby API.
+%Figures produced based on these 3D models have been widely used: in many conference presentations, many PhD theses,
+%technical design reports, a few notable journal publications, books, magazines, posters, brochures, websites, and other media.
+%Further, the 3D models were imported in iSpy WebGL mentioned above.
+
+%[ATLASED042016]
+%[ATLASED072015]
+%[OPEN-PHO-EXP-2015-013]
+%[ALICE-EVENTDISPLAY-2017-007]
+%{other images from other experiments ???}
+
+%In the case of framework-integrated applications, the geometry shown is usually the actual geometry used in the detector description,
+%taken directly from the experiment’s software framework and used for all kinds of tasks related to geometry (see Figure [ATLASED042016]).
+%While in the case of  java-based standalone or web-based applications the geometry shown is usually a simplified version of the actual one
+%(see figure [ATLASED072015]) or, merely, a fake geometry.
 
 \hypertarget{statistical-visualization}{%
 \subsection{Statistical visualization}\label{statistical-visualization}}
