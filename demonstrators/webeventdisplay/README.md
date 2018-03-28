@@ -2,7 +2,7 @@
 
 ### Introduction 
 
-The idea of this project is to have a simple way to visualise event and geometry data using nothing more than a web browser. The data should be as detector-agnostic as possible. It can currently show arbitrary geometry in either JSON, or OBJ format, and show some event data (JSON format). It is being trialled in e.g. the TrackML Kaggle challenge.
+The idea of this project is to have a simple way to visualise event and geometry data using nothing more than a web browser. The data should be as detector-agnostic as possible. It can currently show arbitrary geometry in either JSON, or OBJ format, and show some event data (JSON format). It is being (trialled)[https://twitter.com/trackmllhc/status/971376668525973504] in e.g. the TrackML Kaggle challenge.
 
 Technically the 3D is done with [three.js](http://threejs.org), the menu (at the moment) uses [DAT.GUI](https://code.google.com/archive/p/dat-gui/) and the data format is just plain JSON. 
 
@@ -80,10 +80,15 @@ As an example:
 { "event number":123, "run number":234, "Tracks" : {"Inner Detector Tracks":[ {"chi2":52.1087, "dof":34, "params": [-0.0150713, 0.725162, 2.11179, 2.86823, -3.23906e-05], "pos": [] }}
 ```
 
+When rendered, this might look like e.g.:
+
+![An example event display](img/ATLAS.png)
+
+
 ### Geometry
 #### Volumes
 
-WEB supports a limited set of volumes at the moment. All are passed with the following notation 
+WED supports a limited set of volumes at the moment. All are passed with the following notation 
 ```
 { "Name" : XXX, "Shape" : YYY, "Bounds", [...], "Layers" : [...layers...], "Volumes" : [ ... sub-volumes ... ],  }
 ```
@@ -100,5 +105,12 @@ Currently the supported shapes are:
 * 'CUB'/'BOX' - a cube in space, defined by its width/height/depth.
 * 'CYL' - a cylinder, defined by inner radius, outer radius, medium radius, deltaRadius and halflengthZ.
 
-#### Surfaces
-TODO
+#### Loading geometry from OBJ files
+Obviously WED allows you to load OBJ files, by calling e.g. 
+```
+window.EventDisplay.loadGeomFromObj('geometry/ATLASR2/toroids.obj', 'Toroids', 0x878181);
+```
+For an example at the (CTD display)[https://emoyse.web.cern.ch/emoyse/WebEventDisplay/jsdisplay_CTD.html].
+
+
+
