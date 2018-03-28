@@ -2,7 +2,7 @@
 
 ### Introduction 
 
-The idea of this project is to have a simple way to visualise event and geometry data using nothing more than a web browser. The data should be as detector-agnostic as possible. It can currently show arbitrary geometry in either JSON, or OBJ format, and show some event data (JSON format). It is being (trialled)[https://twitter.com/trackmllhc/status/971376668525973504] in e.g. the TrackML Kaggle challenge.
+The idea of this project is to have a simple way to visualise event and geometry data using nothing more than a web browser. The data should be as detector-agnostic as possible. It can currently show arbitrary geometry in either JSON, or OBJ format, and show some event data (JSON format). It is being [trialled](https://twitter.com/trackmllhc/status/971376668525973504) in e.g. the TrackML Kaggle challenge.
 
 Technically the 3D is done with [three.js](http://threejs.org), the menu (at the moment) uses [DAT.GUI](https://code.google.com/archive/p/dat-gui/) and the data format is just plain JSON. 
 
@@ -110,7 +110,7 @@ Obviously WED allows you to load OBJ files, by calling e.g.
 ```
 window.EventDisplay.loadGeomFromObj('geometry/ATLASR2/toroids.obj', 'Toroids', 0x878181);
 ```
-For an example at the (CTD display)[https://emoyse.web.cern.ch/emoyse/WebEventDisplay/jsdisplay_CTD.html].
+For an example at the [CTD display](https://emoyse.web.cern.ch/emoyse/WebEventDisplay/jsdisplay_CTD.html).
 
 
 
