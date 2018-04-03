@@ -275,7 +275,7 @@ There are several ways to deliver VR to the user with varying levels of function
 applications running on a mobile phone viewed through simple headsets to the most realistic and immersive VR experiences provided
 by the combination of advanced HMDs and desktop computers.
 
-The simplest VR headset device is a Google Cardboard~\cite{GoogleCardboard} which allows the suer to view content in stereo mode with
+The simplest VR headset device is a Google Cardboard~\cite{GoogleCardboard} which allows the user to view content in stereo mode with
 simple rotational tracking via a smart phone (using a mobile browser or a dedicated application) and a viewer. CMS iSpy WebGL running
 in a mobile browser is one such application that can be used in this mode.
 
@@ -346,10 +346,10 @@ clear and concise way; multidimensional parameter spaces need to be visualized i
 of how to properly display data is not new~\cite{Tufte1986}, but the tools are constantly evolving. Since its introduction 20 years ago,
 ROOT~\cite{Root1997}, has become the most widely used package to make plots, graphics, and even event displays. It was developed at a
 time when there were few alternatives to the community that did not have a significant financial cost and has performed admirably.
-However, the landscape has changed and there are other tools out there, driven by non-HEP communities. This section will look at
+However, the landscape has changed and there are several existing tools, driven by non-HEP communities. This section will look at
 some of the current alternatives and comment on what options might be available in the future and what our needs are. This section
-will not address any visualization related to event displays, and instead focus on the making of plots and graphs, which on its own
-spans a large parameter space of options. For more details on HEP data analysis, please refer to the Analysis Community White Paper~\cite{hsf-cwp-analysis}.
+will not address any visualization related to event displays, and instead focus on the making of plots and graphs, which 
+spans a large parameter space of options on its own. For more details on HEP data analysis, please refer to the Analysis Community White Paper~\cite{hsf-cwp-analysis}.
 
 \hypertarget{stats-desktop}{%
 \subsubsection{Desktop solutions}\label{stats-desktop}}
@@ -501,7 +501,7 @@ different sources and in many different formats.
 
 The input data are often quite tightly bound to a specific experiment. And, because of that, many visualization tools are tightly
 bound to their experiments as well. But, it is true that the output of a visualization application is not used by any other tool
-within the experiment data chain. So, there is no really need to have specific visualization for each experiment.
+within the experiment data chain. So, while the interaction with experiment data formats is highly experiment specific, there is a real possibility of having the final stages of the visualization pipeline shared between several experiments.
 
 Let us take the example of the detector geometry. As said, there are very many different geometry libraries and formats in
 use among the HEP experiments. However, geometry libraries are all different ways to describe and handle base geometrical
@@ -525,10 +525,10 @@ of a Box shape; but all experiments, whatever definition of a Box shape they use
 should be able to provide exporters from their internal definition to the community-agreed definition of a Box shape.
 In that way, the know-how and the tools linked to visualization needs could be shared as well, and developed as a community.
 
-We, as a community, still need to propose and design such common definitions and guidelines, but this is something we will
-plan to do in the second phase of this Community action, which of the Community White Paper is part.
+We, as a community, still need to propose and design such common definitions and guidelines. This will
+be addressed in the second phase of this Community action, following the completion of the Community White Paper.
 
-For the moment, we observed that several experiments started to write exporters to dump translate geometry information to
+For the moment, we observe that several experiments started to write exporters to translate geometry information to
 standard formats used in the communities outside HEP, mainly in computer graphics and engineering. For example the Belle II
 experiment has written exporters from Geant4 data to different formats, including VRML and FBX, which are two of the most common
 formats used to store and share 3D graphics data. The Unity game-development engine~\cite{Unity3D}, in turn, can export the
@@ -537,7 +537,7 @@ for fast web distribution via the SketchFab community repository~\cite{SketchFab
 experiments within the community.
 
 The same reasoning made for the geometry can be done for the event data, as well. Of course different experiments detect
-different objects and measure different quantities. But there are common entities anyway, most of all among experiments
+different objects and measure different quantities. But there are many common entities, especially among experiments
 within the same research field. For example, all experiments working on hadron colliders use the notion of particle track,
 which is usually constructed translating the track measurements into space points or points and angles, and visualised as
 a trail; or the notion of particle jet, usually visualised as a cone whose length is related to its energy and whose radius
@@ -575,14 +575,14 @@ END TEXT CUT FROM SECTION 2
 In order to start sharing the knowledge and to start working on demonstrators to show and share best practices, we propose to
 start defining a common format to exchange data among the experiments.
 
-At start, it has not to be an actual format. We should start, instead, finding and listing common shared objects from geometry
-and event data. After that, we should start converging to a shared definition of those objects, to build a common design toward
-a data model to handle and serve them. The idea, in fact, will be the usage of this common format to visualize data from the
+Initially, it does not have to be an actual format. We should start, instead, finding and listing common shared objects from geometry
+and event data. After that, we should start converging on a shared definition of those objects, to build a common design toward
+a data model to handle and serve them. The idea, in fact, is to enable usage of this common format to visualize data from the
 different experiments with the same shared best practices, if not the same tools.
 
-We also think that community-developed common formats and tools should be extendable too, to let the experiments add their own
-custom content and objects. As an example, calorimeter cells can be of very different shapes, and an experiment could need to
-add its own custom shape to the common format, to visualize them. Thus, in addition to the part handling the common objects,
+We think that community-developed common formats and tools should also be extendable, to let the experiments add their own
+custom content and objects. As an example, calorimeter cells can be of very different shapes, and an experiment might need to
+add its own custom shapes to the common format to visualize them properly. Thus, in addition to the part handling the common objects,
 there should be a part of the format targeted at storing extended custom content, specific to a given experiment. For such
 custom content, experiments will have to develop custom visualization tools as well; but they could build them upon the foundation
 of the community-driven part.
@@ -594,9 +594,9 @@ Visualization Environment (EVE), to make ALICE data visualization decoupled from
 \hypertarget{serving-data}{%
 \subsection{Serving the geometry and event data through services}\label{serving-data}}
 
-Once a common format for shared objects defined, we think that thinking about the design of online services to query and
-serve the geometry data would be an additional very useful addition, compared to what the HEP experiments currently feature.
-The idea behind that is that the detector description should be much more accessible than it is today. For many experiments,
+Once a common format for shared objects is defined, we believe that design and development of online services to query and
+serve the geometry data would be a very useful addition, compared to what the HEP experiments currently feature.
+The main driving force here is the realization that detector description should be much more accessible than it is today. For many experiments,
 accessing the detector description means starting and running at least parts of the experiment’s framework. Accessing a specific
 geometry version or the latest one is of course critical for reconstruction and simulation; but the geometry data needed for
 event visualization can be simpler. Even when showing the actual geometry of the experiment, accessing the latest alignment
@@ -609,12 +609,12 @@ It would be desirable for the new mechanism to have a search/filter functionalit
 for a specific subset of information; and a way to select the level of details, to set the desired accuracy and complexity
 of the retrieved geometry.
 
-The same could be envisaged for event data, even if that is a more complicated task, involving many different layers and services:
-very often, in fact, event data are stored on the Grid, and very often they need to be processed in order to be usable for event displays.
+The same could be envisaged for event data, even though that is a more complicated task, involving many different layers and services:
+very often event data are stored on the Grid and very often they need to be processed in order to be usable for event displays.
 But, as discussed earlier, experimental data definitely should be more accessible for visualization. Thus, in collaboration with
-the Data Access and Management WG, an API or a service to get streamed event data would be designed.
+the Data Access and Management WG, an API or a service to get streamed event data will be designed.
 
-In addition, truth data description for visualization could be handled in the same way, by the usage of converters from
+In addition, simulation data description for visualization could be handled in the same way, by the usage of converters from
 generators/simulation applications.
 
 After a first phase of development and stand-alone testing, the streamed data could be used by the current visualization tools
@@ -623,8 +623,8 @@ as well, as first step of their modernization and towards the usage of common co
 \hypertarget{client-server}{%
 \subsection{Client-server architecture for geometry and event data visualization}\label{client-server}}
 
-When the common format and a mechanism to serve it would be designed, and a set of exporters would be built to translate the
-experiments’ data to the common format, we would build a client-server architecture, upon which new visualization could be built.
+After common data formats and a mechanisms to serve it are designed together with a set of exporters required to translate the
+experiments’ data to the common format, we are proposing to build a client-server architecture, upon which next generation visualization applications can be built.
 The idea behind that is that if we can send commands from the client to the server, and get the answer back in the data stream,
 then we will be able to interact with the experiment’s framework as well, in addition of using common visualization applications
 to visualize the common objects. In this way, we will achieve to develop a modular architecture where HEP experiments could share
@@ -732,8 +732,8 @@ of VR applications for multiple devices.
 \subsubsection{Multi-user applications}\label{multi-user}}
 
 Nowadays multi-users technology is used in many applications: for example in GoogleDocs, where many users can simultaneously
-interact with the same document. What we would like to provide, is a multi-users support for visualization, to let many users
-explore and interact with events at the same time. Beside being a nice feature for expert users, it could be important for
+interact with the same document. What we would like to provide, is a multi-user support for visualization, to let several users
+explore and interact with events at the same time. Beside being a useful feature for expert users, it could be important for
 Outreach and Education activities, where people or students could interact together with an event display.
 Game engines offer multi-users support natively, thus we could starting explore their usage.
 
