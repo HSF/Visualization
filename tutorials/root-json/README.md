@@ -23,4 +23,10 @@ As result, `file.json` will be created, which contains object data
     
 ## readJSON.C macro
 
+This macros reads file.json data, using empty object:
+
+    [shell] root -l readJSON.C+ -q
+
+Macro reconstructs object content from JSON and prints result to the std output.
+
     

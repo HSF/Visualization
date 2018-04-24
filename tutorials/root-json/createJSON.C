@@ -1,7 +1,7 @@
 #include "user_class.h"
 
 #include "TBufferJSON.h"
-#include "Riostream.h"
+#include <fstream>
 #include <cstdio>
 
 void createJSON()
@@ -17,7 +17,7 @@ void createJSON()
    TString json = TBufferJSON::ToJSON(&obj);
 
    // print to std output
-   printf("json \n%s\n", json.Data());
+   printf("json:\n%s\n", json.Data());
 
    // save to the file
    std::ofstream ofs("file.json");
