@@ -81,6 +81,7 @@ Guidelines for visualization for upgraded current and future experiments will be
 \affiliation[r]{LMU Munich, Munich, Germany}
 \affiliation[s]{University of Bristol, Bristol, UK}
 \affiliation[t]{University of Chicago, Chicago IL, USA}
+
 \affiliation[1]{Paper Editor}
 
 \maketitle
@@ -127,12 +128,14 @@ actual physics events ({\it e.g.}\ physics objects, like jets, tracks, and so fo
 conditions ({\it e.g.}\ detector description versions, calibrations, and so on).
 
 The second key feature is geometry visualization.
-The level of geometric detail displayed depends on the use-case, how the geometry information is stored and fetched ({\it e.g.}\ from a database as part of a software framework or from an external file), and limitations of the application itself along with
+The level of geometric detail displayed depends on the use-case, 
+how the geometry information is stored and fetched ({\it e.g.}\ from a database as part of a software framework or from an external file), and limitations of the application itself along with
 considerations of speed, efficiency, and portability.
 
 The third feature is interactivity. Applications offer different interfaces and tools to users, in order to interact
 with the visualization itself, select event data and set cuts on object properties.
 In addition to the interactive usage, applications often offer to store different settings to automate user’s actions.
+
 
 In the following subsections several important aspects of data access, application development and distribution, and geometry description
 and visualization as they pertain to the current landscape of event displays are discussed in more detail.
@@ -235,6 +238,7 @@ A final approach to display development targeting the desktop is to create and d
 program and its derivative MINERVA~\cite{ATLASMinerva} which is used as an educational tool, both developed for the ATLAS experiment,
 can be run either on the web or standalone on the desktop.
 
+
 {\bf Web-based applications} Several experiments at the LHC, notably CMS~\cite{CMSISpyWebGL}, LHCb~\cite{LHCbOnline2014}, and ATLAS
 ~\cite{ATLASTada2016, ATLASTracer2015} have created web-based event displays using WebGL (Web Graphics Library)~\cite{WebGL2011}.
 WebGL is a JavaScript API that conforms to OpenGL ES (a subset of the OpenGL API for embedded systems) conceived for
@@ -254,6 +258,7 @@ and simplified APIs for ease of development.
 
 {\bf Mobile and virtual reality applications} Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
 smartphones to ultrabooks. Those devices are used more and more as substitutes for desktop and laptop machines.
+
 
 Mobile devices still do not have the computing power usually needed for HEP data analysis, where huge amount of experimental data
 are retrieved and processed. In addition they usually run dedicated operating systems whose self-contained nature
@@ -347,10 +352,11 @@ clear and concise way; multidimensional parameter spaces need to be visualized i
 of how to properly display data is not new~\cite{Tufte1986}, but the tools are constantly evolving. Since its introduction 20 years ago,
 ROOT~\cite{Root1997}, has become the most widely used package to make plots, graphics, and even event displays. It was developed at a
 time when there were few alternatives to the community that did not have a significant financial cost and has performed admirably.
-However, the landscape has changed and there are other tools out there, driven by non-HEP communities. This section will look at
+
+However, the landscape has changed and there are several existing tools, driven by non-HEP communities. This section will look at
 some of the current alternatives and comment on what options might be available in the future and what our needs are. This section
-will not address any visualization related to event displays, and instead focus on the making of plots and graphs, which on its own
-spans a large parameter space of options. For more details on HEP data analysis, please refer to the Analysis Community White Paper~\cite{hsf-cwp-analysis}.
+will not address any visualization related to event displays, and instead focus on the making of plots and graphs, which 
+spans a large parameter space of options on its own. For more details on HEP data analysis, please refer to the Analysis Community White Paper~\cite{hsf-cwp-analysis}.
 
 \hypertarget{stats-desktop}{%
 \subsubsection{Desktop solutions}\label{stats-desktop}}
@@ -502,7 +508,7 @@ different sources and in many different formats.
 
 The input data are often quite tightly bound to a specific experiment. And, because of that, many visualization tools are tightly
 bound to their experiments as well. But, it is true that the output of a visualization application is not used by any other tool
-within the experiment data chain. So, there is no really need to have specific visualization for each experiment.
+within the experiment data chain. So, while the interaction with experiment data formats is highly experiment specific, there is a real possibility of having the final stages of the visualization pipeline shared between several experiments.
 
 Let us take the example of the detector geometry. As said, there are very many different geometry libraries and formats in
 use among the HEP experiments. However, geometry libraries are all different ways to describe and handle base geometrical
@@ -526,19 +532,19 @@ of a Box shape; but all experiments, whatever definition of a Box shape they use
 should be able to provide exporters from their internal definition to the community-agreed definition of a Box shape.
 In that way, the know-how and the tools linked to visualization needs could be shared as well, and developed as a community.
 
-We, as a community, still need to propose and design such common definitions and guidelines, but this is something we will
-plan to do in the second phase of this Community action, which of the Community White Paper is part.
+We, as a community, still need to propose and design such common definitions and guidelines. This will
+be addressed in the second phase of this Community action, following the completion of the Community White Paper.
 
-For the moment, we observed that several experiments started to write exporters to dump translate geometry information to
+For the moment, we observe that several experiments started to write exporters to translate geometry information to
 standard formats used in the communities outside HEP, mainly in computer graphics and engineering. For example the Belle II
 experiment has written exporters from Geant4 data to different formats, including VRML and FBX, which are two of the most common
 formats used to store and share 3D graphics data. The Unity game-development engine~\cite{Unity3D}, in turn, can export the
-FBX geometry to the glTF format~\cite{glTF,SketchFabBelleII}, an emerging royalty-free specification for 3D objects and scenes,
+FBX geometry to the glTF format~\cite{glTF}~\cite{glTF,SketchFabBelleII}, an emerging royalty-free specification for 3D objects and scenes,
 for fast web distribution via the SketchFab community repository~\cite{SketchFab}. For the near future, we will foster similar
 experiments within the community.
 
 The same reasoning made for the geometry can be done for the event data, as well. Of course different experiments detect
-different objects and measure different quantities. But there are common entities anyway, most of all among experiments
+different objects and measure different quantities. But there are many common entities, especially among experiments
 within the same research field. For example, all experiments working on hadron colliders use the notion of particle track,
 which is usually constructed translating the track measurements into space points or points and angles, and visualised as
 a trail; or the notion of particle jet, usually visualised as a cone whose length is related to its energy and whose radius
@@ -547,6 +553,7 @@ differently in different experiments, but we think that they could be the target
 If so, experiments could share best practices or snippets of code, if not complete base tools, to handle their visualisation.
 
 START TEXT CUT FROM SECTION 2
+
 However, portability and simplicity of usage are the strong points of mobile devices. More than as ``mobile'' devices, smartphones,
 tablets and ultrabooks can be considered, as devices ``close to people''. As such, the usage of such devices
 should be exploited more in the final steps of the visualization chain, where heavy batch data processing is not needed. For instance,
@@ -576,14 +583,14 @@ END TEXT CUT FROM SECTION 2
 In order to start sharing the knowledge and to start working on demonstrators to show and share best practices, we propose to
 start defining a common format to exchange data among the experiments.
 
-At start, it has not to be an actual format. We should start, instead, finding and listing common shared objects from geometry
-and event data. After that, we should start converging to a shared definition of those objects, to build a common design toward
-a data model to handle and serve them. The idea, in fact, will be the usage of this common format to visualize data from the
+Initially, it does not have to be an actual format. We should start, instead, finding and listing common shared objects from geometry
+and event data. After that, we should start converging on a shared definition of those objects, to build a common design toward
+a data model to handle and serve them. The idea, in fact, is to enable usage of this common format to visualize data from the
 different experiments with the same shared best practices, if not the same tools.
 
-We also think that community-developed common formats and tools should be extendable too, to let the experiments add their own
-custom content and objects. As an example, calorimeter cells can be of very different shapes, and an experiment could need to
-add its own custom shape to the common format, to visualize them. Thus, in addition to the part handling the common objects,
+We think that community-developed common formats and tools should also be extendable, to let the experiments add their own
+custom content and objects. As an example, calorimeter cells can be of very different shapes, and an experiment might need to
+add its own custom shapes to the common format to visualize them properly. Thus, in addition to the part handling the common objects,
 there should be a part of the format targeted at storing extended custom content, specific to a given experiment. For such
 custom content, experiments will have to develop custom visualization tools as well; but they could build them upon the foundation
 of the community-driven part.
@@ -595,9 +602,9 @@ Visualization Environment (EVE), to make ALICE data visualization decoupled from
 \hypertarget{serving-data}{%
 \subsection{Serving the geometry and event data through services}\label{serving-data}}
 
-Once a common format for shared objects defined, we think that thinking about the design of online services to query and
-serve the geometry data would be an additional very useful addition, compared to what the HEP experiments currently feature.
-The idea behind that is that the detector description should be much more accessible than it is today. For many experiments,
+Once a common format for shared objects is defined, we believe that design and development of online services to query and
+serve the geometry data would be a very useful addition, compared to what the HEP experiments currently feature.
+The main driving force here is the realization that detector description should be much more accessible than it is today. For many experiments,
 accessing the detector description means starting and running at least parts of the experiment’s framework. Accessing a specific
 geometry version or the latest one is of course critical for reconstruction and simulation; but the geometry data needed for
 event visualization can be simpler. Even when showing the actual geometry of the experiment, accessing the latest alignment
@@ -610,22 +617,22 @@ It would be desirable for the new mechanism to have a search/filter functionalit
 for a specific subset of information; and a way to select the level of details, to set the desired accuracy and complexity
 of the retrieved geometry.
 
-The same could be envisaged for event data, even if that is a more complicated task, involving many different layers and services:
-very often, in fact, event data are stored on the Grid, and very often they need to be processed in order to be usable for event displays.
+The same could be envisaged for event data, even though that is a more complicated task, involving many different layers and services:
+very often event data are stored on the Grid and very often they need to be processed in order to be usable for event displays.
 But, as discussed earlier, experimental data definitely should be more accessible for visualization. Thus, in collaboration with
-the Data Access and Management WG, an API or a service to get streamed event data would be designed.
+the Data Access and Management WG, an API or a service to get streamed event data will be designed.
 
-In addition, truth data description for visualization could be handled in the same way, by the usage of converters from
+In addition, simulation data description for visualization could be handled in the same way, by the usage of converters from
 generators/simulation applications.
 
-After a first phase of development and standalone testing, the streamed data could be used by the current visualization tools
+After a first phase of development and stand-alone testing, the streamed data could be used by the current visualization tools
 as well, as first step of their modernization and towards the usage of common community-developed techniques and shared best practices.
 
 \hypertarget{client-server}{%
 \subsection{Client-server architecture for geometry and event data visualization}\label{client-server}}
 
-When the common format and a mechanism to serve it would be designed, and a set of exporters would be built to translate the
-experiments’ data to the common format, we would build a client-server architecture, upon which new visualization could be built.
+After common data formats and a mechanisms to serve it are designed together with a set of exporters required to translate the
+experiments’ data to the common format, we are proposing to build a client-server architecture, upon which next generation visualization applications can be built.
 The idea behind that is that if we can send commands from the client to the server, and get the answer back in the data stream,
 then we will be able to interact with the experiment’s framework as well, in addition of using common visualization applications
 to visualize the common objects. In this way, we will achieve to develop a modular architecture where HEP experiments could share
@@ -664,10 +671,13 @@ All VR devices are supported as targets and VR-animation performance is reported
 (Notably, the emerging WebVR standard~\cite{WebVR} is not yet supported for ``VR in the browser''. It is possible in Unity to create a
 WebGL~\cite{WebGL2011} executable of a VR app; however, no browser will run this app successfully because of its need to load the
 VR-hardware’s object library, which violates security restrictions in the browser.) Presently, user code is written in either
-C\# or adaptation of Javascript. These languages are somewhat foreign to the majority of HEP-trained programmers who are more comfortable with
+C\# or an adaptation of Javascript. These languages are somewhat foreign to the majority of HEP-trained programmers who are more comfortable with
 C++; however, this accounts in part for the broader use of Unity than Unreal.
 
-Another game engine that is gaining a lot of attention in recent years is an open source engine Godot~\cite{Godot}. While it is still not quite at the same level as Unity or Unreal engine, it allows the deployment to similar platforms as Unity and Unreal engine but is very lightweight. It also offers the support for multiple programming languages {\it e.g.}\ GDScript Python-like scripting language, C\# 7.0 support using Mono and C++. It also offers visual scripting using blocks and connections and support for additional languages with community-provided support for Python, Nim, D and other languages.
+Another game engine that is gaining a lot of attention in recent years is an open source engine Godot~\cite{Godot}. 
+While it is still not quite at the same level as Unity or Unreal Engine, it allows the deployment to similar platforms as Unity and Unreal Engine but is very lightweight. 
+It offers the support for 2D and 3D graphics and for multiple programming languages {\it e.g.}\ GDScript (a Python-like scripting language), C\# 7.0 (by using Mono), and C++. 
+It also offers visual scripting using blocks and connections and support for additional languages with community-provided support for Python, Nim, D and other languages.
 
 As a community, we would like to explore further the features those modern game engines can offer. Also, we would like to take a
 look at possible usage patterns in the context and within the workflow of HEP visualization.
@@ -698,7 +708,7 @@ browser – even on a smartphone – very effectively~\cite{SketchFabBelleII}.
 \subsubsection{Virtual reality}\label{vr}}
 
 Virtual reality (VR) describes the simulation of the user’s physical presence in a virtual environment. This simulation
-is typically delivered via a Head mounted display (HMD) that provides visual and aural experience of the simulated environment.
+is typically delivered via a Head Mounted Display (HMD) that provides visual and aural experience of the simulated environment.
 Rotational and positional tracking of the user’s head and hand motion (when available) allow for interaction and navigation
 in the virtual environment.
 
@@ -713,7 +723,7 @@ tracking ({\it i.e.}\ 3 degrees-of-freedom). No hand controller is used in the C
 is available via a magnet attached to the Cardboard viewer.
 
 The Google Daydream is the next iteration in VR for Google. Content is still delivered by a mobile phone but a
-Bluetooth-connected hand controller (with only rotational tracking) is available. Standalone HTC Vive and Lenovo
+Bluetooth-connected hand controller (with only rotational tracking) is available. Stand-alone HTC Vive and Lenovo
 headsets for the Daydream environment will be available in the near future.
 
 Currently, the most immersive and interactive VR environments are provided by the Oculus Rift and the HTC Vive,
@@ -735,10 +745,11 @@ of VR applications for multiple devices.
 \subsubsection{Multi-user applications}\label{multi-user}}
 
 Nowadays multi-users technology is used in many applications: for example in GoogleDocs, where many users can simultaneously
-interact with the same document. What we would like to provide, is a multi-users support for visualization, to let many users
-explore and interact with events at the same time. Beside being a nice feature for expert users, it could be important for
+interact with the same document. What we would like to provide, is a multi-user support for visualization, to let several users
+explore and interact with events at the same time. Beside being a useful feature for expert users, it could be important for
 Outreach and Education activities, where people or students could interact together with an event display.
-Game engines offer multi-users support natively, thus we could starting explore their usage. An example of such collaborative features in a 3D environment is integrated in Med3D visualization framework~\cite{Bohak2017}.
+Game engines offer multi-users support natively, thus we could starting explore their usage.
+An example of such collaborative features in a 3D environment is integrated in Med3D visualization framework~\cite{Bohak2017}.
 
 \hypertarget{sharing-knowledge}{%
 \section{Sharing knowledge and fostering collaboration}\label{sharing-knowledge}}
@@ -834,9 +845,13 @@ the maintenance and the workload among all the experiments.
 \hypertarget{acknowledgements}{%
 \section{Acknowledgements}\label{acknowledgements}}
 
+
+???
+
+
 \begin{thebibliography}{999}
 
-\bibitem{hsf-cwp-roadmap} ``A Roadmap for HEP Software and Computing R\&D for the 2020s'', HSF-CWP-2017-001, arXiv:1712.06982
+\bibitem{hsf-cwp-roadmap} ``A Roadmap for HEP Software and Computing R{\&}D for the 2020s'', HSF-CWP-2017-001, arXiv:1712.06982
 
 \bibitem{DataAnalysisCWP2017} HSF Data Analysis and Interpretation Community White Paper (??? link to the final paper)
 
@@ -894,7 +909,7 @@ the maintenance and the workload among all the experiments.
 
 \bibitem{CERNCamelia} {\tt http://medialab.web.cern.ch/content/camelia}
 
-\bibitem{CERNTEV} {\tt https://gitlab.cern.ch/CERNMediaLab/TEV} ?
+\bibitem{CERNTEV} {\tt https://gitlab.cern.ch/CERNMediaLab/TEV} ???
 
 \bibitem{GoogleCardboard} {\tt https://vr.google.com/cardboard/}
 
@@ -938,28 +953,23 @@ the maintenance and the workload among all the experiments.
 
 \bibitem{Plotly2015} {\tt https://plot.ly}
 
-
 \bibitem{ATLASED042016} {\tt https://cds.cern.ch/record/2148236}
 
 \bibitem{ATLASED072015} FIX ME %FIX https://twiki.cern.ch/twiki/pub/AtlasPublic/EventDisplayRun2Collisions/JiveXML_271298_403602858-RZ-LegoPlot-EventInfo-RZ-YX-2015-08-06-15-01-42.png
 
 \bibitem{ATLASEventDisplays2016} https://indico.cern.ch/event/505613/contributions/2228333/
 
-
 \bibitem{ATLASGeoModel2017} R.M. Bianchi and I. Vukotic, ACAT 2017, "A scalable new mechanism to store and serve the ATLAS detector description through a REST web API", https://indico.cern.ch/event/567550/contributions/2628864/
-
 
 \bibitem{EpicUnreal} {\tt https://www.unrealengine.com}
 
-
-\bibitem{HSFVis2017} "HSF Visualization Workshop" (https://indico.cern.ch/event/617054/)
+\bibitem{HSFVis2017} ``HSF Visualization Workshop'' ({\tt https://indico.cern.ch/event/617054/})
 
 \bibitem{HSFVizRepo} {\tt https://github.com/HEP-SF/Visualization}
 
+\bibitem{LHCbEventDisplays2017} B. Couturier, ``Event Displays in LHCb" ({\tt https://indico.cern.ch/event/617054/contributions/2529736/})
 
-\bibitem{LHCbEventDisplays2017} B. Couturier, "Event Displays in LHCb" ({\tt https://indico.cern.ch/event/617054/contributions/2529736/})
-
-\bibitem{Tukey1962} J. W. Tukey, "The Future of Data Analysis", The Annals of Mathematical Statistics Volume 33, Number 1, 1-67 (1962) ({\tt http://www.jstor.org/stable/2237638})
+\bibitem{Tukey1962} J. W. Tukey, ``The Future of Data Analysis", The Annals of Mathematical Statistics Volume 33, Number 1, 1-67 (1962) ({\tt http://www.jstor.org/stable/2237638})
 
 \bibitem{glTF} {\tt https://www.khronos.org/gltf/}
 
@@ -979,7 +989,7 @@ the maintenance and the workload among all the experiments.
 
 \bibitem{Godot} {\tt https://godotengine.org/}
 
-\bibitem{Bohak2017} P. Lavrič, C. Bohak, and M. Marolt, "Collaborative view-aligned annotations in web-based 3D medical data visualization," in MIPRO 2017: 40th Jubilee International Convention, May 22-26, 2017, Opatija, Croatia : proceedings, 2017, pp. 276-280 ({\tt http://lgm.fri.uni-lj.si/wp-content/uploads/2017/10/1537435587.pdf}).
+\bibitem{Bohak2017} P. Lavrič, C. Bohak, and M. Marolt, ``Collaborative view-aligned annotations in web-based 3D medical data visualization," in MIPRO 2017: 40th Jubilee International Convention, May 22-26, 2017, Opatija, Croatia : proceedings, 2017, pp. 276-280 ({\tt http://lgm.fri.uni-lj.si/wp-content/uploads/2017/10/1537435587.pdf}).
 
 \end{thebibliography}
 
