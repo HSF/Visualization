@@ -3,4 +3,11 @@
 *.out
 *.pdf
 *.toc
+*.sync*
+*.fls
+*.bcf
+*.blg
+*.fdb*
+*.bbl
+*.dvi
 /tmp/

@@ -28,7 +28,7 @@
 across the whole data chain: from detector development to monitoring, from event generation to reconstruction,
 from detector simulation to data analysis, and all the way to outreach and education.
 In this chapter the definition, status, and evolution of data visualization for HEP experiments will be presented.
-Guidelines for visualization for upgraded current and future experiments will be outlined.}
+Guidelines for visualization for upgraded current and future experiments will be outlined. This chapter expands on the summary content published in the HSF \emph{Roadmap} paper \cite{HSF-CWP-2017-01}.}
 
 \begin{document}
 
@@ -45,7 +45,7 @@ Guidelines for visualization for upgraded current and future experiments will be
 \author{HEP Software Foundation:}
 
 \author[a,b]{Matthew Bellis}
-\author[c,1]{Riccardo Maria Bianchi\note{Paper Editors}}
+\author[c,1]{Riccardo Maria Bianchi\note{Paper Editors}}%this same note will be shared with all the other authors with the [1] (i.e. Thomas McCauley)
 \author[d]{Sebastien Binet}
 \author[e]{Ciril Bohak}
 \author[f]{Benjamin Couturier}
@@ -88,14 +88,11 @@ Guidelines for visualization for upgraded current and future experiments will be
 \affiliation[s]{University of Bristol, Bristol, UK}
 \affiliation[t]{University of Chicago, Chicago IL, USA}
 
-%\affiliation[1]{Paper Editor} % ??? add line-break
-
 
 \maketitle
 
-
-
 \newpage
+
 
 \hypertarget{scope}{%
 \section{Scope}\label{scope}}
@@ -114,12 +111,12 @@ Beyond event displays, HEP also has statistical visualizations such as histogram
 and with minimal effort characterize the data.
 Unlike event displays, these visualizations are not strongly visually linked to the detector geometry,
 and may aggregate data from multiple events. Data analysis tools and techniques used in HEP are
-described in the HSF Data Analysis and Interpretation Community White Paper~\cite{hsf-cwp-analysis}.
+described in the HSF Data Analysis and Interpretation Community White Paper~\cite{HSF-CWP-2017-05}.
 
 Other types of visualizations are used in HEP to
 visualize non-spatial data, like the graphs used to visually describe the structure of the detector description,
 the representation of all geometrical volumes that compose the sub-detectors and the infrastructure of a HEP experiment.
-More details about the detector geometry can be found in the HSF Simulation Community White Paper~\cite{hsf-cwp-simulation}
+More details about the detector geometry can be found in the HSF Simulation Community White Paper~\cite{HSF-CWP-2017-07}
 
 Other types of data visualization used in HEP experiments, such as data visualization for slow control
 or dashboards for data analytics, are considered out of scope and they will be not discussed in this chapter.
@@ -196,7 +193,7 @@ be for another.
 
 %Data, in fact, should be much more easily accessible to scientists, in a more transparent way and without the usage of
 %complex software frameworks. That is an issue which is investigated and addressed in more details in the HSF
-%"Data Organization, Management and Access" Community White Paper~\cite{hsf-cwp-data}.
+%"Data Organization, Management and Access" Community White Paper~\cite{HSF-CWP-2017-04}.
 
 \hypertarget{application-development}{%
 \subsubsection{Application development and distribution}\label{application-development}}
@@ -365,7 +362,7 @@ time when there were few alternatives to the community that did not have a signi
 However, the landscape has changed and there are several existing tools, driven by non-HEP communities. This section will look at
 some of the current alternatives and comment on what options might be available in the future and what our needs are. This section
 will not address any visualization related to event displays, and instead focus on the making of plots and graphs, which 
-spans a large parameter space of options on its own. For more details on HEP data analysis, please refer to the Analysis Community White Paper~\cite{hsf-cwp-analysis}.
+spans a large parameter space of options on its own. For more details on HEP data analysis, please refer to the HSF \emph{Data Analysis and Interpretation} Community White Paper~\cite{HSF-CWP-2017-05}.
 
 \hypertarget{stats-desktop}{%
 \subsubsection{Desktop solutions}\label{stats-desktop}}
@@ -571,7 +568,7 @@ Ideally, a user should be able to easily retrieve interesting events from the ex
 kinds of devices.
 
 That is why we strongly promote the usage of the server-client architecture described and supported in this paper in Section~\ref{client-server}
-and the new data access patterns presented and supported in the ``Data Access and Management'' paper~\cite{hsf-cwp-data}. This would open
+and the new data access patterns presented and supported in the ``Data Access and Management'' paper~\cite{HSF-CWP-2017-04}. This would open
 up new possibilities for interactive visualization on mobile devices: it would let visualization clients running on mobile devices
 connect to server tools running in the experiment's framework to easily and interactively retrieve the desired data.
 
