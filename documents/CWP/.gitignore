@@ -10,4 +10,5 @@
 *.fdb*
 *.bbl
 *.dvi
+*.run.xml
 /tmp/
