@@ -28,7 +28,7 @@
 across the whole data chain: from detector development to monitoring, from event generation to reconstruction,
 from detector simulation to data analysis, and all the way to outreach and education.
 In this chapter the definition, status, and evolution of data visualization for HEP experiments will be presented.
-Guidelines for visualization for upgraded current and future experiments will be outlined. This chapter expands on the summary content published in the HSF \emph{Roadmap} paper \cite{HSF-CWP-2017-01}.}
+Guidelines for visualization for upgraded current and future experiments will be outlined. This chapter expands on the summary content published in the HSF \emph{Roadmap} Community White Paper \cite{HSF-CWP-2017-01}.}
 
 \begin{document}
 
@@ -107,18 +107,18 @@ which are usually able to access and visualize all experiment’s data at the co
 The second type of displays are those designed as cross-platform applications, lightweight and fast, often
 delivering a simplified version or a subset of the event data. All displays also show some level of detector geometry.
 
-Beyond event displays, HEP also has statistical visualizations such as histograms, allowing the data analyst to quickly
+Beyond event displays, HEP also has statistical data visualizations such as histograms, allowing the data analyst to quickly
 and with minimal effort characterize the data.
 Unlike event displays, these visualizations are not strongly visually linked to the detector geometry,
 and may aggregate data from multiple events. Data analysis tools and techniques used in HEP are
-described in the HSF Data Analysis and Interpretation Community White Paper~\cite{HSF-CWP-2017-05}.
+described in the HSF \textit{Data Analysis and Interpretation} Community White Paper~\cite{HSF-CWP-2017-05}.
 
 Other types of visualizations are used in HEP to
 visualize non-spatial data, like the graphs used to visually describe the structure of the detector description,
 the representation of all geometrical volumes that compose the sub-detectors and the infrastructure of a HEP experiment.
-More details about the detector geometry can be found in the HSF Simulation Community White Paper~\cite{HSF-CWP-2017-07}
+More details about the detector geometry can be found in the HSF \textit{Detector Simulation} Community White Paper~\cite{HSF-CWP-2017-07}
 
-Other types of data visualization used in HEP experiments, such as data visualization for slow control
+Other types of data visualization used in HEP experiments, such as visualization for slow control
 or dashboards for data analytics, are considered out of scope and they will be not discussed in this chapter.
 
 \hypertarget{current-landscape}{%
@@ -134,8 +134,7 @@ actual physics events ({\it e.g.}\ physics objects, like jets, tracks, and so fo
 conditions ({\it e.g.}\ detector description versions, calibrations, and so on).
 
 The second key feature is geometry visualization.
-The level of geometric detail displayed depends on the use-case, 
-how the geometry information is stored and fetched ({\it e.g.}\ from a database as part of a software framework or from an external file), and limitations of the application itself along with
+The level of geometric detail displayed depends on the specific use-case, on the way the geometry information is stored and fetched ({\it e.g.}\ from a database as part of a software framework or from an external file), and on limitations of the application itself along with
 considerations of speed, efficiency, and portability.
 
 The third feature is interactivity. Applications offer different interfaces and tools to users, in order to interact
@@ -152,9 +151,7 @@ and visualization as they pertain to the current landscape of event displays are
 Access to event data comes either natively or via intermediate formats. In the former case direct access of native event formats
 is only possible for an application integrated within the experimental software framework.
 
-There are several advantages to having access to the full framework, such as full access to the experimental data
-in its native format and access to software tools, services, and databases. Therefore access to full detector simulation
-geometry, conditions data, and framework APIs in the event display application is possible.
+There are several advantages to having access to the experiment's framework, such as full access to the experimental data in its native format and to software tools, services, and databases. Through them, event display applications can make use of the full detector simulation geometry, of conditions data, and of all the framework APIs.
 
 One disadvantage of this approach is that full support for the display application is often limited to those platforms
 on which the framework itself is supported, limiting cross-platform distribution and support.
@@ -269,7 +266,7 @@ smartphones to ultrabooks. Those devices are used more and more as substitutes f
 Mobile devices still do not have the computing power usually needed for HEP data analysis, where huge amount of experimental data
 are retrieved and processed. In addition they usually run dedicated operating systems whose self-contained nature
 makes their integration within the HEP workflow difficult, particularly for the statistical-based visualization used in
-data analysis, described in Section~\ref{statistical-visualization}. Currently event visualization on mobile devices is only
+data analysis, described in Section~\ref{statistical-data-visualization}. Currently event visualization on mobile devices is only
 possible in experiments which developed web-based tools. Only the visualization of events which have been already
 extracted and reduced from the experiment's framework is possible.
 
@@ -346,8 +343,8 @@ because current visualization tools are often tightly bound to the geometry libr
 %While in the case of  java-based standalone or web-based applications the geometry shown is usually a simplified version of the actual one
 %(see figure [ATLASED072015]) or, merely, a fake geometry.
 
-\hypertarget{statistical-visualization}{%
-\subsection{Statistical visualization}\label{statistical-visualization}}
+\hypertarget{statistical-data-visualization}{%
+\subsection{Statistical data visualization}\label{statistical-data-visualization}}
 
 Data visualization also means visualizing quantities and properties taken from a series of events, in order to extract statistical
 meaning from them. An example of statistical data visualizations are histograms and scatter plots.
