@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 % Copyright (C) 2018, The HSF Community White Paper authors, licence CC-BY-4.0.
 
 % JHEP preprint template
@@ -7,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{xspace}
+\usepackage{todonotes}
 
 \usepackage[utf8]{inputenc}
 
@@ -152,7 +154,7 @@ and visualization, as they pertain to the current landscape of event displays, a
 Access to event data comes either natively or via intermediate formats. In the former case direct access of native event formats
 is only possible for an application integrated within the experimental software framework.
 
-There are several advantages to having access to the experiment's framework, such as full access to the experimental data in its native format and to software tools, services, and databases. Through them, event display applications can make use of the full detector simulation geometry, of conditions data, and of all the framework APIs.
+There are several advantages to having access to the experiment's framework, such as full access to the experimental data in its native format and to software tools, services, and databases. Through them, event display applications can make use of the full detector simulation geometry, of conditions data, and of all the framework's application program interface (API).
 
 One disadvantage of this approach is that full support for the display application is often limited to those platforms
 on which the framework itself is supported, limiting cross-platform distribution and support.
@@ -163,19 +165,17 @@ the data format along with the underlying framework API. In addition, users have
 explore and visualize event-based data. Lastly, and for all the above mentioned reasons, often the user-interface to a
 full-framework application is geared towards the expert.
 
-Another approach to data access is via an intermediate format. Often the data needed for visualization is a subset of the
-full information found in the native experimental format. In this case, one can extract what is needed from the framework
-through the usage of dedicated exporting software tools and store them
+Another approach to data access is via an intermediate format. Often the data needed for visualization is a subset of the full information found in the native experimental format. In this case, one can extract what is needed from the framework through the usage of dedicated exporting software tools and store them
 into intermediate formats.
 
-With the use of an intermediate data format (such as flavors of XML or JSON formats) the event display application
-is potentially separate from the experimental software framework and therefore is not limited to platforms supported
-by the framework. The data format and the application itself can be lightweight and the potential for widest distribution
-of both is possible, even to the general public. As always there are drawbacks to any approach and in this case, with no
-direct access to the experimental data, some information is necessarily not accessible.
+With the use of an intermediate data format (usually based on different flavors of the XML or JSON formats) the event display application is potentially separate from the experimental software framework and therefore its deployment is not limited to those platforms officially supported by the experiment. By taking this path, it is possible to end up with lightweight data and applications, which can be easily distributed, even for outreach and educational activities for the general public. 
 
-Regardless of the approach to data access one must consider the use-case; what is useful or necessary in one use-case may not
+As always there are drawbacks to any approach and in this case, with no direct access to the experimental data, some information is necessarily not accessible. Moreover, every time there is the need to modify the content of the intermediate data files, one needs to run the data extraction tools on the native data again. In addition to that, only events which are identified as potentially interesting are extracted and their data reduced to be stored in the intermediate data file; so, if the end user wants to analyze and visualize other potentially interesting events, the extraction/reduction step must be performed again on the relevant data.
+
+Regardless of the approach to data access one must consider the use-case: what is useful or necessary in one use-case may not
 be for another.
+
+\missingfigure[figwidth=12cm]{schematic A - data access}
 
 
 %%% MOVED TO SECTION "Suggested guidelines"
@@ -197,15 +197,14 @@ be for another.
 \hypertarget{application-development}{%
 \subsubsection{Application development and distribution}\label{application-development}}
 
-Currently the two most common ways of distributing event display applications are as a desktop application and as a web
+Currently, the two most common ways of distributing event display applications are as a desktop application and as a web
 application running in the browser. Each approach has its advantages and disadvantages which are further described in this section.
 
-Mobile applications running on devices such as smartphones and virtual reality applications are less common in HEP. However,
-they are a growing feature in the current landscape and many experiments are being done in exploring the possibilities of those emerging technologies. At the end of this section we describe briefly the current applications released, based on those technologies. Further developments will be described in
+Mobile applications running on devices such as smartphones and virtual reality applications are less common in HEP. However, they are a growing feature in the current landscape and many experiments are being done in exploring the possibilities of those emerging technologies. At the end of this section we describe briefly the mobile applications released so far. Further developments will be described in
 Section~\ref{modern-tech}.
 
 {\bf Desktop applications} Many experiments have developed integrated event-display applications in C++, which is the main language used for developing
-HEP software frameworks, on top of the OpenGL~\cite{OpenGL1992} application program interface (API).
+HEP software frameworks, on top of the OpenGL~\cite{OpenGL1992} APIs.
 The choice of the OpenGL API, compared to other APIs like Direct3D, resides in its cross-platform nature as
 OpenGL is an open standard. The OpenGL consortium defines the API: the interface all the implementations have to
 comply with. The actual implementation is provided by vendors, usually targeting a specific hardware. Many hardware and
@@ -217,30 +216,31 @@ robust approach as the developers can take full control over the OpenGL interfac
 and the project can be independent of other software libraries. Two examples of  HEP applications which followed this path are the
 ATLAS Persint application~\cite{ATLASPersint2012} and the ROOT EVE toolkit~\cite{ROOTEVE2007}, which is used both by the CMS
 Fireworks application~\cite{CMSFireworks} and the ALICE Event Visualisation Environment (AliEve)~\cite{alieve}.
-One disadvantage of this approach is that personpower has to be assured to maintain the graphics engine.
+One disadvantage of this approach is that personpower has to be assured to maintain the graphics engine itself, on top of that needed for the development of the event display application.
+
+\missingfigure[figwidth=12cm]{schematic B - OpenGL API access}
 
 Other applications use higher-level interface libraries as graphics engines. This has the advantage of delegating
 a large part of the lower-level development work to external software packages, leaving the developers to concentrate
 on the application development itself. One of the graphics libraries most used in HEP software has been so far
-Open Inventor~\cite{OpenInventor1993}, used by the defunct CMS Iguana~\cite{CMSIguana} application, or its clone implementation
+Open Inventor~\cite{OpenInventor1993}, used by the defunct CMS Iguana~\cite{CMSIguanaPaperNIM,CMSIguana} application, or its clone implementation
 Coin (also known as Coin3D)~\cite{Coin3D}, which has been used by applications such the ATLAS VP1~\cite{ATLASVP12010},
-the LHCb Panoramix~\cite{LHCbPanoramix} and the desktop version of the defunct CMS iSpy~\cite{CMSISpy}. Coin / Open Inventor was
+the LHCb Panoramix~\cite{LHCbPanoramix} and the defunct desktop version of the CMS iSpy~\cite{CMSISpy}. Coin / Open Inventor was
 chosen because of its integrability in C++ code, its performance, and its coding style. Moreover, the way Open Inventor handles
-graphical volumes could be easily matched with the way geometry volumes are built for the experiments’ detector description.
+graphical volumes could be easily matched with the way geometry volumes are handled to describe the detectors in HEP experiments.
 Open Inventor organizes geometry volumes as a series of nodes in a tree-like structure in the same way as some
 HEP experiments do. ATLAS, for instance, developed their geometry library “GeoModel”~\cite{ATLASGeoModel2004} based on
 the same tree-like structure of nodes used by Open Inventor.
 
-The drawback of this approach is the dependency on external projects, which could end up with a loss of functionality if
+The drawback of this approach is the dependency on external software projects, which could end up with a loss of functionality if
 third-party library development and support are abandoned. Many scientific visualization applications, also in fields other than
-HEP, faced this when the support of the Coin library was dropped by the company which lead its development~\cite{CoinEndOfLifeLetter}.
-The result is the aging of libraries which after a while show incompatibilities with modern compilers and platforms. The time
+HEP, faced this when the support of the Coin library was dropped by the company that led its development~\cite{CoinEndOfLifeLetter}.
+The result is the aging of libraries which after a while show incompatibilities with modern hardware, compilers, and platforms. The time
 spent by HEP developers to repair or to maintain those abandoned libraries results is time not spent on actual development
 of the software applications themselves.
 
-An additional approach to the development of event displays targeting the desktop is to create and distribute an application using Java. The ATLANTIS~\cite{ATLASAtlantis}
-program and its derivative MINERVA~\cite{ATLASMinerva} which is used as an educational tool, both developed for the ATLAS experiment,
-can be run either on the web or standalone on the desktop.
+An additional approach to the development of event displays is to create and distribute an application using the Java programming language. The Atlantis~\cite{ATLASAtlantis}
+program and its derivative MINERVA~\cite{ATLASMinerva}, which is used as an educational tool, both developed for the ATLAS experiment, are based on the Java graphics libraries and can be run either online in a web browser or standalone on a desktop machine.
 
 
 {\bf Web-based applications} Several experiments at the LHC, notably CMS~\cite{CMSISpyWebGL}, LHCb~\cite{LHCbOnline2014}, and ATLAS
@@ -252,15 +252,17 @@ graphical user interface toolkits such as Qt~\cite{QtFramework}.
 
 Browser-based event displays have several distinct advantages: they are easy to distribute to the user, they can be prototyped quickly
 , and the client is often much lighter-weight, as the need for building, packaging and distributing external libraries is greatly reduced.
-There are also several mature and actively developed WebGL frameworks, such as three.js~\cite{ThreeJS}, that provide straight-forward
+There are also several mature and actively developed WebGL frameworks, such as three.js~\cite{ThreeJS}, that provide straightforward
 and simplified APIs for ease of development.
+
+\missingfigure[figwidth=12cm]{See GoogleDoc document}
 
 %Image: the image summarize the current landscape of event display applications in HEP. Many experiments developed
 %full-framework desktop applications as well as light, web-based applications. As one can see from the plot, there
 %are no examples so far of full-framework applications using web-based visualization graphics. A new approach in that
 %direction is what it is suggested in this paper, in section [add ref].
 
-{\bf Mobile and virtual reality applications} Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
+{\bf Mobile applications} Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
 smartphones to ultrabooks. Those devices are used more and more as substitutes for desktop and laptop machines.
 
 
@@ -268,33 +270,27 @@ Mobile devices still do not have the computing power usually needed for HEP data
 are retrieved and processed. In addition they usually run dedicated operating systems whose self-contained nature
 makes their integration within the HEP workflow difficult, particularly for the statistical-based visualization used in
 data analysis, described in Section~\ref{statistical-data-visualization}. Currently event visualization on mobile devices is only
-possible in experiments which developed web-based tools. Only the visualization of events which have been already
+possible in experiments which developed web-based tools. Also, as it is not possible to access  native experimental data, only the visualization of events which have been already
 extracted and reduced from the experiment's framework is possible.
 
 There are at least a couple of examples of HEP applications developed for mobile platforms or that can be run on them. LHSee~\cite{LHSee}
-was a mobile application which live streamed Atlantis events to a user’s phone and provided contextual information on ATLAS and the
+was a mobile application which live streamed ATLAS events, processed and extracted through Atlantis~\cite{ATLASAtlantis}, to a user’s phone and provided contextual information on ATLAS and the
 events being displayed. The CMS iSpy WebGL-based application~\cite{CMSISpyWebGL} runs on mobile devices in the browser and users can interact
-with the visualization with touch events. The Camelia application~\cite{CERNCamelia} and its successor TEV~\cite{CERNTEV} developed by the
-CERN Media Lab using the Unity game engine, can be run on mobile devices as well.
+with the visualization by the use of touch events. The Camelia application~\cite{CERNCamelia} and its successor TEV~\cite{CERNTEV}, developed by the
+CERN Media Lab using the Unity game engine~\cite{Unity3D}, can be built as a mobile application by using the tools provided by the game engine and run on mobile devices as well. More details on game engines can be found in Section \ref{graphic-engines}.
 
-Virtual reality (VR) describes the simulation of the user’s physical presence in a virtual environment. This simulation is typically
-delivered via a HMD (Head Mounted Display) that provide visual and aural experience of the simulated environment. Rotational and
-positional tracking of the user’s head and hand motion (when available) allow for interaction and motion in the virtual environment.
+{\bf Virtual and augmented reality applications} Virtual Reality (VR) simulates the user’s physical presence in a virtual environment, and the application is typically run on a head-mounted display that provides visual and aural experience of the simulated environment. Different degrees of realism and immersion are possible, depending on the targeted hardware.
 
-There are several ways to deliver VR to the user with varying levels of functionality, accessibility, and cost. They range from
-applications running on a mobile phone viewed through simple headsets to the most realistic and immersive VR experiences provided
-by the combination of advanced HMDs and desktop computers.
+VR technologies can be used to build immersive applications, to let the general public virtually visit HEP detectors and explore experimental sites. Many HEP experiments started developing VR applications, mostly as an educational tool, for outreach events. As many HEP experiments are not accessible during data taking or are classified as supervised areas due to security or safety issues, VR applications let the HEP community open their sites and experiments to the general public. Also, they let people look at simulated  collisions in a simplified yet realistic environment, which help people acquire the basic concepts on which HEP experiments are built and run. Such applications are currently used in public events, in museums and science centers, and in meetings with the governments and the funding agencies.
 
-The simplest VR headset device is a Google Cardboard~\cite{GoogleCardboard} which allows the user to view content in stereo mode with
-simple rotational tracking via a smart phone (using a mobile browser or a dedicated application) and a viewer. CMS iSpy WebGL running
-in a mobile browser is one such application that can be used in this mode.
+Augmented Reality (AR), instead, uses a camera to take a view of the real world around the user and screen where simulated objects are rendered in 3D and shown on top of that image dynamically, following the user's interaction and motion. This lets the user move within an environment where real and simulated objects live together. AR can be used in HEP as an educational tool, for instance to dynamically show and describe a HEP detector to a group of people or a class. Some HEP experiments have been started exploring AR  technologies for HEP.
 
-Currently, the most immersive and interactive VR environments are provided by the Oculus Rift and the HTC Vive, which combine the
-computing resources of the desktop with sensors, controllers, and high-quality HMDs. Thanks to game engine’s abstraction of third
-party VR libraries most HEP applications should be able to natively support both standard displays and all VR hardware.
-Both ATLASrift~\cite{ATLASRift} and Belle II VR~\cite{BelleIIVR} support Oculus, HTC Vive, and 2D displays; CMS.VR [ref needed] for
-Oculus and HTC. “More than ALICE” is an Augmented Reality application developed in Unity, allowing to superimpose detectors description or event
-visualisation of the camera image of the ALICE detector or its paper model.
+Both VR and AR applications are usually developed in specialized graphics engines, which prevent the interaction with the experiment's framework to access native data. That currently prevents the use of such technologies for scientist-targeted event display applications.
+
+More details on VR and AR applications for HEP in Section \ref{vr}.
+
+
+
 
 \hypertarget{geometry-description}{%
 \subsubsection{Geometry description and visualization}\label{geometry-description}}
@@ -302,7 +298,7 @@ visualisation of the camera image of the ALICE detector or its paper model.
 Geometry visualization provides important visual context for event displays and dedicated geometry displays are useful applications by themselves.
 There are typically three levels of detail found in applications. The most detailed geometry is typically called the simulation geometry
 and can include the sensitive elements of the detector as well as support structure. Less detailed is the so-called reconstruction
-geometry, which describes the senstitive elements of the detector such as calorimeter elements and wire and strip chambers. It is this level of
+geometry, which describes the sensitive elements of the detector such as calorimeter elements and wire and strip chambers. It is this level of
 detail that is typically found in event displays. The least-detailed geometry descriptions are those that are simplified versions of the
 detector.
 
@@ -647,7 +643,7 @@ add custom content and objects and to interact with their own framework to retri
 \subsection{Exploring modern technologies}\label{modern-tech}}
 
 \hypertarget{graphic-engines}{%
-\subsubsection{Graphics engines}\label{graphic-engines}}
+\subsubsection{Graphics and game engines}\label{graphic-engines}}
 
 As briefly told earlier, so far direct OpenGL or old graphics libraries have been used in HEP visualization applications. Nowadays,
 another type of graphics library is rapidly evolving, those embedded in the so-called game engines. Those are software frameworks
@@ -709,41 +705,44 @@ of the Belle II detector~\cite{BelleII}, with tens of thousands of elements, can
 browser – even on a smartphone – very effectively~\cite{SketchFabBelleII}.
 
 \hypertarget{vr}{%
-\subsubsection{Virtual reality}\label{vr}}
+\subsubsection{Virtual and augmented reality}\label{vr}}
 
-Virtual reality (VR) describes the simulation of the user’s physical presence in a virtual environment. This simulation
-is typically delivered via a Head Mounted Display (HMD) that provides visual and aural experience of the simulated environment.
-Rotational and positional tracking of the user’s head and hand motion (when available) allow for interaction and navigation
-in the virtual environment.
+
+As briefly described in Section \ref{application-development}, Virtual reality (VR) describes the simulation of the user’s physical presence in a virtual environment. This simulation
+is typically delivered via a Head Mounted Display (HMD) that provides visual and aural experience of the simulated world. Rotational and positional tracking of the user’s head and hand motion (when available) allow for interaction and navigation in the virtual environment. 
+This lets the user live an immersive experience of the virtual world.
 
 There are several ways to deliver VR to the user with varying levels of functionality, accessibility, and cost.
 They range from applications running on a mobile phone viewed through simple headsets to the most realistic and
 immersive VR experiences provided by the combination of advanced HMDs and desktop computers.
 
-The simplest and most inexpensive way to deliver VR is via the browser on a mobile phone and viewed through a
-Google Cardboard headset. The Cardboard viewer can itself be literally made from cardboard. With device orientation
-controls either in a native application or using the HTML5 device orientation API in the browser one has rotational
-tracking ({\it i.e.}\ 3 degrees-of-freedom). No hand controller is used in the Cardboard but for native applications a click event
+The simplest and most inexpensive way to deliver VR is via the web browser on a mobile phone and viewed through a Google Cardboard~\cite{GoogleCardboard} headset (which can itself be literally made from cardboard). Rotational tracking ({\it i.e.}\ 3 degrees-of-freedom) is achieved through device orientation
+controls, either in a native application or using the HTML5 device orientation API in the browser. No hand controller is used in the Cardboard but for native applications a click event
 is available via a magnet attached to the Cardboard viewer.
 
-The Google Daydream is the next iteration in VR for Google. Content is still delivered by a mobile phone but a
-Bluetooth-connected hand controller (with only rotational tracking) is available. Stand-alone HTC Vive and Lenovo
-headsets for the Daydream environment will be available in the near future.
+The Google Daydream~\cite{GoogleDaydream} is the next iteration of viewers developed by Google for their Google VR technology. Content is still delivered by a mobile phone (thus, the performance is limited by the computing power of the phone) but a
+Bluetooth-connected hand controller with rotational tracking is available (stand-alone HTC Vive and Lenovo headsets for the Daydream environment have been announced as available in the near future).
 
-Currently, the most immersive and interactive VR environments are provided by the Oculus Rift and the HTC Vive,
-which combine the computing resources of the desktop with sensors, controllers, and high-quality HMDs. Thanks to
-game engine’s abstraction of third party VR libraries most HEP applications should be able to natively support both
-standard displays and all VR hardware. Both ATLASrift~\cite{ATLASRift} and Belle II VR~\cite{BelleIIVR} support Oculus, HTC Vive,
-and 2D displays; CMS.VR (not released yet) for Oculus and HTC.
+Currently, the most immersive and interactive VR environments are provided by the Oculus Rift~\cite{OculusRift} and the HTC Vive~\cite{HTCVive},
+which combine the computing resources of a desktop machine with sensors, controllers, and high-quality HMDs. Those sophisticated devices are quite expensive (even if prices are lowering in the last months) and require a quite powerful computer to run. The presence of a proper computer lets solve the performance issue of phone-based viewers, since the 3D graphics computations are handled by the computer, but that also rise the initial budget for people willing to test such technologies, and that limits the number of people getting access to such platforms, as like as their usage in public events organized by HEP institutes.
 
-Development in the mobile browser for VR can be done using a WebGL library such as three.js~\cite{ThreeJS} and using the
-HTML device orientation control API. The viewport is split into two views for each eye each with separate cameras separated
+In between, a new type of device has been recently developed: a standalone viewer, equipped with an on-board CPU, able to run medium computation-intensive applications. Those devices lower the budget needed to develop and deploy VR applications significantly. One example of those new devices is Oculus Go\cite{OculusGo}. 
+
+Game engines, described in Section~\ref{graphic-engines},  provide powerful integrated development environments for creation of VR applications targeting multiple devices. Thanks to engines' abstraction of third party VR libraries, most HEP experiments should be able to develop VR applications which natively support both standard displays and all VR hardware. Currently, both ATLASrift~\cite{ATLASRift} and Belle II VR~\cite{BelleIIVR} support Oculus, HTC Vive,
+and standard 2D displays; CMS is working on CMS.VR (to be released), targeting Oculus and HTC. 
+
+Development of web-based VR applications for mobile browser can be done using a WebGL library such as three.js~\cite{ThreeJS} and using the
+HTML device orientation control API. The viewport is split into two views for each eye, each with dedicated camera view separated
 by an appropriate distance to create a stereoscopic effect ({\it e.g.}\ iSpy WebGL has a stereo mode for Google Cardboard)
 The developing WebVR specification~\cite{WebVR} provides interfaces to VR hardware via the browser. A powerful framework for
 development of VR applications for various devices using the browser is A-Frame~\cite{AFrame}. ({\it e.g.}\ CMS A-Frame prototype)
 
-Game engines, described in the previous section [add ref],  provide powerful integrated development environments for creation
-of VR applications for multiple devices.
+
+Augmented Reality (AR) applications use the device's camera to looks at world around the user, to use that as an underlying layer over which dynamically rendering simulated virtual entities, based on the user's interaction and motion. The user can navigate in the real world, looking at and interacting with the virtual objects. AR technology can be used in HEP as an educational tool, for instance to dynamically show and describe a HEP detector to a group of people or a class. HEP experiments started to explore the possibilities offered by AR for outreach and education: ATLAS in Your Pocket~\cite{AtlasPocket}, developed using the Vuforia framework (commercial, but free for development), uses printed marks to place a rendered geometry of the ATLAS detector on top of a view of the real world in front of the user. ``More than ALICE''~\cite{MoreThanALICE} is an AR application developed using Unity~\cite{Unity3D}, allowing to superimpose detectors description or event
+visualisation to the camera image of the actual ALICE detector (for example, during public visits to the experimental site) or its paper model.
+
+VR and AR applications could be used, in principle, to build event displays and data visualization tools for research work, as well; but the current data access model prevents a straightforward use of those technologies together with the experiments' software frameworks. Future client-server approach to data access could fill the current gap and let developers build new VR and AR tools with HEP physicists as end user targets.
+
 
 \hypertarget{multi-user}{%
 \subsubsection{Multi-user applications}\label{multi-user}}
