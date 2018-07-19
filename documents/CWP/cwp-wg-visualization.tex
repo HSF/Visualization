@@ -9,6 +9,7 @@
 \usepackage{subcaption}
 \usepackage{xspace}
 \usepackage{todonotes}
+\usepackage{epigraph}
 
 \usepackage[utf8]{inputenc}
 
@@ -99,6 +100,8 @@ Suggestions for the upgrade of data visualization tools and techniques in curren
 \hypertarget{scope}{%
 \section{Scope}\label{scope}}
 
+\epigraph{Visualization: Turning numbers into pixels}{\textit{Hadrien Grasland \\ HSF Workshop 2017, Annecy}}
+
 This paper will describe three kinds of data visualization used in High-Energy Physics (HEP): interactive visualization
 of event data in applications known commonly as \emph{event displays}, statistical data visualization such as
 histograms, and non-spatial data visualization such as networks and graphs.
@@ -118,7 +121,7 @@ described in the HSF \textit{Data Analysis and Interpretation} Community White P
 Other types of visualizations are used in HEP to
 visualize non-spatial data, like the graphs used to visually describe the structure of the detector description, that is 
 the representation of all geometrical volumes that compose the sub-detectors and the infrastructure of a HEP experiment.
-More details about the detector geometry can be found in the HSF \textit{Detector Simulation} Community White Paper~\cite{HSF-CWP-2017-07}
+More details about the detector geometry can be found in the HSF \textit{Detector Simulation} Community White Paper~\cite{HSF-CWP-2017-07}.
 
 Other types of data visualization used in HEP experiments, such as visualization for slow control
 or dashboards for data analytics, are considered out of scope and they will be not discussed in this chapter.
@@ -296,11 +299,14 @@ More details on VR and AR applications for HEP in Section \ref{vr}.
 \subsubsection{Geometry description and visualization}\label{geometry-description}}
 
 Geometry visualization provides important visual context for event displays and dedicated geometry displays are useful applications by themselves.
-There are typically three levels of detail found in applications. The most detailed geometry is typically called the simulation geometry
-and can include the sensitive elements of the detector as well as support structure. Less detailed is the so-called reconstruction
-geometry, which describes the sensitive elements of the detector such as calorimeter elements and wire and strip chambers. It is this level of
+There are typically three levels of detail found in applications. The most detailed geometry is typically called the \textit{simulation geometry}
+and can include the sensitive elements of the detector as well as support structure; this geometry is visualized in applications with detector experts among their end users. Less detailed is the so-called \textit{reconstruction geometry}, which describes the sensitive elements of the detector such as calorimeter elements and wire and strip chambers. It is this level of
 detail that is typically found in event displays. The least-detailed geometry descriptions are those that are simplified versions of the
-detector.
+detector, usually found in standalone or web-based applications.
+
+\missingfigure[figwidth=12cm]{See GoogleDoc document}
+[ATLASED072015]
+
 
 In framework-based applications the geometry information can come directly from the experiment's detector description and in
  many cases the hierarchical structure of the detector description is preserved and accessible. Standalone applications
@@ -311,12 +317,11 @@ application.
 
 
 Currently, different geometry formats and libraries are used in HEP.
-Some experiments use their own custom format, while others use the geometry tools provided by the ROOT. More recently, some attempts have been
+Some experiments use their own custom format, while others use the geometry tools provided by the ROOT framework~\cite{Root1997}. More recently, some attempts have been
 done in order to build common formats and libraries for detector geometry, like DD4HEP,  adopted in conceptual design studies
 for future high-energy colliders, including the CLICdp and FCC collaborations. In all cases detector
 volumes are built from simpler geometrical entities: geometrical shapes like Tube, Cone, Box, and more complex variations of these
-are combined in order to build the volumes of the experiment’s geometry. Geometry libraries and formats are described in more details
-in the ??? HSF CWP White Paper.
+are combined in order to build the volumes of the experiment’s geometry. Geometry libraries and formats are also described in the HSF \textit{Detector Simulation} Community White Paper~\cite{HSF-CWP-2017-07}.
 
 The differences in geometry formats used by the different experiments, by detector simulation programs like Geant4~\cite{Geant4},
 and by data analysis frameworks (like ROOT), typically require developers of visualization applications to write converters
