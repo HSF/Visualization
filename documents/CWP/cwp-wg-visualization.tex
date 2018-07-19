@@ -304,8 +304,8 @@ and can include the sensitive elements of the detector as well as support struct
 detail that is typically found in event displays. The least-detailed geometry descriptions are those that are simplified versions of the
 detector, usually found in standalone or web-based applications.
 
-\missingfigure[figwidth=12cm]{See GoogleDoc document}
-[ATLASED072015]
+\missingfigure[figwidth=12cm]{[ATLASED072015] - See GoogleDoc document}
+
 
 
 In framework-based applications the geometry information can come directly from the experiment's detector description and in
@@ -355,12 +355,11 @@ In HEP, like most other scientific disciplines, visualization of the data and of
 analysis pipeline: the right projection of the data will suggest a new course of action; the results must be summarized in a
 clear and concise way; multidimensional parameter spaces need to be visualized in an understandable fashion. The discussion
 of how to properly display data is not new~\cite{Tufte1986}, but the tools are constantly evolving. Since its introduction 20 years ago,
-ROOT~\cite{Root1997}, has become the most widely used package to make plots, graphics, and even event displays. It was developed at a
+ROOT~\cite{Root1997} has become the most widely used package in HEP to make plots, graphics, and even to build event displays. It was developed at a
 time when there were few alternatives to the community that did not have a significant financial cost and has performed admirably.
 
 However, the landscape has changed and there are several existing tools, driven by non-HEP communities. This section will look at
-some of the current alternatives and comment on what options might be available in the future and what our needs are. This section
-will not address any visualization related to event displays, and instead focus on the making of plots and graphs, which 
+some of the current alternatives and comment on what options might be available in the future and what our needs are. This section focus on the making of plots and graphs, which 
 spans a large parameter space of options on its own. For more details on HEP data analysis, please refer to the HSF \emph{Data Analysis and Interpretation} Community White Paper~\cite{HSF-CWP-2017-05}.
 
 \hypertarget{stats-desktop}{%
@@ -370,18 +369,18 @@ As it stands, ROOT is the most widely adopted plotting tool within the HEP and N
 It has even made some inroads to the astrophysics community and some small pockets within the financial community,
 where some physicists migrated to. However, few other disciplines have adopted it. Still, it has many features beyond
 the standard 1D/2D/3D histogram/graphing tools such as 2D and 3D shapes, widgets for building a GUI, a Javascript
-implementation for web-based analysis~\cite{rootjs} and interacts with the Jupyter notebook. But to
+implementation for web-based analysis~\cite{rootjs} and interacts with the Jupyter notebook~\cite{JupyterNotebook}. But to
 access the plotting features, an analyst must install the entire ROOT package which includes file I/O, scientific
 libraries, fitting routines, etc.\ and often the installation process is non-trivial.
 
-Many current HEP analysts make wide use of the python programming language and the PyROOT libraries.
+Many current HEP analysts make wide use of the python programming language and the PyROOT libraries~\cite{PyROOT}.
 Python is also very popular outside the HEP community and so it is worth looking at non-ROOT options available to python users.
 A recent (as of 2017) summary of the field was presented by Jake VanderPlas at PyCon 2017~\cite{VanderPlas2017}, a subset
 of which will be presented here. It is emphasized that this is just a sampling and that the number of options available
 is a function of time.
 
 \begin{itemize}
-\item Matplotlib~\cite{Hunter2007}. Released in 2003, this is the most mature plotting tool for python and is the standard
+\item The Python library \textit{matplotlib}~\cite{Hunter2007}, released in 2003, is the most mature plotting tool for python and is the standard
 for most users. It can produce journal-quality graphics and there are some add-ons that can improve the default plotting
 options~\cite{seaborn}. It does 1D, 2D, and 3D graphics with varying degrees of success, but does not
 integrate with OpenGL libraries and so it can slow down when the number of data points gets very large.
@@ -390,14 +389,12 @@ to make histograms with error bars. Plots are reactive in the sense that you can
 but you cannot do anything more significant with other mouseover commands (links, additional information, etc.).
 
 \item The R programming language has several widely used graphics tools, both built-in or provided by external modules.
-ggplot2~\cite{Wickham2009} and lattice~\cite{Sarkar2008} are particularly useful to visualize data in multidimensional parameter spaces.
-ggplot2 is an implementation of The Grammar of Graphics~\cite{Wilkinson2005}. lattice is an implementation of Trellis Display~\cite{Trellis}.
-Both packages are very popular outside the HEP community. A wide range of learning materials for both packages are available in
-books, online courses, and other media. Both packages are well developed and matured. ggplot2 is now in the maintenance mode
-and offers an official extension mechanism, with which users can easily develop new features. lattice has longer history.
-In 2005, the year ggplot2 first appeared, lattice was already popular. In fact, figures made with lattice were shown in the
+\textit{ggplot2}~\cite{Wickham2009} and \textit{lattice}~\cite{Sarkar2008} are particularly useful to visualize data in multidimensional parameter spaces.
+\textit{ggplot2} is an implementation of the guidelines contained in the classic text \textit{The Grammar of Graphics}~\cite{Wilkinson2005}, while \textit{lattice} is an implementation of the so-called \textit{Trellis Display}~\cite{Trellis}.
+Both packages are very popular outside the HEP community. and a wide range of learning materials are available in books, online courses, and other media. Both packages are well developed and matured and offer mechanism for users to extend them by adding new features. 
+\textit{lattice} has longer history: in 2005, the year \textit{ggplot2} first appeared, \textit{lattice} was already popular. In fact, figures made with \textit{lattice} were shown in the
 presentation in PHYSTAT05~\cite{phystat05} which introduced R to the
-particle physics community. lattie is also well maintained. It is also easy for users to develop new features of lattice.
+particle physics community. 
 \end{itemize}
 
 \hypertarget{stats-web}{%
@@ -417,10 +414,10 @@ link of the data to the DOM entities and the possibility to work with SVG object
 upon which many higher level toolkits are built.
 
 \item Bokeh~\cite{Bokeh2014}. This is a plotting utility from Continuum~\cite{continuum}, the company behind the
-Anaconda distribution system and other python modules. It is designed with the web in mind and builds in a high degree of
+\textit{Anaconda} Python distribution system and other python modules. It is designed with the web in mind and builds in a high degree of
 interactivity into the plots, making it useful to share results publicly and for building dashboards. However, it works by
 writing HTML, which makes it difficult to work with unless you use specific IDEs like a Jupyter notebook. Exporting a figure
-for a journal article ({\it e.g.}\ png) is non-trivial as well, as that is not currently the primary use-case for bokeh.
+for a journal article ({\it e.g.}, in the PNG format) is non-trivial as well, as that is not currently the primary use-case for bokeh.
 
 \item Plotly~\cite{Plotly2015}. This is another web-oriented solution, similar to bokeh and based on the D3 library, where plots
 can be hosted in Plotly’s cloud service or viewed in a Jupyter notebook. The plots are similarly very interactive and there
@@ -435,7 +432,7 @@ is now exploring more interactive user interface paradigms, including in the are
 exploring a more MATLAB-like IDE user experience inside of the web browser, with features such as multiple source editing tabs
 and interactive python consoles. Its ipywidgets sub-project tries to make Jupyter more interactive by moving more visualization
 work to client-side Javascript and introducing classic GUI widgets (sliders, checkboxes…) for interacting with the live visualization.
-Belle II has started to use Jupyter notebooks to train new users in data analysis – the learning curve is much gentler than in
+The Belle II experiment has started to use Jupyter notebooks to train new users in data analysis – the learning curve is much gentler than in
 traditional terminal-based tutorials and the time to useful visualization of results is much faster.
 
 In conclusion, there are mainly two classes of interactive plotting tools: data exploration tools and data presentation tools.
@@ -452,7 +449,7 @@ are part of this group.
 The suite of statistical plotting tools in ROOT, Matplotlib, etc.\ are adequate for analysis, and their development is
 very responsive to analysts’ needs. However, it is often hard to separate plot-making abilities from the data analysis framework.
 As a consequence, if a physicist’s data can only be found on a particular server, the plot-generating code must also be located
-there and are sometimes hard to bring to the physicist’s laptop screen. In the worst cases, graphics files (PNGs) must be copied
+there and the outcome is sometimes hard to bring to the physicist’s laptop screen. In the worst cases, graphics files (PNGs) must be copied
 from the server to the laptop for viewing. This causes a high interaction latency, discouraging exploration. That’s why the
 development of new tools should go towards a sharper separation between the computation on data and the interactive data visualization
 routines, pushing the latter to the client side as much as possible.
@@ -463,9 +460,11 @@ colors, and such— are so deeply buried in the analysis script that persistifyi
 of the statistics. Changes to the final plot through the usage of on-display user interfaces, in fact, are overwritten and lost if a
 plot is updated for other reasons (new version of data upstream, for example). Here, one could use inspiration from the increasing
 separation of logic and presentation that is occurring in GUI toolkits (see {\it e.g.}\ use of CSS stylesheets in the GTK/GNOME environment).
+\end{itemize}
+
 A looser coupling between style and content, as well as a looser coupling between locality of computation and locality of rendering,
 would benefit the physics community.
-\end{itemize}
+
 
 \hypertarget{non-spatial-visualization}{%
 \subsection{Non-spatial visualization}\label{non-spatial-visualization}}
@@ -476,31 +475,38 @@ The Detector Description is an example of a source of such data: it describes al
 The different pieces of the Detector Description are interconnected through different relationships: geometrical volumes can be organized
 in a parent-child relationship, or a property node can be shared among many volumes. The visualization of those data in a network helps
 developers in the understanding and the debugging of the Detector Description, by visualizing the relationships among all the nodes and
-their properties. The images below show an example of a graph visualizing the inner structure of a HEP detector description.
+their properties. The images below show an example from the ATLAS experiment \cite{ATLASGeoModel2017} of a graph visualizing the inner structure of a HEP detector description.
 
-Image: graph visualizing the structure of the nodes describing a subset of Pixel detectors. Different colors identify different types
-of node. In this example, the “boolean shape” nodes (in red) describing a subset of Pixel volumes are shown. [ATLASGeoModel2017]
 
-Image: A graph visualizing the first layer of the nodes of the ATLAS Detector Description. The green nodes are the logical volumes used
-by the top physical volumes (in blue), while the red nodes are name the subtree following them; the yellow and grey nodes are different
-kinds of space transforms. Network or graphs are very effective ways of visualizing tree-like data, because they are able to show all the
-nodes, their relationships and their properties in a proper way. Some degree of interactivity can let the scientists applying different
-filters and layout, helping them to get rid of the clutter, to better understand and analyze the data [ATLASGeoModel2017].
+\missingfigure[figwidth=12cm]{Image: [ATLASGeoModel2017]}
+
+graph visualizing the structure of the nodes describing a subset of Pixel detectors. Different colors identify different types of node. In this example, the “boolean shape” nodes (in red) describing a subset of Pixel volumes are shown.
+
+
+\missingfigure[figwidth=12cm]{Image: [ATLASGeoModel2017]} 
+
+A graph visualizing the first layer of the nodes of the ATLAS Detector Description. The green nodes are the logical volumes used by the top physical volumes (in blue), while the red nodes are name the subtree following them; the yellow and grey nodes are different kinds of space transforms. Network or graphs are very effective ways of visualizing tree-like data, because they are able to show all the 	nodes, their relationships and their properties in a proper way. Some degree of interactivity can let the scientists applying different filters and layout, helping them to get rid of the clutter, to better understand and analyze the data.
+
 
 Another example of HEP data that can benefit from a graph-based visualization is that one describing the execution chain of the jobs
-used to filter and reconstruct the experimental data. Very recently HEP experiments [add refs] began to develop new parallel frameworks
-to concurrently handle analysis or reconstruction jobs, to efficiently exploit the parallelism offered by the modern hardware.
+used to filter and reconstruct the experimental data. Very recently HEP experiments began to develop new parallel frameworks
+to concurrently handle analysis or reconstruction jobs, to efficiently exploit the parallelism offered by the modern hardware (more details can be found in the HSF \textit{Event/Data Processing Frameworks} Community White Paper~\cite{HSF-CWP-2017-08}).
 The jobs are handled by a scheduler, which organize them according to their need input and output data. The outcome of the scheduler
 is a directed acyclic graph (DAG). The visualization of that by mean of a graph helps the developer understanding and debugging the
 reconstruction code and the experiment’s framework itself.
 
-All those data are not space- nor time-dependent, and they are better visualized through a graph or a network. Graph-based visualization,
-as well as graph-databases, are somehow new tools in the HEP landscape; but they can be very powerful tools to effectively visualize
-non-spatial data which are by their nature organized with a network layout. Some experiments started to integrate them in their
-toolkits [ATLASGeoModel2017, add other refs...], but we suggest the community to further explore those tools, to better explore the
-possibility offered by graph-based solutions and exploit them for the HEP needs.
+Other HEP experiments use graph-based tools to analyze and visualize other types of data, like geographical distribution and load of computer networks used to transfer data between GRID sites \cite{???} % % ??? Add this: https://indico.cern.ch/event/382624/attachments/762785/1046477/proximity.pdf
+ or to store and query conditions data \cite{Clemencic:2012cw}.
 
-More examples from the other experiments, if any and if possible...
+
+All those data are not space- nor time-dependent, and they are better visualized through a graph or a network. Graph-based visualization,
+as well as graph-databases, are somehow new in the HEP landscape; but they can be very powerful tools to effectively visualize
+non-spatial data which are by their nature organized with a network layout. We suggest the community to further explore those tools, to better understand the possibility offered by graph-based solutions for the HEP needs.
+
+
+% More examples from the other experiments, if any and if possible... ==> I didn't find any other example]
+
+
 
 \hypertarget{suggested-guidelines}{%
 \section{Suggested guidelines and future development}\label{suggested-guidelines}}
