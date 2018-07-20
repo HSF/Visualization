@@ -175,10 +175,16 @@ With the use of an intermediate data format (usually based on different flavors 
 
 As always there are drawbacks to any approach and in this case, with no direct access to the experimental data, some information is necessarily not accessible. Moreover, every time there is the need to modify the content of the intermediate data files, one needs to run the data extraction tools on the native data again. In addition to that, only events which are identified as potentially interesting are extracted and their data reduced to be stored in the intermediate data file; so, if the end user wants to analyze and visualize other potentially interesting events, the extraction/reduction step must be performed again on the relevant data.
 
-Regardless of the approach to data access one must consider the use-case: what is useful or necessary in one use-case may not
-be for another.
+Regardless of the approach to data access one must consider the use-case: what is useful or necessary in one use-case may not be for another.
 
-\missingfigure[figwidth=12cm]{schematic A - data access}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{img/eventDisplays_applications_types}
+	\caption[Different types of event display applications]{The wto different types of event display applications. At the top, the framework-integrated event display application is able to access all experimental data, all services, APIs, and databases provided by the experimenbt's framework; as a drawback, the application must be run on specific platforms supported by the framework and it must use only graphics and GUI libraries compatible with them. At the bottom, the standalone approach, where experimental data are accessed, filtered, and extracted by using custom data exporters, which create intermediate data files containing only the interesting pieces of information; then, a standalone event display application reads those data in and it creates the required visualization; the advantage is having a cross-platform application which can use any graphics and GUI libraries, while the drawback is the lack of direct and full access to the experimental data and to the experiment's software tools, which prevents a detailed, full visualization.}
+	\label{fig:eventdisplaysapplicationstypes}
+\end{figure}
+
 
 
 %%% MOVED TO SECTION "Suggested guidelines"
@@ -258,7 +264,15 @@ Browser-based event displays have several distinct advantages: they are easy to 
 There are also several mature and actively developed WebGL frameworks, such as three.js~\cite{ThreeJS}, that provide straightforward
 and simplified APIs for ease of development.
 
-\missingfigure[figwidth=12cm]{See GoogleDoc document}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\linewidth]{img/Current_Visualization_Landscape_v3}
+	\caption[Current landscape of event display applications in HEP]{The image summarize the current landscape of event display applications in HEP. Many experiments developed full-framework desktop applications as well as light, web-based applications. As one can see from the plot, there are no examples, so far, of full-framework applications using web-based visualization graphics, due to the data access issues with today's experiments' frameworks. A new approach in that direction is what it is suggested in this paper, in Section \ref{client-server}.}
+	\label{fig:currentvisualizationlandscape}
+\end{figure}
+
+
 
 %Image: the image summarize the current landscape of event display applications in HEP. Many experiments developed
 %full-framework desktop applications as well as light, web-based applications. As one can see from the plot, there
@@ -279,7 +293,8 @@ extracted and reduced from the experiment's framework is possible.
 There are at least a couple of examples of HEP applications developed for mobile platforms or that can be run on them. LHSee~\cite{LHSee}
 was a mobile application which live streamed ATLAS events, processed and extracted through Atlantis~\cite{ATLASAtlantis}, to a user’s phone and provided contextual information on ATLAS and the
 events being displayed. The CMS iSpy WebGL-based application~\cite{CMSISpyWebGL} runs on mobile devices in the browser and users can interact
-with the visualization by the use of touch events. The Camelia application~\cite{CERNCamelia} and its successor TEV~\cite{CERNTEV}, developed by the
+with the visualization by the use of touch events. The Camelia application~\cite{CERNCamelia}, % and its successor TEV~\cite{CERNTEV}
+developed by the
 CERN Media Lab using the Unity game engine~\cite{Unity3D}, can be built as a mobile application by using the tools provided by the game engine and run on mobile devices as well. More details on game engines can be found in Section \ref{graphic-engines}.
 
 {\bf Virtual and augmented reality applications} Virtual Reality (VR) simulates the user’s physical presence in a virtual environment, and the application is typically run on a head-mounted display that provides visual and aural experience of the simulated environment. Different degrees of realism and immersion are possible, depending on the targeted hardware.
