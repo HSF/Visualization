@@ -6,10 +6,15 @@
 \usepackage{jheppub}
 
 \usepackage{graphicx}
+%Path relative to the main .tex file 
+\graphicspath{ {./img/} }
+
 \usepackage{subcaption}
 \usepackage{xspace}
 \usepackage{todonotes}
 \usepackage{epigraph}
+\usepackage{subcaption}
+\usepackage{mwe}
 
 \usepackage[utf8]{inputenc}
 
@@ -73,7 +78,7 @@ Suggestions for the upgrade of data visualization tools and techniques in curren
 \affiliation[a]{Siena College, Loudonville NY, USA}
 \affiliation[b]{Cornell University, Ithaca NY, USA}
 \affiliation[c]{University of Pittsburgh, Pittsburgh PA, USA}
-\affiliation[d]{LSST, Alice, LPC}
+\affiliation[d]{CNRS/IN2P3, Clermont-Ferrand, France}%{LSST, Alice, LPC}
 \affiliation[e]{University of Ljubljana, Ljubljana, Slovenia}
 \affiliation[f]{CERN, Geneva, Switzerland}
 \affiliation[g]{LAL, Université Paris-Sud and CNRS/IN2P3, Orsay, France}
@@ -84,7 +89,7 @@ Suggestions for the upgrade of data visualization tools and techniques in curren
 \affiliation[l]{University of Massachusetts, Amherst MA, USA}
 \affiliation[m]{University of California at San Diego, San Diego CA, USA}
 \affiliation[n]{University of Illinois, IL, USA}
-\affiliation[o]{Warsaw, Poland}
+\affiliation[o]{CERN, Geneva, Switzerland}%{ALICE, Warsaw, Poland}
 \affiliation[p]{Virginia Tech, VA, USA}
 \affiliation[q]{Princeton University, Princeton PA, USA}
 \affiliation[r]{LMU Munich, Munich, Germany}
@@ -149,6 +154,65 @@ In addition to the interactive usage, applications often store different setting
 In the following subsections several important aspects of data access, application development and distribution, and geometry description
 and visualization, as they pertain to the current landscape of event displays, are discussed in more detail.
 
+%[ATLASED042016]
+%[ATLASED072015]
+%[OPEN-PHO-EXP-2015-013]
+%[ALICE-EVENTDISPLAY-2017-007]
+%{other images from other experiments ???}
+\begin{figure*}
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ATLAS_VP1_event_display_first_stable_beam_collisions_13TeV_many-vertices_run296942_evt34013839_2016-04-23T10-51-30_v4.png}
+		\caption[ATLAS 3D event display]%
+		{{\small ATLAS 3D event display}}    
+		\label{fig:ed-atlas}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.475\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{Example-Image}
+		\caption[CMS event display]%
+		{{\small CMS event display}}    
+		\label{fig:ed-cms}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.475\textwidth}   
+		\centering 
+		\includegraphics[width=\textwidth]{run280235_ev341_2}
+		\caption[ALICE event display]%
+		{{\small ALICE event display}}    
+		\label{fig:ed-alice}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.475\textwidth}   
+		\centering 
+		\includegraphics[width=\textwidth]{2018Start2}
+		\caption[LHCb event display]%
+		{{\small LHCb event display}}    
+		\label{fig:ed-lhcb}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.475\textwidth}   
+		\centering 
+		\includegraphics[width=\textwidth]{belleII_VR}
+		\caption[Belle II VR event display]%
+		{{\small Belle II VR event display}}    
+		\label{fig:ed-belleii}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.475\textwidth}   
+		\centering 
+		\includegraphics[width=\textwidth]{Example-Image}
+		\caption[]%
+		{{\small XXX}}    
+		\label{fig:ed-xxx}
+	\end{subfigure}
+	\caption[Examples of HEP event displays]
+	{\small Different examples of HEP event display applications: \subref{fig:ed-atlas}) ATLAS 3D event display \cite{ATLASED072015,ATLASVP12010}; \subref{fig:ed-cms} CMS 3D event display \cite{}; \subref{fig:ed-alice}) ALICE 3D event display \cite{}; \subref{fig:ed-lhcb}) LHCb 3D event display \cite{LHCbED}; \subref{fig:ed-belleii}) Belle II VR event display \cite{BelleIIVRED}; \subref{}) ... \cite{}} 
+	\label{fig:mean and std of nets}
+\end{figure*}
+
 
 
 \hypertarget{data-access}{%
@@ -180,8 +244,8 @@ Regardless of the approach to data access one must consider the use-case: what i
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{img/eventDisplays_applications_types}
-	\caption[Different types of event display applications]{The wto different types of event display applications. At the top, the framework-integrated event display application is able to access all experimental data, all services, APIs, and databases provided by the experimenbt's framework; as a drawback, the application must be run on specific platforms supported by the framework and it must use only graphics and GUI libraries compatible with them. At the bottom, the standalone approach, where experimental data are accessed, filtered, and extracted by using custom data exporters, which create intermediate data files containing only the interesting pieces of information; then, a standalone event display application reads those data in and it creates the required visualization; the advantage is having a cross-platform application which can use any graphics and GUI libraries, while the drawback is the lack of direct and full access to the experimental data and to the experiment's software tools, which prevents a detailed, full visualization.}
+	\includegraphics[width=\linewidth]{img/eventDisplays_applications_types}
+	\caption[Different types of event display applications]{The two different types of event display applications. At the top, the framework-integrated event display application is able to access all experimental data, all services, APIs, and databases provided by the experimenbt's framework; as a drawback, the application must be run on specific platforms supported by the framework and it must use only graphics and GUI libraries compatible with them. At the bottom, the standalone approach, where experimental data are accessed, filtered, and extracted by using custom data exporters, which create intermediate data files containing only the interesting pieces of information; then, a standalone event display application reads those data in and it creates the required visualization; the advantage is having a cross-platform application which can use any graphics and GUI libraries, while the drawback is the lack of direct and full access to the experimental data and to the experiment's software tools, which prevents a detailed, full visualization.}
 	\label{fig:eventdisplaysapplicationstypes}
 \end{figure}
 
@@ -319,7 +383,7 @@ and can include the sensitive elements of the detector as well as support struct
 detail that is typically found in event displays. The least-detailed geometry descriptions are those that are simplified versions of the
 detector, usually found in standalone or web-based applications.
 
-\missingfigure[figwidth=12cm]{[ATLASED072015] - See GoogleDoc document}
+
 
 
 
@@ -349,19 +413,24 @@ because current visualization tools are often tightly bound to the geometry libr
 %technical design reports, a few notable journal publications, books, magazines, posters, brochures, websites, and other media.
 %Further, the 3D models were imported in iSpy WebGL mentioned above.
 
-%[ATLASED042016]
-%[ATLASED072015]
-%[OPEN-PHO-EXP-2015-013]
-%[ALICE-EVENTDISPLAY-2017-007]
-%{other images from other experiments ???}
+
 
 %In the case of framework-integrated applications, the geometry shown is usually the actual geometry used in the detector description,
 %taken directly from the experiment’s software framework and used for all kinds of tasks related to geometry (see Figure [ATLASED042016]).
 %While in the case of  java-based standalone or web-based applications the geometry shown is usually a simplified version of the actual one
 %(see figure [ATLASED072015]) or, merely, a fake geometry.
 
+
+
+
+
+
 \hypertarget{statistical-data-visualization}{%
 \subsection{Statistical data visualization}\label{statistical-data-visualization}}
+
+
+\epigraph{The simple graph has brought more information to the data analyst's mind than any other device.}{\textit{John Tukey \cite{Tukey1962}}}
+
 
 Data visualization also means visualizing quantities and properties taken from a series of events, in order to extract statistical
 meaning from them. An example of statistical data visualizations are histograms and scatter plots.
