@@ -171,7 +171,7 @@ and visualization, as they pertain to the current landscape of event displays, a
 	\quad
 	\begin{subfigure}[b]{0.475\textwidth}  
 		\centering 
-		\includegraphics[width=\textwidth]{Example-Image}
+		\includegraphics[width=\textwidth]{VBF2e2mu_v10}
 		\caption[CMS event display]%
 		{{\small CMS event display}}    
 		\label{fig:ed-cms}
@@ -209,7 +209,7 @@ and visualization, as they pertain to the current landscape of event displays, a
 		\label{fig:ed-xxx}
 	\end{subfigure}
 	\caption[Examples of HEP event displays]
-	{\small Different examples of HEP event display applications: \subref{fig:ed-atlas}) ATLAS 3D event display \cite{ATLASED072015,ATLASVP12010}; \subref{fig:ed-cms} CMS 3D event display \cite{}; \subref{fig:ed-alice}) ALICE 3D event display \cite{}; \subref{fig:ed-lhcb}) LHCb 3D event display \cite{LHCbED}; \subref{fig:ed-belleii}) Belle II VR event display \cite{BelleIIVRED}; \subref{}) ... \cite{}} 
+	{\small Different examples of HEP event display applications: \subref{fig:ed-atlas}) ATLAS 3D event display \cite{ATLASED072015,ATLASVP12010}; \subref{fig:ed-cms} CMS 3D event display \cite{CMSED}; \subref{fig:ed-alice}) ALICE 3D event display \cite{}; \subref{fig:ed-lhcb}) LHCb 3D event display \cite{LHCbED}; \subref{fig:ed-belleii}) Belle II VR event display \cite{BelleIIVRED}; \subref{}) ... \cite{}} 
 	\label{fig:mean and std of nets}
 \end{figure*}
 
@@ -338,10 +338,7 @@ and simplified APIs for ease of development.
 
 
 
-%Image: the image summarize the current landscape of event display applications in HEP. Many experiments developed
-%full-framework desktop applications as well as light, web-based applications. As one can see from the plot, there
-%are no examples so far of full-framework applications using web-based visualization graphics. A new approach in that
-%direction is what it is suggested in this paper, in section [add ref].
+
 
 {\bf Mobile applications} Nowadays mobile technology is more and more ubiquitous, people having access to a plethora of mobile devices: from tablets to
 smartphones to ultrabooks. Those devices are used more and more as substitutes for desktop and laptop machines.
@@ -371,7 +368,7 @@ Both VR and AR applications are usually developed in specialized graphics engine
 
 More details on VR and AR applications for HEP in Section \ref{vr}.
 
-
+\missingfigure[figwidth=12cm]{Add ref/comment to https://twitter.com/acceleratARapp}
 
 
 \hypertarget{geometry-description}{%
@@ -389,10 +386,31 @@ detector, usually found in standalone or web-based applications.
 
 In framework-based applications the geometry information can come directly from the experiment's detector description and in
  many cases the hierarchical structure of the detector description is preserved and accessible. Standalone applications
-typically use a geometry file with information exported from the software framework. An example hybrid solution is that of CMS and SketchUp~\cite{CMSSketchUp}.
+typically use a geometry file with information exported from the software framework. An example hybrid solution is that of CMS and SketchUp~\cite{CMSSketchUp} (see Figure \ref{}).
 The CMS detector description as written in XML is parsed using Ruby scripts and 3D models are built using the SketchUp program via its
 Ruby API. SketchUp can then export to various standard 3D file formats. In this way detailed simulation geometry can be available in a standalone
 application.
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cms_160312_03}
+		\caption[CMS use of the SketchUp 3D software]%
+		{{\small Rendering the CMS geometry in the SketchUp 3D software}}    
+		\label{fig:cms-sketchup-a}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.475\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{Example-Image}
+		\caption[XXX]{{\small XXX}}    
+		\label{fig:ed-sketchup-b}
+	\end{subfigure}
+	\caption[Using 3D editing software for HEP Geometry]
+	{\small Use of a 3D software (SketchUp) to import the CMS detector description and render the final volumes \cite{CMSSketchUpImages}.} 
+	\label{fig:cms-sketchup}
+\end{figure*}
 
 
 Currently, different geometry formats and libraries are used in HEP.
@@ -595,144 +613,65 @@ non-spatial data which are by their nature organized with a network layout. We s
 \hypertarget{suggested-guidelines}{%
 \section{Suggested guidelines and future development}\label{suggested-guidelines}}
 
-As a community, what we want to suggest here, is the design and the usage of common base visualization guidelines, to be able to share
-knowledge and best practices among the communities, and to foster collaboration among the HEP experiments.
+As a community, what we want to suggest here, is the design and the usage of common base visualization guidelines, to be able to share knowledge and best practices among the different groups, and to foster collaboration among the HEP experiments.
 
-Visualization, as said many times already, has a key role in the lifecycle of a HEP experiment. And it takes input data from many
-different sources and in many different formats.
+Visualization, as said many times already, has a key role in the lifecycle of a HEP experiment, addressing input data from many sources and in many different formats.
 
-The input data are often quite tightly bound to a specific experiment. And, because of that, many visualization tools are tightly
-bound to their experiments as well. But, it is true that the output of a visualization application is not used by any other tool
-within the experiment data chain. So, while the interaction with experiment data formats is highly experiment specific, there is a real possibility of having the final stages of the visualization pipeline shared between several experiments.
+The input data are often quite tightly bound to a specific experiment. And, because of that, many visualization tools are tightly bound to their experiments as well. But, it is true that visualization is often the last step within the experiment data chain and the output of a visualization application is not used by any other tool. So, while the direct interaction with experimental data formats is highly experiment specific, there is a real possibility of having the final stages of the visualization pipeline shared between several experiments.
 
-Let us take the example of the detector geometry. As said, there are very many different geometry libraries and formats in
-use among the HEP experiments. However, geometry libraries are all different ways to describe and handle base geometrical
-entities and combinations of them. At the end of the day, from a visualization point of view, the output of all geometry
-libraries are mere descriptions of 3D volumes, which  could be abstracted from the underlying actual implementation.
+Let us take the example of the detector geometry. As said, there are very many different geometry libraries and formats in use among the HEP experiments. However, geometry libraries are all different ways to describe and handle basic  geometrical entities and combinations of them. At the end of the day, from a visualization point of view, the output of all geometry libraries are mere descriptions of 3D shapes, which  could be abstracted from the underlying actual implementation.
 
-A shape like a box, or a cone, or a tube, or some boolean combination of them, should be interpreted and handled the same by a
-visualization tool in all experiment. Visualization applications should not be aware, and should not care, of how  the given 3D
-volume has been created in the experiment’s code; they should only be able to correctly interpret the final information about it
-and convert that to pixel values, to be displayed on the screen.
+A shape like a box, or a cone, or a tube, or some boolean combination of them, should be interpreted and handled the same by a visualization tool in all experiment. Visualization applications should not be aware, and should not care, of how  the given 3D volume has been created in the experiment’s code; they should only be able to correctly interpret the final information about it and convert that to pixel values, to be displayed on the screen.
 
-Of course, the usage of a common geometry library would solve many portability issues. But we know that this is not a viable
-solution: experiments have very different needs, in terms of coding languages, available know-how, integration with other
-software, portability, and so forth; and so they have to choose the geometry library which can fit the most of their needs.
-Moreover, the experiments can decide to extend the geometry library they use, in order to add custom shapes or specific functionalities.
-So, a common geometry library for all HEP needs cannot work.
-But we could imagine common guidelines and, perhaps, base tools to visualize final geometry volumes. If we can imagine of
-having base functions to visualize a community-defined Box shape, for example, we could imagine sharing the knowledge and the
-workload among different experiments and communities. This does not mean that all experiments have to use a common definition
-of a Box shape; but all experiments, whatever definition of a Box shape they use internally in their code for other reasons,
-should be able to provide exporters from their internal definition to the community-agreed definition of a Box shape.
-In that way, the know-how and the tools linked to visualization needs could be shared as well, and developed as a community.
+Of course, the usage of a common geometry library would solve many portability issues. But we know that this is not a viable solution: experiments have very different needs, in terms of coding languages, available know-how, integration with other software, portability, and so forth; and so they have to choose the geometry library which can fit the most of their needs.
+Moreover, the experiments can decide to extend the geometry library they use, in order to add custom shapes or specific functionalities. So, a common geometry library for all HEP needs cannot work.
+But we could imagine common guidelines and, perhaps, tools to visualize final geometry volumes. If we can imagine of having basic functions to visualize a community-defined Box shape, for example, we could imagine sharing the knowledge and the workload among different experiments and communities. This does not mean that all experiments have to use a common definition
+of a Box shape; but all experiments, whatever definition of a Box shape they use internally in their code for other reasons, should be able to provide exporters from their internal definition to the community-agreed definition of a Box shape.
+In that way, the know-how and the tools linked to visualization needs could be shared as well, and developed in a collaborative way.
 
 We, as a community, still need to propose and design such common definitions and guidelines. This will
 be addressed in the second phase of this Community action, following the completion of the Community White Paper.
 
-For the moment, we observe that several experiments started to write exporters to translate geometry information to
-standard formats used in the communities outside HEP, mainly in computer graphics and engineering. For example the Belle II
-experiment has written exporters from Geant4 data to different formats, including VRML and FBX, which are two of the most common
-formats used to store and share 3D graphics data. The Unity game-development engine~\cite{Unity3D}, in turn, can export the
-FBX geometry to the glTF format~\cite{glTF}~\cite{glTF,SketchFabBelleII}, an emerging royalty-free specification for 3D objects and scenes,
-for fast web distribution via the SketchFab community repository~\cite{SketchFab}. For the near future, we will foster similar
-experiments within the community.
+For the moment, we observe that several experiments started to write exporters to translate geometry information to standard formats used in the communities outside HEP, mainly in computer graphics and engineering. For example the Belle II experiment has written exporters from Geant4 data to different formats, including VRML and FBX \cite{BelleIIGeoExporters}, which are two of the most common formats used to store and share 3D graphics data. The Unity game-development engine~\cite{Unity3D}, in turn, can export the FBX geometry to the glTF format~\cite{glTF}, an emerging royalty-free specification for 3D objects and scenes, for fast web distribution via the SketchFab community repository~\cite{SketchFabBelleII,SketchFab}. For the near future, we will foster similar experiments within the community.
 
-The same reasoning made for the geometry can be done for the event data, as well. Of course different experiments detect
-different objects and measure different quantities. But there are many common entities, especially among experiments
-within the same research field. For example, all experiments working on hadron colliders use the notion of particle track,
-which is usually constructed translating the track measurements into space points or points and angles, and visualised as
-a trail; or the notion of particle jet, usually visualised as a cone whose length is related to its energy and whose radius
-is linked to the algorithm used for the jet reconstruction. Both those object are currently often handed and visualised
-differently in different experiments, but we think that they could be the target of a common definition within the community.
-If so, experiments could share best practices or snippets of code, if not complete base tools, to handle their visualisation.
+The same reasoning made for the geometry can be done for the event data. Of course different experiments detect different objects and measure different quantities, but there are many common entities, especially among experiments within the same research field. For example, all experiments working on hadron colliders use the notion of particle track, which is usually constructed translating the track measurements into space points or points and angles, and visualized as a trail; or the notion of particle jet, usually visualized as a cone whose length is related to its energy and whose radius is linked to the specific algorithm used for the jet reconstruction. Both those objects are currently often handed and visualized differently in different experiments, but we think that they could be the target of a common definition within the community.
+If so, experiments could share best practices or snippets of code, if not complete basic tools, to build and handle their visualization.
 
-START TEXT CUT FROM SECTION 2
 
-However, portability and simplicity of usage are the strong points of mobile devices. More than as ``mobile'' devices, smartphones,
-tablets and ultrabooks can be considered, as devices ``close to people''. As such, the usage of such devices
-should be exploited more in the final steps of the visualization chain, where heavy batch data processing is not needed. For instance,
-their usage should be leveraged for the production and visualization of event displays.
-Ideally, a user should be able to easily retrieve interesting events from the experiment and interactively visualize them on all
-kinds of devices.
-
-That is why we strongly promote the usage of the server-client architecture described and supported in this paper in Section~\ref{client-server}
-and the new data access patterns presented and supported in the ``Data Access and Management'' paper~\cite{HSF-CWP-2017-04}. This would open
-up new possibilities for interactive visualization on mobile devices: it would let visualization clients running on mobile devices
-connect to server tools running in the experiment's framework to easily and interactively retrieve the desired data.
-
-It is worth noting that in other areas of science, for instance in astronomy, researchers have worked to facilitate data
-access and to migrate to more standard data formats. This allowed for the possibility of having data visualization tools
-on mobile devices, in addition to desktop and laptop machines. In addition, this helped the researchers easily accessing and visualizing
-their data, but it also paid out in making science accessible by the public, having eased the development of programs used in
-Outreach and Education activities and events. It is true that HEP data are usually much more complex than astronomy data, and so it
-will be harder to achieve, but we think that an effort in simplifying the access to experimental data would be worth anyway.
-
-Therefore, the leverage of the usage of mobile devices in HEP adds a strong point to the development and the support of common
-client-server tools and data exchange formats [ref to paper] among HEP experiments in the near future.
-END TEXT CUT FROM SECTION 2
 
 \hypertarget{common-format}{%
 \subsection{A common community-defined format}\label{common-format}}
 
-In order to start sharing the knowledge and to start working on demonstrators to show and share best practices, we propose to
-start defining a common format to exchange data among the experiments.
+In order to start sharing the knowledge and to start working on demonstrators to show and share best practices, we propose to start defining a common format to exchange data among the experiments.
 
-Initially, it does not have to be an actual format. We should start, instead, finding and listing common shared objects from geometry
-and event data. After that, we should start converging on a shared definition of those objects, to build a common design toward
-a data model to handle and serve them. The idea, in fact, is to enable usage of this common format to visualize data from the
-different experiments with the same shared best practices, if not the same tools.
+Initially, it does not have to be an actual format. We should start, instead, finding and listing common shared objects from geometry and event data. After that, we should start converging on a shared definition of those objects, to build a common design toward a data model to handle and serve them. The idea, in fact, is to enable usage of this common format to visualize data from the different experiments with the same shared best practices, if not the same foundation tools.
 
-We think that community-developed common formats and tools should also be extendable, to let the experiments add their own
-custom content and objects. As an example, calorimeter cells can be of very different shapes, and an experiment might need to
-add its own custom shapes to the common format to visualize them properly. Thus, in addition to the part handling the common objects,
-there should be a part of the format targeted at storing extended custom content, specific to a given experiment. For such
-custom content, experiments will have to develop custom visualization tools as well; but they could build them upon the foundation
+We think that community-developed common formats and tools should also be extendable, to let the experiments add their own custom content and objects. As an example, calorimeter cells can be of very different shapes, and an experiment might need to add its own custom shapes to the common format to visualize them properly. Thus, in addition to the part handling the common objects, there should be a part of the format targeted at storing extended custom content, specific to a given experiment. For such custom content, experiments will have to develop custom visualization tools as well; but they could build them upon the foundation
 of the community-driven part.
 
-Some experiments in that direction have been performed within the community in the past years, already. For example,
-the ALICE experiment made use of the mini ``Visualization Summary Data'' (VSD) set of classes, contained in the ROOT Event
-Visualization Environment (EVE), to make ALICE data visualization decoupled from the AliROOT experiment’s framework.
+Some experiments in that direction have been performed within the community in the past years, already. For example, the ALICE experiment made use of the mini ``Visualization Summary Data'' (VSD) set of classes, contained in the ROOT Event Visualization Environment (EVE), to make ALICE data visualization decoupled from the AliROOT experiment’s framework \cite{TadelALICE}.
 
 \hypertarget{serving-data}{%
 \subsection{Serving the geometry and event data through services}\label{serving-data}}
 
-Once a common format for shared objects is defined, we believe that design and development of online services to query and
-serve the geometry data would be a very useful addition, compared to what the HEP experiments currently feature.
-The main driving force here is the realization that detector description should be much more accessible than it is today. For many experiments,
-accessing the detector description means starting and running at least parts of the experiment’s framework. Accessing a specific
-geometry version or the latest one is of course critical for reconstruction and simulation; but the geometry data needed for
-event visualization can be simpler. Even when showing the actual geometry of the experiment, accessing the latest alignment
-constants is not crucial for visualization purpose, because small differences in the geometry are not visible in an event display.
-So, we think that serving a “frozen” version of the experiment’s geometry would be enough, and that a simpler way to retrieve
-it should be designed, to ease data access for visualization; for example, through an online service which can be queried by
-visualization applications.
+Once a common format for shared objects is defined, we believe that design and development of online services to query and serve the geometry data would be a very useful addition, compared to what the HEP experiments currently feature.
+The main driving force here is the realization that detector description should be much more accessible than it is today. For many experiments, accessing the detector description means starting and running at least parts of the experiment’s framework. Accessing a specific geometry version or the latest one is of course critical for reconstruction and simulation; but the geometry data needed for event visualization can be simpler. Even when showing the actual geometry of the experiment, accessing the latest alignment constants is not crucial for visualization purpose, because small differences in the geometry are not visible in an event display.
+So, we think that serving a “frozen” version of the experiment’s geometry would be enough, and that a simpler way to retrieve it should be designed, to ease data access for visualization; for example, through an online service which can be queried by visualization applications.
 
-It would be desirable for the new mechanism to have a search/filter functionality too, to let client applications query
-for a specific subset of information; and a way to select the level of details, to set the desired accuracy and complexity
-of the retrieved geometry.
+It would be desirable for the new mechanism to have a search/filter functionality too, to let client applications query for a specific subset of information; and a way to select the level of details, to set the desired accuracy and complexity of the retrieved geometry.
 
-The same could be envisaged for event data, even though that is a more complicated task, involving many different layers and services:
-very often event data are stored on the Grid and very often they need to be processed in order to be usable for event displays.
-But, as discussed earlier, experimental data definitely should be more accessible for visualization. Thus, in collaboration with
-the Data Access and Management WG, an API or a service to get streamed event data will be designed.
+The same could be envisaged for event data, even though that is a more complicated task, involving many different layers and services: very often event data are stored on the Grid and very often they need to be processed in order to be usable for event displays.
+But, as discussed earlier, experimental data definitely should be more accessible for visualization. Thus, in collaboration with the Data Access and Management WG, an API or a service to get streamed event data will be designed.
 
-In addition, simulation data description for visualization could be handled in the same way, by the usage of converters from
-generators/simulation applications.
+In addition, simulation data description for visualization could be handled in the same way, by the usage of converters from generators/simulation applications.
 
-After a first phase of development and stand-alone testing, the streamed data could be used by the current visualization tools
-as well, as first step of their modernization and towards the usage of common community-developed techniques and shared best practices.
+After a first phase of development and stand-alone testing, the streamed data could be used by the current visualization tools as well, as first step of their modernization and towards the usage of common community-developed techniques and shared best practices.
 
 \hypertarget{client-server}{%
 \subsection{Client-server architecture for geometry and event data visualization}\label{client-server}}
 
-After common data formats and a mechanisms to serve it are designed together with a set of exporters required to translate the
-experiments’ data to the common format, we are proposing to build a client-server architecture, upon which next generation visualization applications can be built.
-The idea behind that is that if we can send commands from the client to the server, and get the answer back in the data stream,
-then we will be able to interact with the experiment’s framework as well, in addition of using common visualization applications
-to visualize the common objects. In this way, we will achieve to develop a modular architecture where HEP experiments could share
-the design, the development and the maintenance of common visualization tools, while maintaining a certain degree of freedom to
-add custom content and objects and to interact with their own framework to retrieve specific content.
+After common data formats and a mechanisms to serve it are designed together with a set of exporters required to translate the experiments’ data to the common format, we are proposing to build a client-server architecture, upon which next generation visualization applications can be built.
+The idea behind that is that if we can send commands from the client to the server, and get the answer back in the data stream, then we will be able to interact with the experiment’s framework as well, in addition of using common visualization applications to visualize the common objects. In this way, we will achieve to develop a modular architecture where HEP experiments could share the design, the development and the maintenance of common visualization tools, while maintaining a certain degree of freedom to add custom content and objects and to interact with their own framework to retrieve specific content.
 
 \hypertarget{modern-tech}{%
 \subsection{Exploring modern technologies}\label{modern-tech}}
@@ -740,28 +679,15 @@ add custom content and objects and to interact with their own framework to retri
 \hypertarget{graphic-engines}{%
 \subsubsection{Graphics and game engines}\label{graphic-engines}}
 
-As briefly told earlier, so far direct OpenGL or old graphics libraries have been used in HEP visualization applications. Nowadays,
-another type of graphics library is rapidly evolving, those embedded in the so-called game engines. Those are software frameworks
-targeted at the gaming industry, and they feature very efficient, optimized and modern 3D graphics.
-The integration with existing code is not easy, because they are usually meant to be used as development environments, and not as
-embedded libraries like those used in HEP so far. So they would probably require some major changes in the usual software architecture
-used in HEP. But they offer very optimized graphics and modern features, like tools for Virtual Reality, which could be exploited in our tools.
+As briefly told earlier, so far direct OpenGL or old graphics libraries have been used in HEP visualization applications. Nowadays, another type of graphics library is rapidly evolving, those embedded in the so-called game engines. Those are software frameworks targeted at the gaming industry, and they feature very efficient, optimized and modern 3D graphics.
+The integration with existing code is not easy, because they are usually meant to be used as development environments, and not as embedded libraries like those used in HEP so far. So they would probably require some major changes in the usual software architecture used in HEP. But they offer very optimized graphics and modern features, like tools for Virtual Reality, which could be exploited in our tools.
 
-Some HEP experiments have recently started to successfully use them to build visualization applications and event displays,
-like Belle II~\cite{BelleIIVR} and the Total Event Visualiser (TEV) of the CERN Media Lab~\cite{CERNTEV}, which used the Unity
-game engine~\cite{Unity3D}, and ATLAS which used the Unreal Engine~\cite{EpicUnreal} for its virtual reality application
-ATLASrift~\cite{ATLASRift}.
+Some HEP experiments have recently started to successfully use them to build visualization applications and event displays, like Belle II~\cite{BelleIIVR} and the Total Event Visualiser (TEV) of the CERN Media Lab~\cite{CERNTEV}, which used the Unity game engine~\cite{Unity3D}, and ATLAS which used the Unreal Engine~\cite{EpicUnreal} for its virtual reality application ATLASrift~\cite{ATLASRift}.
 
 Those game engines are the most popular ones on the market, and they are free for educational and non-commercial projects.
-Moreover, Unreal Engine is fully open source. It supports two modes of development (C++ and Blueprints) that can be used
-interchangeably even in the same project. It produces extremely performant executables for basically all platforms
-(Windows, MacOS, Linux, iOS, Android, Web, all VR platforms). All parts of development cycle are fast even for a novice,
-thanks to powerful tools implemented as plugins. It has a huge developers community and is very fast in supporting the
-latest technologies {\it e.g.}\ it already supports Vulkan - cross-platform 3D and compute API. Unreal Engine is used by the ATLASrift.
-As said, Unity has been used successfully by the Belle II experiment. The Unity development platform~\cite{Unity3D} is very
-intuitive for novices as well as experts and provides rapid turnaround during the development cycle: the project can be
-executed immediately (using the platform’s ``Play'' button) without having to compile and link an executable (which takes
-longer and is done when the user’s changes have stabilized) for the same platforms as listed above for the Unreal Engine.
+Moreover, Unreal Engine is fully open source. It supports two modes of development (C++ and Blueprints) that can be used interchangeably even in the same project. It produces extremely performant executables for basically all platforms (Windows, MacOS, Linux, iOS, Android, Web, all VR platforms). All parts of development cycle are fast even for a novice,
+thanks to powerful tools implemented as plugins. It has a huge developers community and is very fast in supporting the latest technologies {\it e.g.}\ it already supports Vulkan - cross-platform 3D and compute API. Unreal Engine is used by the ATLASrift.
+As said, Unity has been used successfully by the Belle II experiment. The Unity development platform~\cite{Unity3D} is very intuitive for novices as well as experts and provides rapid turnaround during the development cycle: the project can be executed immediately (using the platform’s ``Play'' button) without having to compile and link an executable (which takes longer and is done when the user’s changes have stabilized) for the same platforms as listed above for the Unreal Engine.
 All VR devices are supported as targets and VR-animation performance is reported to be significantly better on low-end devices.
 (Notably, the emerging WebVR standard~\cite{WebVR} (recently replaced by WebXR \cite{WebXR}) is not yet supported for ``VR in the browser''. It is possible in Unity to create a
 WebGL~\cite{WebGL2011} executable of a VR app; however, no browser will run this app successfully because of its need to load the
@@ -838,6 +764,35 @@ Augmented Reality (AR) applications use the device's camera to looks at world ar
 ATLAS and ALICE researchers have started to explore the possibilities offered by augmented reality for outreach and education, by using Unity~\cite{Unity3D} and the Vuforia framework~\cite{VuforiaAR} (commercial, but free for development). ATLAS in Your Pocket uses printed marks to place a rendered geometry of the ATLAS detector on top of a view of the real world in front of the user. More Than ALICE allow users to superimpose detectors description or event visualizations to the camera image of the actual ALICE detector (for example, on a screen or during public visits to the experimental site) or its paper model.
 
 VR and AR applications could be used, in principle, to build event displays and data visualization tools for research work, as well; but the current data access model prevents a straightforward use of those technologies together with the experiments' software frameworks. Future client-server approach to data access could fill the current gap and let developers build new VR and AR tools with HEP physicists as end user targets.
+
+
+
+\hypertarget{mobile-tech}{%
+\subsubsection{Mobile technologies}\label{mobile-tech}}
+
+Portability and simplicity of usage are the strong points of mobile devices. More than as ``mobile'' devices, smartphones,
+tablets and ultrabooks can be considered, as devices ``close to people''. As such, the usage of such devices
+should be exploited more in the final steps of the visualization chain, where heavy batch data processing is not needed. For instance,
+their usage should be leveraged for the production and visualization of event displays.
+Ideally, a user should be able to easily retrieve interesting events from the experiment and interactively visualize them on all
+kinds of devices.
+
+That is why we strongly promote the usage of the server-client architecture described and supported in this paper in Section~\ref{client-server}
+and the new data access patterns presented and supported in the ``Data Access and Management'' paper~\cite{HSF-CWP-2017-04}. This would open
+up new possibilities for interactive visualization on mobile devices: it would let visualization clients running on mobile devices
+connect to server tools running in the experiment's framework to easily and interactively retrieve the desired data.
+
+It is worth noting that in other areas of science, for instance in astronomy, researchers have worked to facilitate data
+access and to migrate to more standard data formats. This allowed for the possibility of having data visualization tools
+on mobile devices, in addition to desktop and laptop machines. In addition, this helped the researchers easily accessing and visualizing
+their data, but it also paid out in making science accessible by the public, having eased the development of programs used in
+Outreach and Education activities and events. It is true that HEP data are usually much more complex than astronomy data, and so it
+will be harder to achieve, but we think that an effort in simplifying the access to experimental data would be worth anyway.
+
+Therefore, the leverage of the usage of mobile devices in HEP adds a strong point to the development and the support of common
+client-server tools and data exchange formats [ref to paper] among HEP experiments in the near future.
+
+
 
 
 \hypertarget{multi-user}{%
