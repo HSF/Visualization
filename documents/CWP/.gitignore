@@ -1,7 +1,6 @@
 *.aux
 *.log
 *.out
-*.pdf
 *.toc
 *.sync*
 *.fls
