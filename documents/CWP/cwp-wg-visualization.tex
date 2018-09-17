@@ -658,15 +658,16 @@ is a directed acyclic graph (DAG). The visualization of that by mean of a graph 
 reconstruction code and the experiment’s framework itself.
 
 Other HEP experiments use graph-based tools to analyze and visualize other types of data, like geographical distribution and load of computer
-networks used to transfer data between GRID sites \cite{WLCGproximity}
+networks used to transfer data between GRID sites \cite{neo4jnetworkstudy} (see Picture \ref{fig:networkstudy})
  or to store and query conditions data \cite{Clemencic:2012cw}.
 
-\begin{figure}
+\begin{figure*}
 	\centering
 	\includegraphics[width=0.95\linewidth]{proximity.png}
-	\caption[A graph used to visualized links between Grid nodes]{The image shows a graph used to visualize the links between Grid nodes and sites. \cite{WLCGproximity}.}
-	\label{fig:currentvisualizationlandscape}
-\end{figure}
+	\caption[Graphs used to visualize network topologies]
+	{\small The image shows a graph used to visualize particular snapshot of the network topology between four WLCG sites, which was used to perform network path analysis. [Image provided by the authors of \cite{neo4jnetworkstudy}].}
+	\label{fig:networkstudy}
+\end{figure*}
 
 
 All those data are not space- nor time-dependent, and they are better visualized through a graph or a network. Graph-based visualization,
