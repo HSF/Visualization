@@ -335,10 +335,10 @@ on top of the effort needed for the development and maintanance of the event dis
 
 Other applications use higher-level interface libraries as graphics engines. This has the advantage of delegating
 a large part of the lower-level development work to external software packages, leaving the developers to concentrate
-on the application development itself. A popular grpahics library used in HEP software has been
+on the application development itself. A popular graphics library used in HEP software has been
 Open Inventor~\cite{OpenInventor1993}, used by the defunct CMS Iguana~\cite{CMSIguanaPaperNIM,CMSIguana} application, or
 its clone implementation Coin (also known as Coin3D)~\cite{Coin3D}, which has been used by applications such
-the ATLAS VP1~\cite{ATLASVP12010}, the LHCb Panoramix~\cite{LHCbPanoramix} and the defunct desktop version of the
+as ATLAS VP1~\cite{ATLASVP12010}, LHCb Panoramix~\cite{LHCbPanoramix} and the defunct desktop version of the
 CMS iSpy application~\cite{CMSISpy}. Coin / Open Inventor was
 chosen because of its integrability in C++ code, its performance, and its coding style. Moreover, the way Open Inventor handles
 graphical volumes could be easily matched with the way geometry volumes are handled to describe the detectors in HEP experiments.
@@ -386,10 +386,10 @@ However, mobile devices still do not have the computing power usually needed for
 are retrieved and processed. In addition they usually run dedicated operating systems whose self-contained nature
 makes their integration within the HEP workflow difficult, particularly for the statistical-based visualization used in
 data analysis, described in Section~\ref{statistical-data-visualization}. Despite the current limitations for these use-cases mobile
-devices can be found in the current landscape of event display.
+devices can be found in the current landscape of event displays.
 
 Several event display applications have been developed for, or at least can be run on, mobile devices.
-An example of a native application is LHSee~\cite{LHSee} which live-streamed ATLAS events, processed and extracted
+An example of a native application is LHSee~\cite{LHSee} which live-streams ATLAS events, processed and extracted
 through Atlantis~\cite{ATLASAtlantis},
 to a user’s phone and provided contextual information on ATLAS and the
 events being displayed. The CMS iSpy WebGL application~\cite{CMSISpyWebGL} runs on mobile devices in the browser.
@@ -437,7 +437,7 @@ detector geometries and are used to provide visual context only.
 
 Currently, different geometry formats and libraries are used in HEP. 
 Some experiments use their own custom format (\textit{e.g.}, \cite{ATLASGeoModel2004}), while others use the geometry tools provided by the ROOT framework~\cite{Root1997}.
-More recently, some attempts have been done in order to build common formats and libraries for detector geometry, like DD4HEP~\cite{dd4hep},
+More recently, some attempts have been made to build common formats and libraries for detector geometry, like DD4HEP~\cite{dd4hep},
 adopted in conceptual design studies for future high-energy colliders, including the CLICdp~\cite{clicdp} and FCC~\cite{fcc} collaborations.
 In all cases detector volumes are built from simpler geometrical entities: geometrical shapes like Tube, Cone, Box, and
 more complex variations of these are combined in order to build the volumes of the experiment’s geometry.
@@ -446,7 +446,7 @@ Geometry libraries and formats are also described in the HSF \textit{Detector Si
 The differences in geometry formats used by the different experiments, by detector simulation programs like Geant4~\cite{Geant4},
 and by data analysis frameworks like ROOT, typically require developers of visualization applications to write converters
 between the different formats. In addition it is often not easy to use a visualization tool developed for one experiment with another one as
-because current visualization tools are often tightly bound to the geometry library used by the experiment.
+current visualization tools are often tightly bound to the geometry library used by the experiment.
 
 In framework-based applications the geometry information can come directly from the experiment's detector description and in
  many cases the hierarchical structure of the detector description is preserved and accessible. Standalone applications
@@ -495,7 +495,7 @@ detailed simulation geometry can be available in a standalone application.
 \epigraph{The simple graph has brought more information to the data analyst's mind than any other device.}{\textit{John Tukey \cite{Tukey1962}}}
 
 Data visualization also means visualizing quantities and properties taken from a series of events, in order to extract statistical
-meaning from them. An example of statistical data visualizations are histograms and scatter plots.
+meaning from them. Examples of statistical data visualizations are histograms and scatter plots.
 
 In HEP, like most other scientific disciplines, visualization of the data and of the final results plays a key role in the
 analysis pipeline. A new projection of the data may provide new insight, results must be summarized in a
@@ -503,12 +503,12 @@ clear and concise way, and multidimensional parameter spaces need to be visualiz
 of how to properly display data is not new~\cite{Tufte1986}, but the tools are constantly evolving. Since its introduction 20 years ago,
 ROOT~\cite{Root1997} has become the most widely used package in HEP to make plots, graphics, and even to build event displays.
 It was developed at a time when there were few alternatives for the HEP community that did not have a significant
-financial cost and it has performed admirably.
+financial cost, and it has performed admirably.
 
 However, the landscape is changing and there are several existing tools driven by non-HEP communities available. This section will look at
 some of the current alternatives and comment on what options might be available in the future and what our needs are. The main focus is
-on the data exploration and presentation tools. The former describe tools with which one prepares and build visualization for the purpose
-of exploring and attempting to understand one's dataset. The latter describes tools for presentation of final plot in a convenient and accesible way.
+on data exploration and presentation tools. The former describes tools with which one prepares and builds visualizations for the purpose
+of exploring and attempting to understand one's dataset. The latter describes tools for the presentation of final plots in a convenient and accesible way.
 For more details on data analysis itself, one should refer to the HSF \emph{Data Analysis and Interpretation} Community White Paper~\cite{HSF-CWP-2017-05}.
 
 \hypertarget{stats-desktop}{%
@@ -517,10 +517,10 @@ For more details on data analysis itself, one should refer to the HSF \emph{Data
 As it stands, ROOT is the most widely adopted plotting tool within the HEP and Nuclear Physics community.
 It has even made some inroads to the astrophysics community and some small pockets within the financial community,
 to where some physicists migrated. However, few other disciplines have adopted it. Still, it has many features beyond
-the standard 1D/2D/3D histogram/graphing tools such as 2D and 3D shapes, widgets for building a GUI, a JavaScript
+the standard 1D/2D/3D histogram/graphing tools, such as 2D and 3D shapes, widgets for building a GUI, a JavaScript
 implementation for web-based analysis~\cite{rootjs} and is available within a Jupyter notebook~\cite{JupyterNotebook}. But to
 access the plotting features, an analyst must install the entire ROOT package which includes file I/O, scientific
-libraries, fitting routines, etc.\ and often the installation process is non-trivial.
+libraries, fitting routines etc.,\ and often the installation process is non-trivial.
 
 Many current HEP analysts make wide use of the Python programming language and the PyROOT libraries~\cite{PyROOT}.
 Python is also very popular outside the HEP community and so it is worth looking at non-ROOT options available to Python users.
@@ -542,9 +542,9 @@ but you cannot do anything more significant with other mouseover commands (links
 multidimensional parameter spaces. \textit{ggplot2} is an implementation of the guidelines contained in the classic
 text \textit{The Grammar of Graphics}~\cite{Wilkinson2005}, while \textit{lattice} is an implementation of the
 so-called \textit{Trellis Display}~\cite{Trellis}. Both packages are very popular outside the HEP community and a wide range
-of learning materials are available in books, online courses, and other media. Both packages are well developed and matured
-and offer mechanism for users to extend them by adding new features.
-\textit{lattice} has longer history: in 2005, the year \textit{ggplot2} first appeared, \textit{lattice} was already popular.
+of learning materials are available in books, online courses, and other media. Both packages are well developed and mature
+and offer mechanisms for users to extend them by adding new features.
+\textit{lattice} has a longer history: in 2005, the year \textit{ggplot2} first appeared, \textit{lattice} was already popular.
 In fact, figures made with \textit{lattice} were shown in the
 presentation in PHYSTAT05~\cite{phystat05} which introduced R to the
 particle physics community.
@@ -582,7 +582,7 @@ The so-called notebooks are a rapidly evolving way of using web-based technology
 visualization, with access to local resources as well. After having started from a Mathematica-like notebook user interface
 paradigm mixing server-side code snippet execution, structured text, and (mostly) static visualizations, the Jupyter community
 is now exploring more interactive user interface paradigms, including in the area of visualization. The JupyterLab project is
-exploring a more MATLAB-like IDE user experience inside of the web browser, with features such as multiple source editing tabs
+exploring a more MATLAB-like IDE user experience inside the web browser, with features such as multiple source editing tabs
 and interactive python consoles. Its ipywidgets sub-project tries to make Jupyter more interactive by moving more visualization
 work to client-side Javascript and introducing classic GUI widgets such as sliders and checkboxes for interacting with the live visualization.
 The Belle II experiment has started to use Jupyter notebooks to train new users in data analysis; the learning curve is much gentler than in
@@ -643,7 +643,7 @@ Networks and graphs are very effective ways of visualizing tree-like data, becau
 		\label{fig:atlasgeo2}
 	\end{subfigure}
 	\caption[Using 3D editing software for HEP Geometry]
-	{\small \subref{fig:atlasgeo1}) a schematic drawing depicting the tree-structure of the data describing the geometry of the ATLAS detector. Data structure in such a way are better visualized using graphs and networks. \subref{fig:atlasgeo2}) a graph visualizing the first layer of the nodes of the ATLAS Detector Description. Different colors indicate different types of nodes; also, the labels along the lines state the different types of relationship between two data nodes. \cite{ATLASGeoModel2017}.}
+	{\small \subref{fig:atlasgeo1}) A schematic drawing depicting the tree-structure of the data describing the geometry of the ATLAS detector. Such data structures are better visualized using graphs and networks. \subref{fig:atlasgeo2}) A graph visualizing the first layer of the nodes of the ATLAS Detector Description. Different colors indicate different types of nodes; also, the labels along the lines state the different types of relationship between two data nodes \cite{ATLASGeoModel2017}.}
 	\label{fig:atlasgeotree}
 \end{figure*}
 
@@ -653,7 +653,7 @@ Another example of HEP data that can benefit from a graph-based visualization is
 used to filter and reconstruct the experimental data. Very recently HEP experiments began to develop new parallel frameworks
 to concurrently handle analysis or reconstruction jobs, to efficiently exploit the parallelism offered by the modern hardware
 (more details can be found in the HSF \textit{Event/Data Processing Frameworks} Community White Paper~\cite{HSF-CWP-2017-08}).
-The jobs are handled by a scheduler, which organize them according to their need input and output data. The outcome of the scheduler
+The jobs are handled by a scheduler, which organizes them according to their needed input and output data. The outcome of the scheduler
 is a directed acyclic graph (DAG). The visualization of that by mean of a graph helps the developer understanding and debugging the
 reconstruction code and the experiment’s framework itself.
 
@@ -671,9 +671,9 @@ networks used to transfer data between GRID sites \cite{neo4jnetworkstudy} (see 
 
 
 All those data are not space- nor time-dependent, and they are better visualized through a graph or a network. Graph-based visualization,
-as well as graph-databases, are somehow new in the HEP landscape; but they can be very powerful tools to effectively visualize
+as well as graph-databases, are fairly new in the HEP landscape; but they can be very powerful tools to effectively visualize
 non-spatial data which are by their nature organized with a network layout. We suggest the community to further explore those tools,
-to better understand the possibility offered by graph-based solutions for the HEP needs.
+to better understand the possibility offered by graph-based solutions for HEP needs.
 
 
 % More examples from the other experiments, if any and if possible... ==> I didn't find any other example]
