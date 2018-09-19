@@ -698,14 +698,14 @@ Let us take the example of the detector geometry. There are very many different 
 However, geometry libraries are all different ways to describe and handle basic geometrical entities and combinations of them.
 From a visualization point of view, the output of all geometry libraries are mere descriptions of 3D shapes, which could be abstracted
 from the underlying actual implementation. A shape like a box, or a cone, or a tube, or some boolean combination of them, could be
-interpreted and handled the same by a visualization tool in all experiments.
+interpreted and handled the same way by a visualization tool in all experiments.
 
 The same reasoning made for the geometry can be done for the event data. Of course different experiments detect different objects
 and measure different quantities, but there are many common entities, especially among experiments within the same research field.
 For example, all experiments working on hadron colliders use the notion of particle track, which is usually constructed translating
 the track measurements into space points or points and angles, and use the notion of particle jet, usually
 visualized as a cone whose length is related to its energy and whose radius is linked to the specific algorithm used for the jet
-reconstruction. Both of these objects are currently often handled and visualized differently in different experiments, but could in-principle
+reconstruction. Both of these objects are currently often handled and visualized differently in different experiments, but could in principle
 be the target of a common definition within the community. If so, experiments could share best practices or snippets of code,
 if not complete basic tools, to build and handle their visualization. In this way, the know-how and the tools linked to visualization needs
 could be shared as well, and developed in a collaborative way.
@@ -735,7 +735,7 @@ FBX geometry to the glTF format~\cite{glTF}, an emerging royalty-free specificat
 via the SketchFab community repository~\cite{SketchFabBelleII,SketchFab}. Displays based on three.js have access to multiple importers and exporters
 of several geometry formats, including the ones mentioned above. %For the near future, we will foster similar experiments within the community.
 
-In order to start sharing the knowledge and to start working on demonstrators to show and share best practices, we propose to start
+In order to start sharing knowledge and to start working on demonstrators to show and share best practices, we propose to start
 defining a common format to exchange data among the experiments. We should start by finding and listing common shared objects from
 geometry and event data. After that, we should start converging on a shared definition of those objects, to build a common design
 toward a data model to handle and serve them. The idea, in fact, is to enable usage of this common format to visualize data from
@@ -775,7 +775,7 @@ In addition, simulation data description for visualization could be handled in t
 generators and simulation applications.
 
 After a first phase of development and stand-alone testing, the streamed data could be used by the current visualization tools as well,
-as first step of their modernization and towards the usage of common community-developed techniques and best practices.
+as the first step of their modernization and towards the usage of common community-developed techniques and best practices.
 
 \hypertarget{client-server}{%
 \subsection{Client-server architecture for geometry and event data visualization}\label{client-server}}
@@ -784,8 +784,8 @@ After common data formats and mechanisms to serve them are designed, together wi
 data to the common format, we are proposing to build a client-server architecture, upon which next generation visualization applications can be built.
 
 The idea behind that is that if we can send commands from the client to the server, and get the answer back in the data stream, then
-we will be able to interact with the experiment’s framework as well, in addition of using common visualization applications to visualize
-the common objects. In this way, we will achieve to develop a modular architecture where HEP experiments could share the design, the
+we will be able to interact with the experiment’s framework as well, in addition to using common visualization applications to visualize
+the common objects. In this way, we can develop a modular architecture where HEP experiments can share the design, the
 development and the maintenance of common visualization tools, while maintaining a certain degree of freedom to add custom content
 and objects and to interact with their own framework to retrieve specific content.
 
@@ -796,9 +796,9 @@ and objects and to interact with their own framework to retrieve specific conten
 \subsubsection{Graphics and game engines}\label{graphic-engines}}
 
 So far direct OpenGL, its derivatives (like WebGL), or old graphics libraries have been used in HEP visualization applications. Nowadays,
-another type of graphics library is rapidly evolving, those embedded in the so-called game engines. Game engines software frameworks targeted
+another type of graphics library is rapidly evolving, those embedded in so-called game engines. Game engines are software frameworks targeted
 at the gaming industry, and they feature very efficient, optimized, and modern 3D graphics.
-The integration with existing code is not easy, however, because they are usually meant to be used as development environments,
+Integration with existing code is not easy, however, because they are usually meant to be used as development environments,
 and not as embedded libraries like those commonly used in HEP. So they would probably require some major changes in the usual
 software architecture used in HEP. But they offer very optimized graphics and modern features, like tools for Virtual Reality,
 which could be exploited in our applications.
@@ -831,7 +831,7 @@ C\# or an adaptation of Javascript.
 Another game engine that has gained attention in recent years is the open-source engine Godot~\cite{Godot}.
 While it is still not quite at the same level as Unity or Unreal Engine, it allows the deployment to similar platforms as Unity and Unreal
 Engine but is very lightweight.
-It offers the support for 2D and 3D graphics and for multiple programming languages {\it e.g.}\ GDScript (a Python-like scripting language),
+It offers support for 2D and 3D graphics and for multiple programming languages {\it e.g.}\ GDScript (a Python-like scripting language),
  C\# 7.0 (by using Mono), and C++.
 It also offers visual scripting using blocks and connections and support for additional languages with
 community-provided support for Python, Nim~\cite{nimLang}, D and other languages.
@@ -841,7 +841,7 @@ look at possible usage patterns in the context and within the workflow of HEP vi
 
 Finally, another new entry in the 3D graphics engines landscape is Qt3D~\cite{Qt3d}. The key feature of Qt3D is that it is natively integrated with the Qt framework, which eliminates a layer which was needed until now, \textit{i.e.}, a glue
 package to connect the Qt GUI with the window showing the 3D content (like, for example, the SoQt~\cite{soqt} package used by ATLAS). By eliminating that, we could simplify the architecture
-of our visualization tools and lower the maintenance work. Qt3D is still in development, but it shows an initial set of
+of our visualization tools and lower the maintenance workload. Qt3D is still in development, but it shows an initial set of
 features which are worth a further consideration of the new toolkit. We plan to take a look at its development in the near future,
 to see if it can satisfy the HEP requirements. Also, being open source, we could consider contributing to the Qt3D software
 project as a community, by providing the pieces we need for our applications.
@@ -850,8 +850,8 @@ project as a community, by providing the pieces we need for our applications.
 \subsubsection{Web-based applications}\label{web-based}}
 
 Web-based graphics have traditionally been considered not powerful enough to handle the thousands of volumes that can be
-shown in a HEP event displays, for example, when visualizing hits in a very busy event. But the technology has rapidly
-evolved and Web-based graphics can now visualize very complex scenes.
+shown in HEP event displays, for example, when visualizing hits in a very busy event. But the technology has rapidly
+evolved and web-based graphics can now visualize very complex scenes.
 For example, the glTF~\cite{glTF} 3D model of the Belle II detector~\cite{BelleII}, with tens of thousands of elements,
 can be loaded, viewed and manipulated in a web browser, even on a smartphone, very effectively~\cite{SketchFabBelleII}.
 
@@ -859,14 +859,14 @@ can be loaded, viewed and manipulated in a web browser, even on a smartphone, ve
 The advantages of visualization in the browser have been mentioned
 previously and several application have already been developed.
 There is therefore already a strong interest in the community in supporting the usage and the development of web-based tools.
-In particular, JSROOT~\cite{rootjs} could be used as
+In particular, JSROOT~\cite{rootjs} could be used as an
 underlying layer for event data visualization as well as three.js~\cite{ThreeJS} and WebGL~\cite{WebGL2011}, which have been
 used successfully by different experiments (\textit{e.g.}, \cite{ATLASTada2016,ATLASTracer2015,CMSISpyWebGL}) to visualize geometry and event data.
 
 \hypertarget{vr}{%
 \subsubsection{Virtual and augmented reality}\label{vr}}
 
-As briefly described in Section \ref{application-development}, Virtual reality (VR) describes the simulation of the user’s
+As briefly described in Section \ref{application-development}, Virtual Reality (VR) describes the simulation of the user’s
 physical presence in a virtual environment. This simulation
 is typically delivered via a Head Mounted Display (HMD) that provides visual and aural experience of the simulated world.
 Rotational and positional tracking of the user’s head and hand motion (when available) allow for interaction and navigation
@@ -890,14 +890,14 @@ is another headset powered by an inserted smartphone targeted for the Oculus pla
 
 Currently, the most immersive and interactive VR environments are provided by the Oculus Rift~\cite{OculusRift} and the
 HTC Vive~\cite{HTCVive}, which combine the computing resources of a desktop machine with sensors, controllers, and high-quality HMDs.
-Those sophisticated devices are quite expensive (even if prices are lowering in the last months) and require a quite powerful computer to run.
-The presence of a proper computer lets solve the performance issue of phone-based viewers, since the 3D graphics computations are handled
-by the computer, but that also rise the initial budget for people willing to test such technologies, and that limits the number of
-people getting access to such platforms, as like as their usage in public events organized by HEP institutes.
+Those sophisticated devices are quite expensive (even if prices are lowering in the last months) and require a fairly powerful computer to run.
+The presence of a proper computer solves the performance issue of phone-based viewers, since the 3D graphics computations are handled
+by the computer, but that also increases the required initial budget for people willing to test such technologies, and that limits the number of
+people getting access to such platforms, for example in public events organized by HEP institutes.
 
-In between, a new type of device has been recently developed: a standalone viewer, equipped with an on-board CPU, able to run
+Meanwhile, a new type of device has been recently developed: a standalone viewer, equipped with an on-board CPU, able to run
 medium computation-intensive applications. Those devices lower the budget needed to develop and deploy VR applications significantly.
-One example of those new devices is Oculus Go\cite{OculusGo} and the stand-alone Lenovo headset for the
+Examples of those new devices are Oculus Go\cite{OculusGo} and the stand-alone Lenovo headset for the
 Daydream environment~\cite{LenovoMirageSolo}.
 
 Game engines, described in Section~\ref{graphic-engines},  provide powerful integrated development environments for
@@ -918,7 +918,7 @@ The More-Than-ALICE~\cite{MoreThanALICE} application allows users to superimpose
 ALICE detector (for example, on a screen or during public visits to the experimental site) or its paper model.
 
 Development of web-based VR and AR applications for mobile browser can be done using a WebGL library such as three.js~\cite{ThreeJS} and using the
-HTML device orientation control API. The viewport is split into two views for each eye, each with dedicated camera view separated
+HTML device orientation control API. The viewport is split into two views, one for each eye, each with a dedicated camera view separated
 by an appropriate distance to create a stereoscopic effect ({\it e.g.}\ iSpy WebGL~\cite{CMSISpyWebGL} has a stereo mode for Google Cardboard). 
 The developing WebVR specification~\cite{WebVR} provides interfaces to VR hardware via the browser. A powerful framework for
 development of VR applications for various devices using the browser is A-Frame~\cite{AFrame}. A-Frame has support for several device controllers as well,
@@ -926,8 +926,8 @@ such as for the Daydream and Oculus. CMS is exploring the possibilites of A-Fram
 browser for both VR and AR ({\it e.g.}\ CMS A-Frame prototype~\cite{CMSAFrame}).
 
 VR and AR applications could be used, in principle, to build event displays and data visualization tools for research work as well.
-However the current data access model prevents a straightforward use of those technologies together with the experiments' software frameworks.
-Future client-server approach to data access could fill the current gap and let developers build new VR and AR tools with HEP physicists as end-user targets.
+However, the current data access model prevents a straightforward use of those technologies together with the experiments' software frameworks.
+A future client-server approach to data access could fill the current gap and let developers build new VR and AR tools targeting HEP physicists as end users.
 
 \hypertarget{mobile-tech}{%
 \subsubsection{Mobile technologies}\label{mobile-tech}}
