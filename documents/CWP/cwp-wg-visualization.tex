@@ -46,7 +46,7 @@ HSF \emph{Roadmap} Community White Paper~\cite{HSF-CWP-2017-01}.}
 \noindent
 \begin{tabular*}{\linewidth}{lc@{\extracolsep{\fill}}r@{\extracolsep{0pt}}}
 & & HSF-CWP-2017-15 \\
-& & June 20, 2018 \\ % use \date or hardwire e.g. December 15, 2017
+& & October 26, 2018 \\ % use \date or hardwire e.g. December 15, 2017
 & & \\
 \end{tabular*}
 \vspace{2.0cm}
@@ -110,7 +110,7 @@ HSF \emph{Roadmap} Community White Paper~\cite{HSF-CWP-2017-01}.}
 \epigraph{Visualization: Turning numbers into pixels}{\textit{Hadrien Grasland \\ HSF Workshop 2017, Annecy}}
 
 This paper will describe three kinds of data visualization used in High-Energy Physics (HEP): interactive visualization of event data in
-applications known commonly event displays, statistical data visualization such as histograms,
+applications known commonly as event displays, statistical data visualization such as histograms,
 and non-spatial data visualization such as networks and graphs.
 
 Event displays are the main tool used to explore experimental data at the event level.
@@ -132,7 +132,7 @@ the representation of all geometrical volumes that compose the sub-detectors and
 More details about the detector geometry can be found in the HSF \textit{Detector Simulation} Community White Paper~\cite{HSF-CWP-2017-07}.
 
 Other types of data visualization used in HEP experiments, such as visualization for slow control
-or dashboards for data analytics, are considered out of scope and are not discussed in this chapter.
+or dashboards for data analytics, are considered out of scope and are not discussed.
 
 The content of this paper is the summary of the direct experience of the authors in designing, building, and deploying
 interactive data visualization applications for the experiments ALICE, ATLAS, Belle II, CMS, LHCb, and LSST, for scientific
@@ -415,11 +415,10 @@ Augmented Reality (AR), instead, uses a camera to take a view of the real world 
 objects are rendered in 3D and shown on top of that image dynamically, following the user's interaction and motion.
 This lets the user move within an environment where real and simulated objects live together. AR can be used in HEP as
 an educational tool, for instance to dynamically show and describe a HEP detector to a group of people or a class.
-Some HEP experiments have been started exploring AR technologies for HEP, particularly ALICE, ATLAS, and CMS. More information
-is found in Section~\ref{vr}.
+Some HEP experiments have been started exploring AR technologies for HEP, particularly ALICE, ATLAS, and CMS.
 
 Both VR and AR applications are usually developed in specialized graphics engines, which prevent the interaction
-with the experiment's framework to access native data. More details on VR and AR applications for HEP in Section \ref{vr}.
+with the experiment's framework to access native data. More details on VR and AR applications for HEP are found in Section \ref{vr}.
 
 %\missingfigure[figwidth=12cm]{Add ref/comment to https://twitter.com/acceleratARapp}
 
@@ -654,8 +653,8 @@ used to filter and reconstruct the experimental data. Very recently HEP experime
 to concurrently handle analysis or reconstruction jobs, to efficiently exploit the parallelism offered by the modern hardware
 (more details can be found in the HSF \textit{Event/Data Processing Frameworks} Community White Paper~\cite{HSF-CWP-2017-08}).
 The jobs are handled by a scheduler, which organizes them according to their needed input and output data. The outcome of the scheduler
-is a directed acyclic graph (DAG). The visualization of that by mean of a graph helps the developer understanding and debugging the
-reconstruction code and the experiment’s framework itself.
+is a directed acyclic graph (DAG). The visualization by means of a graph helps the developer understanding and debugging the
+reconstruction and framework code.
 
 Other HEP experiments use graph-based tools to analyze and visualize other types of data, like geographical distribution and load of computer
 networks used to transfer data between GRID sites \cite{neo4jnetworkstudy} (see Picture \ref{fig:networkstudy})
@@ -671,8 +670,8 @@ networks used to transfer data between GRID sites \cite{neo4jnetworkstudy} (see 
 
 
 All those data are not space- nor time-dependent, and they are better visualized through a graph or a network. Graph-based visualization,
-as well as graph-databases, are fairly new in the HEP landscape; but they can be very powerful tools to effectively visualize
-non-spatial data which are by their nature organized with a network layout. We suggest the community to further explore those tools,
+as well as graph-databases, are fairly new in the HEP landscape but they can be very powerful tools to effectively visualize
+non-spatial data which are by their nature organized with a network layout. We suggest the community further explores those tools,
 to better understand the possibility offered by graph-based solutions for HEP needs.
 
 
@@ -689,7 +688,7 @@ to be able to share knowledge and best practices among the different groups, and
 
 Visualization has a key role in the lifecycle of a HEP experiment, addressing input data from many sources and in many different formats.
 The input data are often quite tightly bound to a specific experiment's software framework and because of that many visualization tools
-are integrated into the frameworks somehow. However, the visualization is often the last step on the experiment data chain and the
+are integrated into the frameworks to some extent. However, the visualization is often the last step on the experiment data chain and the
 output of a visualization application is often not used by any other tool in the software framework. So while the direct interaction with experimental data
 formats is highly experiment specific, there is a real possibility of having the final stages of the visualization pipeline
 shared between several experiments.
@@ -748,7 +747,7 @@ be a part of the format targeted at storing extended custom content, specific to
 experiments will have to develop custom visualization tools as well; but they could build them upon the foundation
 of the community-driven part.
 
-Some experiments in that direction have been performed within the community in the past years, already. For example, the
+Some experiments in that direction have been performed within the community in the already. For example, the
 ALICE experiment made use of the mini ``Visualization Summary Data'' (VSD) set of classes, contained in the ROOT Event
 Visualization Environment (EVE), to make ALICE data visualization decoupled from the AliROOT experiment’s framework \cite{TadelALICE}.
 
@@ -860,7 +859,7 @@ The advantages of visualization in the browser have been mentioned
 previously and several application have already been developed.
 There is therefore already a strong interest in the community in supporting the usage and the development of web-based tools.
 In particular, JSROOT~\cite{rootjs} could be used as an
-underlying layer for event data visualization as well as three.js~\cite{ThreeJS} and WebGL~\cite{WebGL2011}, which have been
+underlying layer for event data visualization as well as three.js~\cite{ThreeJS}, which have been
 used successfully by different experiments (\textit{e.g.}, \cite{ATLASTada2016,ATLASTracer2015,CMSISpyWebGL}) to visualize geometry and event data.
 
 \hypertarget{vr}{%
@@ -890,7 +889,7 @@ is another headset powered by an inserted smartphone targeted for the Oculus pla
 
 Currently, the most immersive and interactive VR environments are provided by the Oculus Rift~\cite{OculusRift} and the
 HTC Vive~\cite{HTCVive}, which combine the computing resources of a desktop machine with sensors, controllers, and high-quality HMDs.
-Those sophisticated devices are quite expensive (even if prices are lowering in the last months) and require a fairly powerful computer to run.
+Those sophisticated devices are relatively expensive (even if prices are lowering in the last months) and require a fairly powerful computer to run.
 The presence of a proper computer solves the performance issue of phone-based viewers, since the 3D graphics computations are handled
 by the computer, but that also increases the required initial budget for people willing to test such technologies, and that limits the number of
 people getting access to such platforms, for example in public events organized by HEP institutes.
@@ -947,9 +946,9 @@ connect to server tools running in the experiment's framework to easily and inte
 It is worth noting that in other areas of science, for instance in astronomy, researchers have worked to facilitate data
 access and to migrate to more standard data formats. This allowed for the possibility of having data visualization tools
 on mobile devices, in addition to desktop and laptop machines. Moreover, this not only helped the researchers in accessing and visualizing
-their data, but it also paid out in making science accessible by the public, having eased the development of programs used in
+their data, but it also helped in making science accessible by the public, having eased the development of programs used in
 Outreach and Education activities and events. It is true that HEP data are usually much more complex than astronomy data, and so it
-will be harder to achieve, but we think that an effort in simplifying the access to experimental data would be worth anyway.
+will be harder to achieve, but we think that an effort in simplifying the access to experimental data would be worthwhile.
 
 Therefore, the leverage of the usage of mobile devices in HEP adds a strong point to the development and the support of common
 client-server tools and data exchange formats among HEP experiments in the near future.
@@ -1054,7 +1053,6 @@ the maintenance and the workload among all the experiments.
 \section{Acknowledgements}\label{acknowledgements}}
 
 The authors would like to thank Guy Barrand \textit{(Geant4, LSST, LAL)} for the fruitful discussions and input about what is done in astronomy in terms of data access and visualization on mobile platforms.
-
 
 
 
