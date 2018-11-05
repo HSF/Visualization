@@ -1,15 +1,15 @@
 % Copyright (C) 2018, The HSF Community White Paper authors, licence CC-BY-4.0.
-
+%
 % !TeX spellcheck = en_US
 % !TEX TS–program = pdflatexmk
-
+%
 % JHEP preprint template
 \documentclass[12pt,a4paper]{article}
-\usepackage{jheppub}
+\usepackage[pdftex]{graphicx}
+\pdfoutput=1
+\graphicspath{ {./img/}{./} }%Path relative to the main .tex file
 
-\usepackage{graphicx}
-%Path relative to the main .tex file
-\graphicspath{ {./img/}{./} }
+\usepackage{jheppub}
 
 \usepackage{subcaption}
 \usepackage{xspace}
