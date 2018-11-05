@@ -1,6 +1,7 @@
 % Copyright (C) 2018, The HSF Community White Paper authors, licence CC-BY-4.0.
 
 % !TeX spellcheck = en_US
+% !TEX TS–program = pdflatexmk
 
 % JHEP preprint template
 \documentclass[12pt,a4paper]{article}
@@ -21,7 +22,7 @@
 
 
 %%% BIBLIOGRAPHY SETTINGS %%%
-\usepackage[style=numeric-comp,sorting=none]{biblatex}
+\usepackage[style=numeric-comp,sorting=none,backend=biber]{biblatex}
 %\addbibresource{../../roadmap/latex/cwp.bib}
 %\addbibresource{../../roadmap/latex/cwp-chapters.bib} % HSF's one, for final submission
 \addbibresource{cwp-chapters.bib} % local one, remove it for final submission
@@ -179,7 +180,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 		\centering
 		\includegraphics[width=\textwidth]{ATLAS_VP1_event_display_first_stable_beam_collisions_13TeV_many-vertices_run296942_evt34013839_2016-04-23T10-51-30_v4.png}
 		\caption[ATLAS 3D event display]%
-		{{\small ATLAS 3D event display}}
+		{{\small ATLAS}}
 		\label{fig:ed-atlas}
 	\end{subfigure}
 	\quad
@@ -187,7 +188,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 		\centering
 		\includegraphics[width=\textwidth]{VBF2e2mu_v10}
 		\caption[CMS event display]%
-		{{\small CMS event display}}
+		{{\small CMS}}
 		\label{fig:ed-cms}
 	\end{subfigure}
 	\vskip\baselineskip
@@ -195,7 +196,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 		\centering
 		\includegraphics[width=\textwidth]{run280235_ev341_2}
 		\caption[ALICE event display]%
-		{{\small ALICE event display}}
+		{{\small ALICE}}
 		\label{fig:ed-alice}
 	\end{subfigure}
 	\quad
@@ -203,7 +204,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 		\centering
 		\includegraphics[width=\textwidth]{2018Start2}
 		\caption[LHCb event display]%
-		{{\small LHCb event display}}
+		{{\small LHCb}}
 		\label{fig:ed-lhcb}
 	\end{subfigure}
 	\vskip\baselineskip
@@ -211,7 +212,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 		\centering
 		\includegraphics[width=\textwidth]{belleII_VR}
 		\caption[Belle II VR event display]%
-		{{\small Belle II VR event display}}
+		{{\small Belle II VR}}
 		\label{fig:ed-belleii}
 	\end{subfigure}
 	\quad
@@ -219,15 +220,15 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 		\centering
 		\includegraphics[width=\textwidth]{HI-ZEE-151058-747-4096951-large}
 		\caption[CMS event display]%
-		{{\small CMS event display}}
+		{{\small CMS (Fireworks)}}
 		\label{fig:ed-cms-fireworks}
 	\end{subfigure}
 	\caption[Examples of HEP event displays]
-	{\small Different examples of HEP 3D event display applications: \subref{fig:ed-atlas}) ATLAS 3D event display \cite{ATLASED072015,ATLASVP12010};
-	\subref{fig:ed-cms}) CMS 3D event display \cite{CMSED}; 
-	\subref{fig:ed-alice}) ALICE 3D event display \cite{ALICEED};
-	\subref{fig:ed-lhcb}) LHCb 3D event display \cite{LHCbED}; \subref{fig:ed-belleii}) Belle II VR event display \cite{BelleIIVRED}; 
-	\subref{fig:ed-cms-fireworks}) A CMS 3D event display made with Fireworks~\cite{CMSFireworks}}
+	{\small Different examples of HEP 3D event display applications: \subref{fig:ed-atlas}) an ATLAS 3D event display made with VP1~\cite{ATLASED072015,ATLASVP12010};
+	\subref{fig:ed-cms}) a CMS 3D event display made with iSpy~\cite{CMSED}; 
+	\subref{fig:ed-alice}) an ALICE 3D event display \cite{ALICEED};
+	\subref{fig:ed-lhcb}) an LHCb 3D event display \cite{LHCbED}; \subref{fig:ed-belleii}) a Belle II VR event display \cite{BelleIIVRED}; 
+	\subref{fig:ed-cms-fireworks}) a CMS 3D event display made with Fireworks~\cite{CMSFireworks}}
 	\label{fig:screenshots}
 \end{figure*}
 
@@ -328,11 +329,36 @@ Some HEP visualization applications use OpenGL calls directly through custom gra
 robust approach as the developers can take full control over the OpenGL interface
 and the project can be independent of other software libraries. Two examples of HEP applications which follow this path are the
 ATLAS Persint application~\cite{ATLASPersint2012} and the ROOT EVE toolkit~\cite{ROOTEVE2007}, which is used both by the CMS
-Fireworks application~\cite{CMSFireworks} and the ALICE Event Visualisation Environment (AliEve)~\cite{alieve}.
+Fireworks application~\cite{CMSFireworks} and the ALICE Event Visualization Environment (AliEve)~\cite{alieve}.
 One disadvantage of this approach is that developer time has to be assured to maintain the graphics engine itself,
-on top of the effort needed for the development and maintanance of the event display application.
+on top of the effort needed for the development and maintenance of the event display application.
 
 %\missingfigure[figwidth=12cm]{schematic B - OpenGL API access}
+
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Persint-ATLAS-Zmumu-3d-hi-728772}
+		\caption[ATLAS 3D event display made with Persint]{{\small}}
+		\label{fig:atlas-persint}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{atlas-atlantis-run280862-evt53564866}
+		\caption[ATLAS 2D event display made with Atlantis]%
+		{{\small }}
+		\label{fig:atlas-atlantis}
+	\end{subfigure}
+	\caption[Using 3D editing software for HEP Geometry]
+	{\small \subref{fig:atlas-persint}) an ATLAS 3D event display made with Persint~\cite{AtlasPersintZmumuED,ATLASPersint2012}; \subref{fig:atlas-atlantis}) an ATLAS 2D event display made with Atlantis~\cite{AtlasAtlantisHiggsED,ATLASAtlantis}.}
+	\label{fig:cms-sketchup}
+\end{figure*}
+
+
+
 
 Other applications use higher-level interface libraries as graphics engines. This has the advantage of delegating
 a large part of the lower-level development work to external software packages, leaving the developers to concentrate
@@ -426,6 +452,29 @@ with the experiment's framework to access native data. More details on VR and AR
 \hypertarget{geometry-description}{%
 \subsubsection{Geometry description and visualization}\label{geometry-description}}
 
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cms-sketchup-shapes}
+		\caption[Converting the CMS detector geometry data to 3D meshes]{{\small}}
+		\label{fig:ed-sketchup-a}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cms_160312_03}
+		\caption[Rendering the CMS geometry in the SketchUp 3D software]%
+		{{\small }}
+		\label{fig:cms-sketchup-b}
+	\end{subfigure}
+	\caption[Using 3D editing software for HEP Geometry]
+	{\small Use of a 3D software (SketchUp) to render the basic geometrical shapes imported from the CMS detector description and the final volumes \cite{CMSSketchUpImages}.}
+	\label{fig:cms-sketchup}
+\end{figure*}
+
+
 Geometry visualization provides important visual context for event displays and dedicated geometry displays are useful
 applications by themselves. There are typically three levels of detail found in applications. The most detailed geometry
 is typically called the \textit{simulation geometry} and can include the sensitive elements of the detector as well
@@ -455,27 +504,6 @@ SketchUp application~\cite{sketchupSW}, described in Ref.~\cite{CMSSketchUp} (se
 The CMS detector description \cite{cmsDetectorDescription} as written in XML is parsed using Ruby scripts and 3D models are built using the
 SketchUp program via its Ruby API. SketchUp can then export to various standard 3D file formats. In this way
 detailed simulation geometry can be available in a standalone application.
-
-\begin{figure*}
-	\centering
-	\begin{subfigure}[b]{0.475\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{cms-sketchup-shapes}
-		\caption[Converting the CMS detector geometry data to 3D meshes]{{\small}}
-		\label{fig:ed-sketchup-a}
-	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{0.475\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{cms_160312_03}
-		\caption[Rendering the CMS geometry in the SketchUp 3D software]%
-		{{\small }}
-		\label{fig:cms-sketchup-b}
-	\end{subfigure}
-	\caption[Using 3D editing software for HEP Geometry]
-	{\small Use of a 3D software (SketchUp) to render the basic geometrical shapes imported from the CMS detector description and the final volumes \cite{CMSSketchUpImages}.}
-	\label{fig:cms-sketchup}
-\end{figure*}
 
 %CMS created 3D models of the CMS detector in SketchUp~\cite{CMSSketchUp}. Ruby scripts were used to parse the
 %description of the CMS detector geometry written in XML and to build 3D models in SketchUp via its Ruby API.
