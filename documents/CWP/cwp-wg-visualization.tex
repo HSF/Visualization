@@ -6,11 +6,11 @@
 % JHEP preprint template
 \documentclass[12pt,a4paper]{article}
 \usepackage[pdftex]{graphicx}
-\pdfoutput=1
-\graphicspath{ {./img/}{./} }%Path relative to the main .tex file
-
+\pdfoutput=1 % needed for arXiV
+\graphicspath{{./img/}}%Path relative to the main .tex file
+ 
 \usepackage{jheppub}
-
+ 
 \usepackage{subcaption}
 \usepackage{xspace}
 \usepackage{todonotes}
@@ -21,23 +21,34 @@
 \usepackage[utf8]{inputenc}
 
 
-%%% BIBLIOGRAPHY SETTINGS %%%
+
+
+%%%% BIBLIOGRAPHY SETTINGS %%%%
+
 \usepackage[style=numeric-comp,sorting=none,backend=biber]{biblatex}
+
+%% FILES - NOTE!! It's only for local build, not for arXiV!!! 
+% ==> Remove those lines for final submission to arXiV!
 %\addbibresource{../../roadmap/latex/cwp.bib}
 %\addbibresource{../../roadmap/latex/cwp-chapters.bib} % HSF's one, for final submission
 \addbibresource{cwp-chapters.bib} % local one, remove it for final submission
 \addbibresource{cwp-wg-visualization-bib.bib}
-%%%%%%
+
+% For arXiV, the file 'cwp-wg-visualization.bbl', generated with a local build, is taken automatically!
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 
 %% Comment out before final submission
-\usepackage{lineno}  % for line numbering during review
-\linenumbers
+%\usepackage{lineno}  % for line numbering during review
+%\linenumbers
 
 \abstract{In modern High Energy Physics (HEP) experiments visualization of experimental data has a key role in many activities
 and tasks across the whole data chain: from detector development to monitoring, from event generation to reconstruction of physics objects,
 from detector simulation to data analysis, and all the way to outreach and education.
-In this paper the definition, status, and evolution of data visualization for HEP experiments will be presented.
+In this paper, the definition, status, and evolution of data visualization for HEP experiments will be presented.
 Suggestions for the upgrade of data visualization tools and techniques in current experiments will be outlined, along with
 guidelines for future experiments. This paper expands on the summary content published in the
 HSF \emph{Roadmap} Community White Paper~\cite{HSF-CWP-2017-01}.}
@@ -178,7 +189,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 	\centering
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{ATLAS_VP1_event_display_first_stable_beam_collisions_13TeV_many-vertices_run296942_evt34013839_2016-04-23T10-51-30_v4.png}
+		\includegraphics[width=\textwidth]{ATLAS_VP1_event_display_first_stable_beam_collisions_13TeV_many-vertices_run296942_evt34013839_2016-04-23T10-51-30_v4_LowRes}
 		\caption[ATLAS 3D event display]%
 		{{\small ATLAS}}
 		\label{fig:ed-atlas}
@@ -186,7 +197,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 	\quad
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{VBF2e2mu_v10}
+		\includegraphics[width=\textwidth]{VBF2e2mu_v10_LowRes}
 		\caption[CMS event display]%
 		{{\small CMS}}
 		\label{fig:ed-cms}
@@ -194,7 +205,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 	\vskip\baselineskip
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{run280235_ev341_2}
+		\includegraphics[width=\textwidth]{run280235_ev341_2_LowRes}
 		\caption[ALICE event display]%
 		{{\small ALICE}}
 		\label{fig:ed-alice}
@@ -218,7 +229,7 @@ event displays can be seen in Figure~\ref{fig:screenshots}.
 	\quad
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{HI-ZEE-151058-747-4096951-large}
+		\includegraphics[width=\textwidth]{HI-ZEE-151058-747-4096951-large_LowRes}
 		\caption[CMS event display]%
 		{{\small CMS (Fireworks)}}
 		\label{fig:ed-cms-fireworks}
@@ -243,7 +254,7 @@ is only possible for an application integrated with the experimental software fr
 There are several advantages to having access to the experiment's framework, such as full access to the experimental
 data in its native format and to software tools, services, and databases. Through them, event display applications can
 make use of the full detector simulation geometry, of conditions data, and of all the framework's application program interface (API).
-
+ 
 One disadvantage of this approach is that full support for the display application is often limited to those platforms
 on which the framework itself is supported, limiting cross-platform distribution and support.
 One way to mitigate this is to distribute a light version of the framework along with the application; CMS Fireworks~\cite{CMSFireworks}
@@ -340,7 +351,7 @@ on top of the effort needed for the development and maintenance of the event dis
 	\centering
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Persint-ATLAS-Zmumu-3d-hi-728772}
+		\includegraphics[width=\textwidth]{Persint-ATLAS-Zmumu-3d-hi-728772_LowRes}
 		\caption[ATLAS 3D event display made with Persint]{{\small}}
 		\label{fig:atlas-persint}
 	\end{subfigure}
@@ -464,7 +475,7 @@ with the experiment's framework to access native data. More details on VR and AR
 	\quad
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{cms_160312_03}
+		\includegraphics[width=\textwidth]{cms_160312_03_LowRes}
 		\caption[Rendering the CMS geometry in the SketchUp 3D software]%
 		{{\small }}
 		\label{fig:cms-sketchup-b}
